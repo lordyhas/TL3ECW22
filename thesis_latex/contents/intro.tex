@@ -3,13 +3,22 @@
 \chapter{Introduction}
 	\section{Généralités}
 
-		La reconnaissance des formes dans les vidéos est un problème important en vision artificielle et en traitement d'images. Cette tâche est très utile vue l'accroissement du nombre de vidéos générées par les médias numériques (ex., internet, la télévision, les vidéos personnelles, la surveillance vidéo). La reconnaissance automatique des objets en vidéos peut ainsi renforcer la sécurité, faciliter la gestion des vidéos ainsi que permettre de nouvelles applications en interaction personne/machine.
+		La reconnaissance d'objet dans les vidéos est un problème important dans la vision par ordinateur (Computer Vision \footnote{La vision par ordinateur est un domaine de l'intelligence artificielle (IA) qui permet aux ordinateurs et aux systèmes de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, et de prendre des mesures ou de faire des recommandations sur la base de ces informations.}) et en traitement d'images. Cette tâche est très utile vue l'accroissement du nombre de vidéos générées par des smartphones, des systèmes de sécurité, des caméras de circulation et autres dispositifs dotés d'instruments visuels. La reconnaissance automatique des objets en vidéos peut ainsi renforcer la sécurité, faciliter la gestion des vidéos ainsi que permettre de nouvelles applications en interaction personne/machine.
 		
 		Par ailleurs, les images numériques et la vidéo sont devenues indispensables pour divers domaines d'application, tels que la détection d'intrusions pour la sécurité, la surveillance du trafic routier, la médecine pour l'imagerie médicale, ou encore lors des événements sportifs (ex., renforcement de l'arbitrage, création automatique de résumés).
 		Des contraintes d'exploitation découlent des observations citées ci-dessus, parmi lesquelles nous citerons celles qui sont liées à la reconnaissance des objets en mouvement dans les vidéos. Par exemple, de nos jours, un très grand nombre de caméras est déployé exclusivement pour la surveillance vidéo.\cite{ahadjitse2013reconnaissance} 
-		
 		Souvent, le contenu de ces vidéos est interprété par des opérateurs humains qui engendrent des coûts exorbitants pour le suivi et l'analyse du contenu, sans mentionner les erreurs qui peuvent être induites par la fatigue et l'inattention humaine. 
 		Un des problèmes importants abordés dans la surveillance vidéo est la reconnaissance des types d'objets en mouvement et leurs actions, afin de détecter, par exemple, des menaces potentielles (ex., vols, attentats, accidents), ou tout simplement pour des fins de statistiques (ex., compter le nombre d'individus, de voitures dans une entrée de parc).
+		
+		Les applications du monde réel démontrent l'importance de la vision par ordinateur pour les entreprises, les secteurs du divertissement, des transports, des soins de santé et dans la vie quotidienne. L'un des principaux moteurs de la croissance de ces applications est le flot d'informations visuelles provenant des médias numériques (ex., internet, la télévision, les vidéos personnelles, la surveillance vidéo).
+		Ces données pourraient jouer un rôle majeur dans les opérations de toutes les industries, mais elles sont aujourd'hui inutilisées. Ces informations constituent un banc d'essai pour la formation des applications de vision par ordinateur et une rampe de lancement pour leur intégration dans toute une série d'activités humaines :(IBM, Computer Vision)
+		
+		\begin{itemize}
+			\item[$\blacklozenge$] IBM a utilisé la vision par ordinateur pour créer My Moments pour le tournoi de golf Masters 2018. IBM Watson a regardé des centaines d'heures d'enregistrements filmés de Masters et a pu identifier les images (et les sons) des plans importants. Ces moments clés ont été organisés et livrés aux fans sous forme de séquences personnalisées.
+			\item[$\blacklozenge$] Google Translate\footnote{Google Translate est un service de traduction automatique fourni par Google, qui permet de traduire un texte ou une page Web dans une autre langue.} permet aux utilisateurs de pointer la caméra d'un smartphone vers un panneau dans une autre langue et d'obtenir presque immédiatement une traduction du panneau dans la langue de leur choix.
+			\item[$\blacklozenge$] Le développement des véhicules autonomes repose sur la vision par ordinateur, qui donne un sens aux données visuelles fournies par les caméras et autres capteurs de la voiture. Il est essentiel d'identifier les autres voitures, les panneaux de signalisation, les marqueurs de voie, les piétons, les vélos et toutes les autres informations visuelles rencontrées sur la route.
+			\item[$\blacklozenge$] IBM applique la technologie de vision par ordinateur avec des partenaires comme Verizon afin d'amener l'IA intelligente à la périphérie et d'aider les constructeurs automobiles à identifier les défauts de qualité avant qu'un véhicule ne quitte l'usine.
+		\end{itemize}
 		
 		??? parler de existant ?
 		
@@ -18,12 +27,24 @@
 	\section{Contexte de notre recherche}
 		Au cours de la dernière décennie, la taille des données a augmenté plus rapidement que la vitesse des processeurs. 
 		Dans ce contexte, faire un traitement de reconnaissance des formes sur des vidéos en temps réel, les ensembles de données d'entraînement pour les problèmes de détection d'objets sont généralement très volumineux et les capacités des méthodes d'apprentissage automatique statistique sont limitées par le temps de calcul plutôt que par la taille de l'échantillon.\cite{bottou2010large} 
+		\\??? sur quoi se base mes recherche ?
 	
 	\section{Problématique}
-		Pour le système de vision humain, la reconnaissance des objets est une tâche simple et triviale. L'humain est capable de faire la distinction, d'une part, entre des objets et l'arrière-plan d'une image et d'autre part, entre plusieurs objets présents dans une scène de vidéo.
+		
+		Pour le système de vision humain, la reconnaissance des objets est une tâche simple et triviale.
+		La vision par ordinateur fonctionne de la même manière que la vision humaine, sauf que les humains ont une longueur d'avance. La vue humaine a l'avantage de pouvoir s'entraîner à distinguer les objets, à en déterminer la distance, à savoir s'ils sont en mouvement et si quelque chose ne va pas dans une image. 
+		L'humain est capable de faire la distinction, d'une part, entre des objets et l'arrière-plan d'une image et d'autre part, entre plusieurs objets présents dans une scène de vidéo.
+		
+		La vision par ordinateur a besoin de beaucoup de données. Elle exécute des analyses de données encore et encore jusqu'à ce qu'elle perçoive des distinctions et reconnaisse finalement les images. Par exemple, pour entraîner un ordinateur à reconnaître des plaques d'immatriculation de voiture, elle doit recevoir de grandes quantités d'images de plaque d'immatriculation et d'éléments liés aux plaques pour apprendre les différences et reconnaître une plaque, en particulier un pneu sans défaut.
+		
+	
 		??? pourquoi faire un système de reconnaissance des formes ?
-		??? qu'est-ce que ça résout comme problème ?
+		\\??? qu'est-ce que ça résout comme problème ?
+		\\??? c'est quoi ma retouche, pour le problème ?
 	
 	\section{Objectifs}
-		Ce travail vise à proposer une méthode  intelligent basé sur l'intelligence artificielle pour une reconnaissance des plaques d’immatriculation des véhicules à l'aide du classificateur de descente de gradient stochastique Ridge-Adaline (Ridge Adaline Stochastic Gradient Descent ou RASGD).
+		Ce travail vise à proposer une méthode intelligent, basé sur l'intelligence artificielle (IA), qui permet aux ordinateurs et aux systèmes de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, dans notre contexte la reconnaissance des plaques d’immatriculation des véhicules à l'aide du classificateur de descente de gradient stochastique Ridge-Adaline (en anglais : Ridge Adaline Stochastic Gradient Descent ou RASGD).
 		Pour minimiser la fonction de coût du classificateur, le RASGD adopte un modèle d'optimisation sans contrainte. De plus, pour augmenter la vitesse de convergence du classificateur, le classificateur de descente de gradient stochastique Adaline, (Adaline Stochastic Gradient Descent) est intégré à Ridge Régression.\cite{deepa2021ai}
+		
+		
+		
