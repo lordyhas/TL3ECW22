@@ -1,20 +1,65 @@
-\documentclass[12pt,a4paper,twoside]{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Classicthesis Typographic Thesis
+% LaTeX Template
+% Version 1.4 (1/1/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% 
+% License:
+% GNU General Public License (v2)
+%
+% General Tips:
+% 1) Make sure to edit the classicthesis-config.file
+% 2) New enumeration (A., B., C., etc in small caps): \begin{aenumerate} \end{aenumerate}
+% 3) For margin notes: \marginpar or \graffito{}
+% 4) Do not use bold fonts in this style, it is designed around them
+% 5) Use tables as in the examples
+% 6) See classicthesis-preamble.sty for useful commands
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+		%headinclude=true,
+		%twoside,
+		openright,
+		titlepage,
+		numbers=noenddot,
+		headinclude,
+		%1headlines,
+	 	%footinclude=true,
+	 	cleardoublepage=empty,
+		dottedtoc, % Make page numbers in the table of contents flushed right with dots leading to them
+		%BCOR=5mm,
+		paper=a4,
+		fontsize=12pt, % Binding correction, paper type and font size
+		french,
+		american, % Languages, change this to your language(s)
+		]{scrreprt} 
+                
+% Includes the file which contains all the document configurations and packages - make sure to edit this file
+\input{classicthesis-config}
+%\usepackage{lipsum}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{wrapfig}
 
 
-\usepackage[utf8]{inputenc}
-\usepackage[french]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{color}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{amsthm}
-\usepackage{epsfig}
-\usepackage{setspace}
-\usepackage{url}
-%\usepackage{natbib}
-%\usepackage{comment}
+\addbibresource{bibliography/biblio.bib} % The file housing your bibliography
+%\addbibresource[label=ownpubs]{Self_Publications.bib} % Uncomment for optional self-publications
+
+%\hyphenation{Put special hyphenation here}
+
+\areaset{15cm}{25.8cm}
+
+\parindent 0pt
+\parskip 6pt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -23,113 +68,168 @@
 \newcommand{\italic}[1]{\textit{#1}}
 \newcommand{\n}{\\}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Machine Learning: Supervised learning, Pattern Recognition of license plate 
-	using the stochastic gradient descent algorithm}
-\author{Hassan T. Kajila}
-\date{\today}
- 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\setcounter{chapter}{-1}
-\setcounter{secnumdepth}{4}
-\renewcommand\thesubsubsection{\Alph{subsubsection}}
-
-
-
-
 \begin{document}
+
+%\renewcommand{\thesubsubsection}{\alph{subsection}}
+%\renewcommand{\thesubsubsection}{\alph{subsubsection}.}
+\renewcommand\thesubsubsection{\Alph{subsubsection}}
+\setcounter{chapter}{-1}
+
+
+\frenchspacing % Reduces space after periods to make text more compact
+
+\raggedbottom % Makes all pages the height of the text on that page
+
+\selectlanguage{french} % Select your default language - e.g. american or ngerman
+
+%\renewcommand*{\bibname}{new name} % Uncomment to change the name of the bibliography
+%\setbibpreamble{} % Uncomment to include a preamble to the bibliography - some text before the reference list starts
+
+\pagenumbering{roman} % Roman page numbering prior to the start of the thesis content (i, ii, iii, etc)
+
+\pagestyle{plain} % Suppress headers for the pre-content pages
+
+%----------------------------------------------------------------------------------------
+%	PRE-CONTENT THESIS PAGES
+%----------------------------------------------------------------------------------------
+
+\include{FrontBackMatter/Titlepage} % Main title page
+%\include{title_page}
+%\includepdf[pages={1}]{gfx/garde.pdf}
+
+\include{FrontBackMatter/Titleback} % Back of the title page
+
+%\cleardoublepage\include{FrontBackMatter/Dedication} % Dedication page
+
+%\cleardoublepage\include{FrontBackMatter/Foreword} % Uncomment and create a Foreword.tex to include a foreword
+
+%\cleardoublepage\include{FrontBackMatter/Abstract} % Abstract page
+
+%\cleardoublepage\include{FrontBackMatter/Publications} % Publications from the thesis page
+
+\cleardoublepage\include{FrontBackMatter/Acknowledgments} % Acknowledgements page
+
+\pagestyle{scrheadings} % Show chapter titles as headings
+
+\cleardoublepage\include{FrontBackMatter/Contents} % Contents, list of figures/tables/listings and acronyms
+
+\cleardoublepage
+
+\pagenumbering{arabic} % Arabic page numbering for thesis content (1, 2, 3, etc)
+%\setcounter{page}{90} % Uncomment to manually start the page counter at an arbitrary value (for example if you wish to count the pre-content pages in the page count)
+
+\cleardoublepage % Avoids problems with pdfbookmark
+%------------------------------------------------
+%#######################################################################################
+%	CHAPTER - INTRO
+%#######################################################################################
+
+\input{contents/intro.tex}
+
+\cleardoublepage % Empty page before the start of the next part
+
+%------------------------------------------------
+
+
+\ctparttext{\centering Les connaissances sur les quel je me suis basé pour mon travail, Les bases mathématiques pour le Machine Learning, L'optimistion numerique, La statistique. } 
+
+\textcolor{teal}{\part{État des connaissances (Background material)}}
+
+%#######################################################################################
+%	CHAPTER 
+%#######################################################################################
+
+
+%\chapter{État des connaissances}
+\input{contents/background_material.tex}
+
+\ctparttext{\centering Les connaissances sur les quel je me suis basé pour mon travail} 
+
+\textcolor{teal}{\part{Méthodologie}}
+
+
+\textcolor{cyan}{\chapter{Méthodologie}}
+
+\section{Méthode de détection et de reconnaissance d'objets}
+	\lipsum[1]
+
+\section{Détection d'objets en mouvement}
+\subsection{Représentation d'une vidéo}
+	\lipsum[1]
+	\lipsum[2]
 	
-	%\maketitle
-	%\tableofcontents
-	%\newpage
-	%\addtocontents{toc}{\protect\newpage}
-	
-	%\nocite{*}
-	
-	\input{titles/titre.tex}
-	\input{titles/garde.tex}
-	
-	\pagenumbering{roman} 
-	\setcounter{page}{1}
-	
-	\input{titles/resume.tex}
-	\input{titles/abstract.tex}
-	\input{titles/remerciements.tex}
-	
-	
-	\begin{singlespace}
-	\selectlanguage{french}
-	\tableofcontents % table des matiéres
-	%\listoffigures
-	\end{singlespace}
-	
-	
-	\pagenumbering{arabic}
-	\setcounter{page}{1}
-	
-	%\chapter{intro}
-	\input{contents/intro.tex}
-	%\chapter{État des connaissances}
-	\input{contents/background_material.tex}
-	\chapter{Méthodologie}
-		
-		\section{Méthode de détection et de reconnaissance d'objets}
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			
-		\section{Détection d'objets en mouvement}
-		\subsection{Représentation d'une vidéo}
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		
-		
-		
-		\subsection{Extraction des régions d'intérêt}
-			xxx ...
-		
-		
-		
-	\chapter{Expérimentation (Implémentation) }
-		\section{Materiel utilisé pour l'implementation}
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		\section{Élaboration de la base de données}
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			
-		\section{Construiction d'un model d'entrainment}
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		\section{Résultats d'expérimentation}
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-			%\cite{deepa2021ai,ahadjitse2013reconnaissance}\cite{amari1993backpropagation}. 
-			\\ \\
-			At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat
-			 
-		
-	
-	\chapter{Conclusion}
-		\section{First class test}
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-			%\cite{framling2004scaled} \cite{friess1999kernel}.
-			\\ \\
-			Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur
-	
-	\addcontentsline{toc}{chapter}{Annexe A : Adaline SGD Training Code}
-	\chapter*{Annexe A : Adaline SGD Training Code}
-	\addcontentsline{toc}{chapter}{Annexe B : Result of Test}
-	\chapter*{Annexe B : Result of Test}
-	\addcontentsline{toc}{chapter}{Annexe C : Dataset \& Model}
-	\chapter*{Annexe C : Dataset \& Model}
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		%\cite[][page 176-195]{bishop2006pattern}
-	
-	
-	
-	
-	\addcontentsline{toc}{chapter}{References}
-	\nocite{*}
-	\bibliographystyle{plain}
-	\bibliography{bibliography/biblio}
-	
-	
+\subsection{Extraction des régions d'intérêt}
+	\lipsum[1]
+
+
+
+\ctparttext{\centering L'entrainement d'un modèle de Machine Learning par la classification avec un dataset de images. La mise en place, l'implémentation de notre modèle entrainé dans une application desktop pour \\???.       } 
+
+\textcolor{teal}{\part{Expérimentation \& Implémentation}}
+
+\textcolor{cyan}{\chapter{Expérimentation (Implémentation) }}
+\section{Materiel utilisé pour l'implementation}
+	\lipsum[1].
+\section{Élaboration de la base de données}
+	\lipsum[1]
+
+\section{Construiction d'un model d'entrainment}
+	\lipsum[1]
+\section{Résultats d'expérimentation}
+	\lipsum[1] 
+	%\cite{deepa2021ai,ahadjitse2013reconnaissance}\cite{amari1993backpropagation}. 
+	\\
+	\lipsum[1]
+
+
+\textcolor{cyan}{\chapter{Conclusion}}
+	\lipsum[2]
+	%\cite{framling2004scaled} \cite{friess1999kernel}.
+	\\ \\
+	\lipsum[3]
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+\appendix
+
+\ctparttext{Quelques programmes }
+
+\part{Annexes et Bibliographie} % New part of the thesis for the appendix
+
+
+
+\addcontentsline{toc}{chapter}{Annexe A : Adaline SGD Training Code}
+\chapter*{Annexe A : Adaline SGD Training Code}
+\addcontentsline{toc}{chapter}{Annexe B : Result of Test}
+\chapter*{Annexe B : Result of Test}
+\addcontentsline{toc}{chapter}{Annexe C : Dataset \& Model}
+\chapter*{Annexe C : Dataset \& Model}
+\lipsum[3]
+%\cite[][page 176-195]{bishop2006pattern}
+
+%\include{Chapters/Chapter0A} % Appendix A
+%\include{Chapters/Chapter0B} % Appendix B - empty template
+
+%----------------------------------------------------------------------------------------
+%	POST-CONTENT THESIS PAGES
+%----------------------------------------------------------------------------------------
+%\bibliographystyle{plain}
+%\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
+%\bibliography{Bibliography}
+\cleardoublepage\include{FrontBackMatter/Bibliography} % Bibliography
+
+%\cleardoublepage\include{FrontBackMatter/Declaration} % Declaration
+
+\cleardoublepage\include{FrontBackMatter/Colophon} % Colophon
+
+%----------------------------------------------------------------------------------------
+
 \end{document}
