@@ -1,8 +1,35 @@
 % Abstract
 
-%\renewcommand{\abstractname}{Abstract} % Uncomment to change the name of the abstract
+\renewcommand{\abstractname}{Résumé} % Uncomment to change the name of the abstract
 
-\pdfbookmark[1]{Abstract}{Abstract} % Bookmark name visible in a PDF viewer
+\pdfbookmark[1]{Résumé}{Résumé} % Bookmark name visible in a PDF viewer
+
+\begingroup
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\let\cleardoublepage\relax
+
+\chapter*{Résumé}
+	Au cours de la dernière décennie, la taille des données a augmenté plus rapidement que la vitesse des processeurs. Dans ce contexte, faire un traitement de {reconnaissance} des formes dans des images et vidéos, les ensembles de données d'entraînement pour les problèmes de détection d'objets sont généralement très volumineux et les capacités des méthodes d'apprentissage automatique statistique sont limitées par le temps de calcul plutôt que par la taille de l'échantillon. 
+	
+	Le cas des problèmes d'apprentissage à grande échelle implique la complexité de calcul de l'algorithme d'optimisation sous-jacent de manière non triviale. Des algorithmes d'optimisation improbables tels que la \textbf{descente de gradient stochastique} (en anglais: \textbf{Stochastic Gradient Descent} ou SGD) montre des performances étonnantes pour les problèmes à grande échelle, lorsque l'ensemble d'apprentissage est volumineux. \\
+	En particulier, les variants du SGD n'utilisent qu'un seul nouvel échantillon d'apprentissage à chaque itération, sont asymptotiquement efficaces après un seul passage sur l'ensemble d'apprentissage.	
+	
+	Ce travail vise à proposer une méthode  intelligente, basée sur l'intelligence artificielle, qui permet aux ordinateurs et aux systèmes informatiques de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, avec un coût plus bas que possible. Dans notre contexte la reconnaissance des plaques d’immatriculation des véhicules à l'aide d’un classificateur de la famille de descente de gradient stochastique. Pour minimiser la \textbf{fonction coût} du classificateur, la SGD adopte un modèle d'optimisation convexe. De plus, pour augmenter la vitesse de convergence du classificateur, la descente de gradient stochastique, à chaque étape, elle tire un échantillon aléatoire de l'ensemble des fonctions ($f_i$), de la fonction objectif, constituant la somme.
+	 
+	\begin{center}
+		
+	%\url{https://plg.uwaterloo.ca/~migod/research/beckOOPSLA.html}
+	\end{center}
+	\textbf{Mots clés~:} Apprentissage supervisé, vision par ordinateur, Descente de gradient stochastique, Adaline, ANPR, ALPR. 
+
+\endgroup			
+
+\vfill
+
+\pagebreak
+
+\pdfbookmark[2]{Abstract}{Abstract} % Bookmark name visible in a PDF viewer
 
 \begingroup
 \let\clearpage\relax
@@ -10,11 +37,21 @@
 \let\cleardoublepage\relax
 
 \chapter*{Abstract}
-Short summary of the contents\dots a great guide by 
-Kent Beck how to write good abstracts can be found here:  
-\begin{center}
-\url{https://plg.uwaterloo.ca/~migod/research/beckOOPSLA.html}
-\end{center}
+	Over the past decade, data size has grown faster than processor speeds. In this context, doing pattern recognition processing in real-time videos, training datasets for object detection problems are usually very large, and the capabilities of statistical machine learning methods are limited by computation time rather than sample size.
+	
+	The case of large scale learning problems involves the computational complexity of the underlying optimization algorithm in a nontrivial way.\\
+	Improbable optimization algorithms such as \textbf{Stochastic Gradient Descent} (SGD) show amazing performance for large scale problems, when the training set is bulky.\\
+	In particular, SGD variants use only one new training sample at each iteration, are asymptotically efficient after a single pass over the training set.
+	
+	This work aims to provide an intelligent method, based on artificial intelligence, that allows computers and computer systems to derive meaningful information from digital images, videos and other visual inputs, with a lower cost. as possible. In our context the recognition of vehicle license plates using a classifier of the family of stochastic gradient descent. To minimize the \textbf{cost function} of the classifier, the SGD adopts a convex optimization model. Moreover, to increase the speed of convergence of the classifier, the stochastic gradient descent, at each step, it draws a random sample from the set of functions ($f_i$), of the objective function, constituting the sum.
+	
+	\begin{center}
+		
+		%\url{https://plg.uwaterloo.ca/~migod/research/beckOOPSLA.html}
+	\end{center}
+	\textbf{Key words~:} Supervised learning, computer vision, Stochastic gradient descent, Adaline, ANPR, ALPR.
+
+	
 
 \endgroup			
 

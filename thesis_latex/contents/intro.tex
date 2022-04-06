@@ -1,48 +1,51 @@
 
 
 \textcolor{cyan}{\chapter{Introduction}}
-	\section{Généralités}
-
-		La reconnaissance d'objet dans les vidéos est un problème important dans la vision par ordinateur (Computer Vision \footnote{La vision par ordinateur est un domaine de l'intelligence artificielle (IA) qui permet aux ordinateurs et aux systèmes de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, et de prendre des mesures ou de faire des recommandations sur la base de ces informations.}) et en traitement d'images. Cette tâche est très utile vue l'accroissement du nombre de vidéos générées par des smartphones, des systèmes de sécurité, des caméras de circulation et autres dispositifs dotés d'instruments visuels. La reconnaissance automatique des objets en vidéos peut ainsi renforcer la sécurité, faciliter la gestion des vidéos ainsi que permettre de nouvelles applications en interaction personne/machine.
+	\section{Présentation (généralités)}
+	
+		L’intelligence désigne communément le potentiel des capacités mentales et cognitives d'un individu, animal ou humain, lui permettant de résoudre un problème ou de s'adapter à son environnement. L'intelligence nous fait ressentir ce besoin d’apprendre pour arriver à nos fins, extresinquement l'intelligence c’est l'apprentissage. Pour que nous puissions dire qu’une machine est intelligente, premièrement elle doit passer par une phase d'apprentissage.  Apprendre à résoudre des problèmes ou à réaliser des tâches par lui-même d’une façon autonome. Dans le IA nous parlons de l’apprentissage automatique (en anglais: machine Learning, ML), nous utilisons plusieurs paradigmes d’apprentissage automatique:  apprentissage supervisé, apprentissage non supervisé, apprentissage par renforcement, apprentissage en profondeur.
+	
+			
+		L'apprentissage supervisé représente une grande partie de l'activité de recherche en apprentissage automatique (ML) et de nombreuses techniques d'apprentissage supervisé ont trouvé une application dans le traitement de contenu multimédia. La caractéristique qui définit l'apprentissage supervisé est la disponibilité de données d'apprentissage annotées\cite{cunningham2008supervised}. Le nom évoque l'idée d'un \textbf{superviseur} qui instruit le système d'apprentissage sur les étiquettes à associer à des modèles \footnote{Un modèle de machine learning est le résultat généré lorsque vous entraînez votre algorithme d'apprentissage automatique avec des données.} d'entraînement. 
 		
+		L’application de cette étude est orientée vers la reconnaissance automatique d'objet dans les vidéos et images, une des applications intéressantes, parmi tant d'autres, dans l'intelligence artificielle.\\
+		La reconnaissance automatique d'objet est un problème important dans la vision par ordinateur (Computer Vision 
+			\footnote{La vision par ordinateur est un domaine de l'intelligence artificielle (IA) qui permet aux ordinateurs et aux systèmes de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, et de prendre des mesures ou de faire des recommandations sur la base de ces informations.}) 
+		et en traitement d'images. Cette tâche est très utile vue l'accroissement du nombre de vidéos générées par des smartphones, des systèmes de sécurité, des caméras de circulation et autres dispositifs dotés d'instruments visuels. La reconnaissance automatique des objets en vidéo peut ainsi renforcer la sécurité, faciliter la gestion des vidéos ainsi que permettre de nouvelles applications en interaction homme/machine.	
+			
 		Par ailleurs, les images numériques et la vidéo sont devenues indispensables pour divers domaines d'application, tels que la détection d'intrusions pour la sécurité, la surveillance du trafic routier, la médecine pour l'imagerie médicale, ou encore lors des événements sportifs (ex., renforcement de l'arbitrage, création automatique de résumés).
-		Des contraintes d'exploitation découlent des observations citées ci-dessus, parmi lesquelles nous citerons celles qui sont liées à la reconnaissance des objets en mouvement dans les vidéos. Par exemple, de nos jours, un très grand nombre de caméras est déployé exclusivement pour la surveillance vidéo.\cite{ahadjitse2013reconnaissance} 
+		Des contraintes d'exploitation découlent des observations citées ci-dessus, parmi lesquelles nous citerons celles qui sont liées à la reconnaissance des objets en mouvement dans les vidéos. Par exemple, de nos jours, un très grand nombre de caméras est déployé exclusivement pour la surveillance vidéo \cite{ahadjitse2013reconnaissance} . 
 		Souvent, le contenu de ces vidéos est interprété par des opérateurs humains qui engendrent des coûts exorbitants pour le suivi et l'analyse du contenu, sans mentionner les erreurs qui peuvent être induites par la fatigue et l'inattention humaine. 
-		Un des problèmes importants abordés dans la surveillance vidéo est la reconnaissance des types d'objets en mouvement et leurs actions, afin de détecter, par exemple, des menaces potentielles (ex., vols, attentats, accidents), ou tout simplement pour des fins de statistiques (ex., compter le nombre d'individus, de voitures dans une entrée de parc).
-		
-		Les applications du monde réel démontrent l'importance de la vision par ordinateur pour les entreprises, les secteurs du divertissement, des transports, des soins de santé et dans la vie quotidienne. L'un des principaux moteurs de la croissance de ces applications est le flot d'informations visuelles provenant des médias numériques (ex., internet, la télévision, les vidéos personnelles, la surveillance vidéo).
-		Ces données pourraient jouer un rôle majeur dans les opérations de toutes les industries, mais elles sont aujourd'hui inutilisées. Ces informations constituent un banc d'essai pour la formation des applications de vision par ordinateur et une rampe de lancement pour leur intégration dans toute une série d'activités humaines :(IBM, Computer Vision)
-		
-		\begin{itemize}
-			\item[$-$] IBM a utilisé la vision par ordinateur pour créer My Moments pour le tournoi de golf Masters 2018. IBM Watson a regardé des centaines d'heures d'enregistrements filmés de Masters et a pu identifier les images (et les sons) des plans importants. Ces moments clés ont été organisés et livrés aux fans sous forme de séquences personnalisées.
-			\item[$-$] Google Translate\footnote{Google Translate est un service de traduction automatique fourni par Google, qui permet de traduire un texte ou une page Web dans une autre langue.} permet aux utilisateurs de pointer la caméra d'un smartphone vers un panneau dans une autre langue et d'obtenir presque immédiatement une traduction du panneau dans la langue de leur choix.
-			\item[$-$] Le développement des véhicules autonomes repose sur la vision par ordinateur, qui donne un sens aux données visuelles fournies par les caméras et autres capteurs de la voiture. Il est essentiel d'identifier les autres voitures, les panneaux de signalisation, les marqueurs de voie, les piétons, les vélos et toutes les autres informations visuelles rencontrées sur la route.
-			\item[$-$] IBM applique la technologie de vision par ordinateur avec des partenaires comme Verizon afin d'amener l'IA intelligente à la périphérie et d'aider les constructeurs automobiles à identifier les défauts de qualité avant qu'un véhicule ne quitte l'usine.
-		\end{itemize}
-		
-		??? completer la liste des existants ?
+		Une des interrogations importantes abordés lors  l'apprentissage supervisé appliqué dans la surveillance vidéo est la reconnaissance des types d'objets en mouvement et leurs actions. Afin de détecter, par exemple, des menaces potentielles (ex., vols, attentats, accidents), ou tout simplement pour des fins de statistiques (ex., compter le nombre d'individus, de voitures dans une entrée de parc).	
+		Les applications du monde réel démontrent l'importance de la vision par ordinateur pour les entreprises, les secteurs du divertissement, des transports, des soins de santé et dans la vie quotidienne. L'un des principaux moteurs de la croissance de ces applications est le flot d'informations visuelles provenant des médias numériques (ex., internet, la télévision, les vidéos personnelles, la surveillance vidéo). 
 		
 		
 
-	\section{Contexte de notre recherche}
-		Au cours de la dernière décennie, la taille des données a augmenté plus rapidement que la vitesse des processeurs. 
-		Dans ce contexte, faire un traitement de reconnaissance des formes sur des vidéos en temps réel, les ensembles de données d'entraînement pour les problèmes de détection d'objets sont généralement très volumineux et les capacités des méthodes d'apprentissage automatique statistique sont limitées par le temps de calcul plutôt que par la taille de l'échantillon.\cite{bottou2010large} 
-		\\??? sur quoi se base mes recherche ?
-	
-	\section{Problématique}
+	\section{Contexte et problématique de notre recherche}
+		Ce travail présente les résultats d'une étude approfondie sur les algorithmes de minimisation d’erreur, la fonction coût\footnote{Dans l'optimisation mathématique et en statistique, une fonction de perte ou une fonction de coût est généralement utilisée pour l'estimation des paramètres , et l'événement en question est une fonction de la différence entre les valeurs estimées et vraies pour une instance de données.} (en anglias : loss function). 
 		
-		Pour le système de vision humain, la reconnaissance des objets est une tâche simple et triviale.
-		La vision par ordinateur fonctionne de la même manière que la vision humaine, sauf que les humains ont une longueur d'avance. La vue humaine a l'avantage de pouvoir s'entraîner à distinguer les objets, à en déterminer la distance, à savoir s'ils sont en mouvement et si quelque chose ne va pas dans une image. 
-		L'humain est capable de faire la distinction, d'une part, entre des objets et l'arrière-plan d'une image et d'autre part, entre plusieurs objets présents dans une scène de vidéo.
+		Dans ce contexte, faire une une application dans le traitement de reconnaissance des formes dans des vidéos, les ensembles de données d'entraînement pour les  problèmes de détection d'objets sont généralement très volumineux et les capacités des méthodes d'apprentissage automatique statistique sont limitées par le temps de calcul plutôt que par la taille de l'échantillon\cite{bottou2010large}.\\
+		Par exemple, pour entraîner une machine à reconnaître des plaques d'immatriculation de voiture, elle doit recevoir de grandes quantités d'images de plaques d'immatriculation et d'éléments liés aux plaques pour apprendre les différences et reconnaître une plaque, en particulier la voiture qui porte une plaque sans défaut. Plus nous avons des données, plus nous gagnons en précision et plus la complexité en temps augmente.
 		
-		La vision par ordinateur a besoin de beaucoup de données. Elle exécute des analyses de données encore et encore jusqu'à ce qu'elle perçoive des distinctions et reconnaisse finalement les images. Par exemple, pour entraîner un ordinateur à reconnaître des plaques d'immatriculation de voiture, elle doit recevoir de grandes quantités d'images de plaque d'immatriculation et d'éléments liés aux plaques pour apprendre les différences et reconnaître une plaque, en particulier un pneu sans défaut.\\
-		\\??? qu'est-ce que ça résout comme problème ?
-		\\??? c'est quoi ma retouche, pour le problème, par rapport à l'existant ?
+		Une analyse plus précise révèle des compromis qualitativement différents pour le cas des problèmes d'apprentissage à petite et à grande échelle \cite{bottou2010large}. La complexité de calcul de l'algorithme d'apprentissage devient le facteur limitant critique lorsque l'on envisage de très grands ensembles de données. C'est à ce point critique qu'entre en jeu cette étude, la minimisation des erreurs sans alourdir la complexité en temps et espace de l’algorithme d’apprentissage. Minimiser les erreurs dans les modèles d’apprentissage a toujours été une tâche très importante pour renforcer la fiabilité de notre Machine Learning Model\cite{ibm2018ml}. Établir un algorithme d’apprentissage qui s'adapte au mieux à notre modèle, selon la nature du problème métier traité, il existe différentes approches qui varient selon le type et le volume des données. Dans cette section, nous discutons des algorithmes de descente de gradient stochastique parce qu’ils montrent des performances  d'optimisation incroyables pour les problèmes à grande échelle \cite{bottou2010large}.
+		
+		Le travail de  léon bottou et al (\eg, \cite{bottou2010large} \cite{wijnhoven2010fast} \cite{bottou2012stochastic} ), présente \textit{la descente de gradient stochastique comme un algorithme d'apprentissage fondamental}.
+		L'un des piliers de l'apprentissage automatique est l'optimisation mathématique \cite[Jorge Nocedal dans][page: 3]{bottou2018optimization}, qui, dans ce contexte, implique le calcul numérique de minimisation des paramètres d'un système conçu pour prendre des décisions basées sur des données actuellement disponibles, ces paramètres sont choisis pour être optimaux par rapport à un problème d'apprentissage donné.
+		
+		Dans l'ensemble, ce document tente d'apporter des réponses aux questions suivantes.
+		\begin{enumerate}
+			\item Comment les problèmes de minimisation surviennent-ils dans les applications d'apprentissage automatique et qu'est-ce qui les rend difficiles ?
+			\item Quelles ont été les méthodes minimisation les plus efficaces pour l'apprentissage supervisé à grande échelle et pourquoi ?
+			\item Comment des algorithmes d'apprentissage supervisé arrivent-t-ils résoudre le problème de la reconnaissance automatique d'objet ?
+			\item Quelles avancées récentes ont été réalisées dans la conception d'algorithmes d'apprentissage et quelles sont les questions ouvertes dans ce domaine de recherche ?
+		\end{enumerate}
+		
+		
 	
-	\section{Objectifs}
-		Ce travail vise à proposer une méthode intelligent, basé sur l'intelligence artificielle (IA), qui permet aux ordinateurs et aux systèmes de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, dans notre contexte la reconnaissance des plaques d’immatriculation des véhicules à l'aide du classificateur de descente de gradient stochastique Ridge-Adaline (en anglais : Ridge Adaline Stochastic Gradient Descent ou RASGD).
-		Pour minimiser la fonction de coût du classificateur, le RASGD adopte un modèle d'optimisation sans contrainte. De plus, pour augmenter la vitesse de convergence du classificateur, le classificateur de descente de gradient stochastique Adaline, (Adaline Stochastic Gradient Descent) est intégré à Ridge Régression.\cite{deepa2021ai}\\ \\
-		??? pourquoi faire un système de reconnaissance des formes ?
+	\section{Objectifs de notre étude}
+		Le but de cette étude est de fournir une revue et un commentaire sur le passé, le présent et le futur de l'utilisation des algorithmes d'optimisation numérique, précisément de minimisation, dans le contexte des applications d'apprentissage automatique qui permet aux ordinateurs et aux systèmes informatiques de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, avec un coût plus bas que possible. 
+		
+	\section{Description du contenu}
 		
 		
 		

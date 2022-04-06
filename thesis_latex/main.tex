@@ -49,9 +49,9 @@
 \usepackage{float}
 \usepackage{pdfpages}
 \usepackage{wrapfig}
+%\usepackage{hyphsubst}
 
-
-\addbibresource{bibliography/biblio.bib} % The file housing your bibliography
+\addbibresource{bibliography/myref.bib} % The file housing your bibliography
 %\addbibresource[label=ownpubs]{Self_Publications.bib} % Uncomment for optional self-publications
 
 %\hyphenation{Put special hyphenation here}
@@ -103,7 +103,7 @@
 
 %\cleardoublepage\include{FrontBackMatter/Foreword} % Uncomment and create a Foreword.tex to include a foreword
 
-%\cleardoublepage\include{FrontBackMatter/Abstract} % Abstract page
+\cleardoublepage\include{FrontBackMatter/Abstract} % Abstract page
 
 %\cleardoublepage\include{FrontBackMatter/Publications} % Publications from the thesis page
 
@@ -147,27 +147,46 @@
 
 \textcolor{teal}{\part{Méthodologie}}
 
+\textcolor{cyan}{\chapter{Méthode de minimisation d'erreur d'apprentisage}}
+\section{Les pertes et La fonction cout}
+	\lipsum[1]
+\section{Le classificateur d'apprentissage SGD}
+\subsection{Classificateur Ridge-Adaline}
+	\lipsum[1]
+\subsection{Classificateur Adam}
+	\lipsum[1]
+	
+\section{Minimiser la fonction de coût du classificateur}
+	\lipsum[1]
+	\lipsum[2]
 
-\textcolor{cyan}{\chapter{Méthodologie}}
+
+\textcolor{cyan}{\chapter{Traitement des images}}
 
 \section{Méthode de détection et de reconnaissance d'objets}
 	\lipsum[1]
 
-\section{Détection d'objets en mouvement}
-\subsection{Représentation d'une vidéo}
+\section{Détection d'objets }
+\subsection{Représentation d'une images}
 	\lipsum[1]
 	\lipsum[2]
 	
 \subsection{Extraction des régions d'intérêt}
+	\lipsum[1]
+	
+\section{Reconnaissance optique de caractères (OCR)}
 	\lipsum[1]
 
 
 
 \ctparttext{\centering L'entrainement d'un modèle de Machine Learning par la classification avec un dataset de images. La mise en place, l'implémentation de notre modèle entrainé dans une application desktop pour \\???.       } 
 
-\textcolor{teal}{\part{Expérimentation \& Implémentation}}
+\textcolor{teal}{\part{Implémentation \& Expérimentation }}
 
-\textcolor{cyan}{\chapter{Expérimentation (Implémentation) }}
+\textcolor{cyan}{\chapter{Contruction }}
+
+\textcolor{cyan}{\chapter{Implémentation }}
+
 \section{Materiel utilisé pour l'implementation}
 	\lipsum[1].
 \section{Élaboration de la base de données}
@@ -175,7 +194,7 @@
 
 \section{Construiction d'un model d'entrainment}
 	\lipsum[1]
-\section{Résultats d'expérimentation}
+\section{Expérimentation du résultat}
 	\lipsum[1] 
 	%\cite{deepa2021ai,ahadjitse2013reconnaissance}\cite{amari1993backpropagation}. 
 	\\
@@ -206,14 +225,33 @@
 
 
 
-\addcontentsline{toc}{chapter}{Annexe A : Adaline SGD Training Code}
-\chapter*{Annexe A : Adaline SGD Training Code}
-\addcontentsline{toc}{chapter}{Annexe B : Result of Test}
-\chapter*{Annexe B : Result of Test}
-\addcontentsline{toc}{chapter}{Annexe C : Dataset \& Model}
-\chapter*{Annexe C : Dataset \& Model}
-\lipsum[3]
-%\cite[][page 176-195]{bishop2006pattern}
+%\addcontentsline{toc}{chapter}{Annexe A : Adaline SGD Training Code}
+\chapter{Adaline SGD Training Code}
+%\addcontentsline{toc}{chapter}{Annexe B : Result of Test}
+\chapter{Result of Test}
+%\addcontentsline{toc}{chapter}{Annexe C : Dataset \& Model}
+\chapter{Dataset \& Model}
+	\lipsum[1]. \cite{ahadjitse2013reconnaissance} \\
+	\lipsum[3]
+	\cite{deepa2021ai}.
+	\cite{bottou2012stochastic}.
+	\cite{framling2004scaled}\\
+	
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\cite{amari1993backpropagation}
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\cite{friess1999kernel}.
+	\cite{bishop2006pattern}.
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\cite{wijnhoven2010fast}.
+	\cite{akheel2021stochastic}
+	\cite{ml2008python}
+	\cite{antoine2018apprentissage}
+	\cite{ibm2017cv}
+	\cite{knuth:1974}.
+	%\cite[][page 176-195]{bishop2006pattern}
+	
+
 
 %\include{Chapters/Chapter0A} % Appendix A
 %\include{Chapters/Chapter0B} % Appendix B - empty template
@@ -224,7 +262,23 @@
 %\bibliographystyle{plain}
 %\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
 %\bibliography{Bibliography}
-\cleardoublepage\include{FrontBackMatter/Bibliography} % Bibliography
+%\cleardoublepage\include{FrontBackMatter/Bibliography} % Bibliography
+
+%#####################################################3
+
+\label{app:bibliography} % Reference the bibliography elsewhere with \autoref{app:bibliography}
+
+\manualmark % Work-around to have small caps also here in the headline
+\markboth{\spacedlowsmallcaps{\bibname}}{\spacedlowsmallcaps{\bibname}} % Work-around to have small caps also
+%\phantomsection
+\refstepcounter{dummy}
+
+\addtocontents{toc}{\protect\vspace{\beforebibskip}} % Place the bibliography slightly below the rest of the document content in the table of contents
+\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
+
+\printbibliography
+
+
 
 %\cleardoublepage\include{FrontBackMatter/Declaration} % Declaration
 
