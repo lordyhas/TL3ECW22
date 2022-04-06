@@ -3,9 +3,8 @@
 \textcolor{cyan}{\chapter{Introduction}}
 	\section{Présentation (généralités)}
 	
-		L’intelligence désigne communément le potentiel des capacités mentales et cognitives d'un individu, animal ou humain, lui permettant de résoudre un problème ou de s'adapter à son environnement. L'intelligence nous fait ressentir ce besoin d’apprendre pour arriver à nos fins, extresinquement l'intelligence c’est l'apprentissage. Pour que nous puissions dire qu’une machine est intelligente, premièrement elle doit passer par une phase d'apprentissage.  Apprendre à résoudre des problèmes ou à réaliser des tâches par lui-même d’une façon autonome. Dans le IA nous parlons de l’apprentissage automatique (en anglais: machine Learning, ML), nous utilisons plusieurs paradigmes d’apprentissage automatique:  apprentissage supervisé, apprentissage non supervisé, apprentissage par renforcement, apprentissage en profondeur.
+		L’intelligence désigne communément le potentiel des capacités mentales et cognitives d'un individu, animal ou humain, lui permettant de résoudre un problème ou de s'adapter à son environnement. L'intelligence nous fait ressentir ce besoin d’apprendre pour arriver à nos fins, extrinsèquement l'intelligence c’est l'apprentissage. Pour que nous puissions dire qu’une machine est intelligente, premièrement elle doit passer par une phase d'apprentissage.  Apprendre à résoudre des problèmes ou à réaliser des tâches par lui-même d’une façon autonome. Dans le IA nous parlons de l’apprentissage automatique (en anglais: machine Learning, ML), nous utilisons plusieurs paradigmes d’apprentissage automatique:  apprentissage supervisé, apprentissage non supervisé, apprentissage par renforcement, apprentissage en profondeur.
 	
-			
 		L'apprentissage supervisé représente une grande partie de l'activité de recherche en apprentissage automatique (ML) et de nombreuses techniques d'apprentissage supervisé ont trouvé une application dans le traitement de contenu multimédia. La caractéristique qui définit l'apprentissage supervisé est la disponibilité de données d'apprentissage annotées\cite{cunningham2008supervised}. Le nom évoque l'idée d'un \textbf{superviseur} qui instruit le système d'apprentissage sur les étiquettes à associer à des modèles \footnote{Un modèle de machine learning est le résultat généré lorsque vous entraînez votre algorithme d'apprentissage automatique avec des données.} d'entraînement. 
 		
 		L’application de cette étude est orientée vers la reconnaissance automatique d'objet dans les vidéos et images, une des applications intéressantes, parmi tant d'autres, dans l'intelligence artificielle.\\
@@ -43,9 +42,22 @@
 		
 	
 	\section{Objectifs de notre étude}
+		
 		Le but de cette étude est de fournir une revue et un commentaire sur le passé, le présent et le futur de l'utilisation des algorithmes d'optimisation numérique, précisément de minimisation, dans le contexte des applications d'apprentissage automatique qui permet aux ordinateurs et aux systèmes informatiques de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, avec un coût plus bas que possible. 
 		
-	\section{Description du contenu}
+		Expressément, nous faisons la reconnaissance des plaques d’immatriculation des véhicules à l'aide d’un classificateur de la famille de descente de gradient stochastique (SGD) [?]. Pour minimiser la fonction de coût du classificateur, le SGD adopte un modèle d'optimisation convexe. De plus, pour augmenter la vitesse de convergence du classificateur, la descente de gradient stochastique, à chaque étape, elle tire un échantillon aléatoire de l'ensemble des fonctions ($f_i$), de la fonction objectif, constituant la somme.
+		
+		Pour chaque algorithme, nous examinons l'efficacité et comparons le score pour différents cas.
+		\begin{list}{}{Les objectifs de notre travail regroupent les points suivants:}
+			\item 1. État des connaissances, c’est sont les éléments sur lequel je me base pour constituer ce travail, nous parlons des base mathématique essentiel pour le Machine Learning: les éléments différentiel, statistique, l'optimisation de modèle linéaire convexe, etc.
+			\item 2. La méthodologie utilisée parmi tant d’autres, pour entraîner les modèles d’apprentissage automatique (Machine learning Model) de façon optimale. Pour la minimisation de la fonction coût nous utilisons des algorithmes comme SGD, ADAM, ADAGRAD, ADADELTA, ASGD, NAG. Puis faire une étude comparative de leurs performances. 
+			Et aussi des méthodes intelligentes de classification des images pour application reconnaissance automatique d’objet.
+			
+			\item 3. Nous construirons des modèles à partir d’une base de données annotée pour l'apprentissage et pour les tests de reconnaissance d'objets. Les résultats concluants de cette étude pourront conduire à un déploiement de notre système dans les domaines comme  celui de la surveillance vidéo de voitures dans une entrée de parking. Des métriques connues pour mesurer les erreurs et en déduire le score du classificateur seront utilisées pour évaluer la qualité de la reconnaissance automatique des plaques d’immatriculation (en anglais: Automatic Number Plate Recognition ou ANPR) par notre approche.
+		\end{list}
+	
+	
+
 		
 		
 		
