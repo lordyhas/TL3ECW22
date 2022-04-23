@@ -5,7 +5,7 @@
 %
 %#############################################################################
  
-\textcolor{cyan}{\chapter{Les bases mathématiques pour le Machine Learning}}
+\textcolor{cyan}{\chapter{Les bases mathématiques pour l'apprentissage automatique }}%Machine Learning
 		%{État des connaissances}
 	\section{Eléments de calcul différentiel}
 	Cette section est inspirée des notes écrites par le Professeur TSHIMANGA \cite[voir][page:45-82]{jtshiman:2021} et d'autres consignes données par Nocedal et al dans \cite{bottou2018optimization} \cite{coulombeau2013math}[??].
@@ -361,13 +361,14 @@
 %#############################################################################
 
 
-\textcolor{cyan}{\chapter{Apprentissage automatique : Modélisation et Classification }}
-	\section{Généralité}
+%\textcolor{cyan}{\chapter{Apprentissage automatique : Modélisation et Classification }}
+	%\section{Généralité}
+	\section{Généralité sur la modélisation et la classification }
 	\subsection{Les ingrédients d'apprentissage}
 	Résoudre un problème d'apprentissage, c'est d'abord le comprendre, c'est-à-dire discuter longuement avec les experts du domaine concerné pour identifier quelles sont les "entrées", les  "sorties" ou résultats désirés, les connaissances disponibles, les particularités des données, par exemple: valeurs manquantes, taux de bruit dans les mesures des attributs de description, proportions des classes, stationnarité ou pas de l'environnement. 
 	C'est aussi réaliser un gros travail de \textit{préparation des données}: nettoyage, ré-organisation, enrichissement, intégration avec d'autres sources de données, etc. Ces étapes de compréhension du problème, de préparation des données, de mise au point du protocole d'apprentissage et des mesures d'évaluation des résultats, prennent, et de loin, la plus grande partie du temps pour (tenter de) résoudre un problème d'apprentissage \cite{antoine2018apprentissage}. 
 	Nous avons toujours tendance à largement sous-estimer ces étapes et à vouloir se concentrer uniquement sur la phase excitante de l'essai de méthodes d'apprentissage sur des données supposées bonnes à la consommation. 
-	\subsubsection{Algorithme qui apprennent}
+	%\subsubsection{Algorithme qui apprennent}
 	
 	
 	\subsection{Modélisation}\label{sec:modelisation}
@@ -380,20 +381,66 @@
 	
 	Un modèle peut aider à expliquer un système et à étudier les effets de différents composants, et à faire des prédictions sur le comportement.
 	
+	\subsubsection{Modèles non paramétriques}
+	
 	
 	\Eg: Prenons l'exemple de données décrites dans l'espace d'entrée $\mathcal{X} = \mathbb{R}^n$ avec $n$ variables réelles et supposons-les étiquetées par $\times$ ou par $\bullet$. On cherche donc une fonction de décision $h$, appelée hypothèse ou modèle, telle qu'elle soit capable d'étiqueter toute entrée 
 	$x \in \mathcal{X}, h: x \rightarrow \{\times,\bullet\}$. Reste à définir l'espace des hypothèses ou modèles $\mathcal{H}$ que l'on est prêt à considérer.
 	
-	Toujours en considérant le problème de prédiction basique (présenté ci-dessus), on pourrait définir une hypothèse par une procédure qui examine les trois plus proches voisins du point à étiqueter $x$ et qui choisit l'étiquette majoritaire parmi ces trois points pour étiqueter $x$. Il n'y a évidemment plus de paramètres pour définir les modèles possibles \cite{antoine2018apprentissage}.
+	Toujours en considérant le problème de prédiction basique (présenté ci-dessus), on pourrait définir une hypothèse par une procédure qui examine les trois plus proches voisins du point à étiqueter $x$ et qui choisit l'étiquette majoritaire parmi ces trois points pour étiqueter $x$. Il n'y a évidemment plus de paramètres pour définir les modèles possibles \cite[p. 24]{antoine2018apprentissage}.
 	
-	Un \textbf{modèle non paramétrique} est construit selon les informations provenant des données. Dans \cite{antoine2018apprentissage} il est expliqué que : La régression non paramétrique exige des tailles d'échantillons plus importantes que celles de la régression basée sur des modèles paramétriques parce que les données doivent fournir la structure du modèle ainsi que les estimations du modèle
+	Un \textbf{modèle non paramétrique} est construit selon les informations provenant des données. Dans \cite{antoine2018apprentissage} \cite[p. 120]{bishop2006pattern} il est expliqué que : La régression non paramétrique exige des tailles d'échantillons plus importantes que celles de la régression basée sur des modèles paramétriques parce que les données doivent fournir la structure du modèle ainsi que les estimations du modèle.
 	
 	Un \textbf{modèle paramétrique} est, s'il est approximativement valide, plus puissant qu'un modèle non paramétrique, produisant des estimations d'une fonction de régression qui ont tendance à être plus précises que ce que nous donne l'approche non paramétrique \cite{matloff2017statistical}. Cela devrait également se traduire par une prédiction plus précise. 
 	
 	
+	
+	\begin{list}{--}{Selon \cite[A. Cornuéjols][]{antoine2018apprentissage}, nous pouvons construire un modèle d'apprentissage, ou l'espaces des hypothèses d'apprentissage, par: }
+		\item La classification
+		\item La régression
+		\item Les distributions de probabilités
+		\item Les arbres de décisions
+		\item Les réseaux bayésiens 
+		\item Etc.
+	\end{list}
+
+	La table suivante présente d'abord les qualités des différentes représentations des hypothèses en fonction des critères cités ci-dessus.
+	
+
+	%\parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{rota}}} 
+	\begin{center}
+		\begin{tabular}{l|cccccc}
+			& \rotatebox[origin=c]{90}{Fonctions séparatrices}
+			&  \rotatebox[origin=c]{90}{Distributions de probabilités}
+			& \rotatebox[origin=c]{90}{Arbres de décision }
+			& \rotatebox[origin=c]{90}{Hiérarchies de concepts}
+			& \rotatebox[origin=c]{90}{Réseaux bayésiens } 
+			& \rotatebox[origin=c]{90}{Chaînes de Markov}\\
+			\hline
+			
+			Concept & $\surd$ &$\surd$ &$\surd$ &$\surd$ & --&-- \\
+			Classes multiples &$\surd$ & $\surd$ &$\surd$ &$\surd$ &--&-- \\
+			Ontologies & --&-- & $\surd$&$\surd$ & --&-- \\
+			Régression &-- &$\surd$ & $\surd$&-- &-- &-- \\
+			Évolutions temporelles &-- &$\surd$ &-- &-- &-- & $\surd$\\
+			Apprentissage non supervisé & $\surd$ &$\surd$ &$\surd$ &$\surd$ &-- &-- \\
+			Données continues & $\surd$ &$\surd$ &$\surd$ &-- &-- &$\surd$  \\
+			Connaissances relationnelles  & & & & $\surd$  & $\surd$  &-- \\
+			Degré de certitude &-- &$\surd$ &-- &-- &$\surd$ &$\surd$ \\
+			Degré d'imprécision &-- &$\surd$ &-- &-- &$\surd$ &-- \\
+			Transparence, intelligibilité &-- &-- &-- &$\surd$ &$\surd$ &$\surd$ \\
+			%& & & & \\
+			%& & & & \\
+			
+			
+		\end{tabular}
+	\end{center}
+
+	
+	
 	\subsubsection{Entraînement du modèle}
 	
-	Tout modèle, où toutes les informations nécessaires ne sont pas disponibles, contient certains paramètres qui peuvent être utilisés pour adapter le modèle au système qu'il est censé décrire. Si la modélisation est effectuée par un réseau de neurones artificiels ou un autre apprentissage automatique, l'optimisation des paramètres est appelée \textbf{entraînement} (en anglais : \textbf{training}), tandis que l'optimisation des hyperparamètres du modèle est appelée \textbf{réglage} (en anglais: \textbf{tuning}) et utilise souvent la validation croisée [??]. Dans une modélisation plus conventionnelle à travers des fonctions mathématiques explicitement données, les paramètres sont souvent déterminés par ajustement de courbe.
+	Tout modèle, où toutes les informations nécessaires ne sont pas disponibles, contient certains paramètres qui peuvent être utilisés pour adapter le modèle au système qu'il est censé décrire. Si la modélisation est effectuée par un réseau de neurones artificiels ou un autre apprentissage automatique, l'optimisation des paramètres est appelée \textbf{entraînement} (en anglais : \textbf{training}), tandis que l'optimisation des hyperparamètres du modèle est appelée \textbf{réglage} (en anglais: \textbf{tuning}) et utilise souvent la validation croisée [??]. Dans une modélisation plus conventionnelle à travers des fonctions mathématiques explicitement données, les paramètres sont souvent déterminés par ajustement de courbe (voir le point ??).
 	
 	
 	Une partie cruciale du processus de modélisation consiste à évaluer si oui ou non un modèle mathématique donné décrit un système avec précision. Il peut être difficile de répondre à cette question car elle implique plusieurs types d'évaluation différents.
@@ -402,12 +449,17 @@
 	Un modèle de régression linéaire ajusté peut être utilisé pour identifier la relation entre une seule variable prédictive $x_j$ et la variable de réponse $y$ lorsque toutes les autres variables prédictives du modèle sont "maintenues fixes". Plus précisément, l'interprétation de $\beta_j$ est la variation attendue de $y$ pour une variation d'une unité de $x_j$ lorsque les autres covariables sont maintenues fixes, c'est-à-dire la valeur attendue de la dérivée partielle de $y$ par rapport à $x_j$. Ceci est parfois appelé l'effet unique de $x_j$ sur $y$. En revanche, l'effet marginal de $x_j$ sur $y$ peut être évalué à l'aide d'un coefficient de corrélation ou d'un simple modèle de régression linéaire reliant uniquement $x_j$ à $y$; cet effet est la dérivée totale de $y$ par rapport à $x_j$.
 
 	\section{Régression Linéaire}
+	
+	L'algorithme d'apprentissage automatique est défini comme un algorithme capable d'améliorer les performances d'un programme informatique à certaines tâches via l'expérience est quelque peu abstraite. Pour rendre cela plus concret, Une des méthode d'apprentissage automatique basique est \emph{la régression linéaire} \cite{goodfellow2016deep}.
+	
 	Dans la modélisation statistique, l'analyse de régression est un ensemble de processus statistiques permettant d'estimer les relations entre une variable dépendante et une ou plusieurs variables indépendantes [??].\\
 	En statistique, la régression linéaire est une approche linéaire pour modéliser (voir le point \ref{sec:modelisation}) la relation entre une réponse scalaire et une ou plusieurs variables explicatives (également appelées variables dépendantes et indépendantes). Le cas d'une variable explicative est appelé régression linéaire simple; pour plus d'un, le processus est appelé régression linéaire multiple.
 	
 	Dans la régression linéaire, les relations sont modélisées à l'aide de \textit{fonctions prédictives}\footnote{En statistique et en apprentissage automatique, une fonction de prédicteur linéaire est une fonction linéaire d'un ensemble de coefficients et de variables explicatives, dont la valeur est utilisée pour prédire le résultat d'une variable dépendante.} linéaires dont les paramètres de modèle inconnus sont estimés à partir des données \cite{matloff2017statistical}. De tels modèles sont appelés modèles linéaires.
 	
 	La régression linéaire a de nombreuses utilisations pratiques. Si l'objectif est la prédiction, la prévision ou la réduction des erreurs, la régression linéaire peut être utilisée pour ajuster un modèle prédictif à un ensemble de données observées de valeurs de la réponse et de variables explicatives \cite{darlington2016regression}. Après avoir développé un tel modèle, si des valeurs supplémentaires des variables explicatives sont collectées sans valeur de réponse d'accompagnement, le modèle ajusté peut être utilisé pour faire une prédiction de la réponse.
+	
+	Dans ce type de tâche, le programme informatique est invité à prédire une valeur numérique à partir d'une entrée donnée. Pour résoudre cette tâche, l'algorithme d'apprentissage est invité à sortir une fonction $f : \mathbb{R}^n \rightarrow \mathbb{R}$. Ce type de tâche est similaire à la \textbf{classification}, sauf que le format de sortie est différent \cite{goodfellow2016deep}.
 	
 	
 	

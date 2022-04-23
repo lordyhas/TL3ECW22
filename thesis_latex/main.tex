@@ -70,9 +70,9 @@
 
 \begin{document}
 
-\renewcommand{\thesubsubsection}{\alph{subsection}}
+%\renewcommand{\thesubsubsection}{\alph{subsection}}
 %\renewcommand{\thesubsubsection}{\alph{subsubsection}.}
-%\renewcommand\thesubsubsection{\alph{subsubsection}.}
+\renewcommand\thesubsubsection{\alph{subsubsection}.}
 \setcounter{chapter}{-1}
 
 
@@ -114,7 +114,7 @@
 
 \pagestyle{scrheadings} % Show chapter titles as headings
 
-%\cleardoublepage\include{FrontBackMatter/Contents} % Contents, list of figures/tables/listings and acronyms
+\cleardoublepage\include{FrontBackMatter/Contents} % Contents, list of figures/tables/listings and acronyms
 
 \cleardoublepage
 
@@ -137,10 +137,10 @@
 %	PART I
 %#######################################################################################
 
-\ctparttext{\centering État des connaissances, c’est sont les éléments sur lequel je me base pour constituer ce travail, nous parlons des base mathématique essentiel pour le Machine Learning: les éléments différentiel, statistique, l'optimisation numérique de modèle linéaire convexe, etc.} 
+%\ctparttext{\centering État des connaissances, c’est sont les éléments sur lequel je me base pour constituer ce travail, nous parlons des base mathématique essentiel pour le Machine Learning: les éléments différentiel, statistique, l'optimisation numérique de modèle linéaire convexe, etc.} 
  
 
-\textcolor{teal}{\part{État des connaissances (Background material)}}
+%\textcolor{teal}{\part{État des connaissances (Background material)}}
 
 %#
 \input{contents/background_material.tex}
@@ -156,7 +156,7 @@
 
 %#
 %\input{contents/methode.tex}
-%\cleardoublepage\include{contents/chap4.tex}
+\cleardoublepage\include{contents/chap4.tex}
 
 
 
@@ -173,7 +173,7 @@
 %\textcolor{teal}{\part{Expérimentation }}
 
 %#
-%\input{contents/implementation.tex}
+\input{contents/implementation.tex}
 
 
 %=======================================================================================
@@ -192,7 +192,7 @@
 
 %\ctparttext{Quelques programmes }
 
-\part{Annexes et Bibliographies} % New part of the thesis for the appendix
+\part*{Annexes et Bibliographies} % New part of the thesis for the appendix
 
 %\input{contents/appendix_bib.tex}
 
