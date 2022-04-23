@@ -36,7 +36,7 @@
 			f(\alpha x + (1 - \alpha)y) < \alpha f(x) + (1 - \alpha)f(y)
 			\label{eq_convexe-2}
 		\end{equation}
-		on dit que la fonction est strictement convexe dans $\mathcal{C}$,  \cite[voir dans][page:45]{jtshiman:2021}\\\\
+		on dit que la fonction est strictement convexe dans $\mathcal{C}$,  \cite[][p. 45]{jtshiman:2021}\\\\
 		Exemple \cite{jtshiman:2021}: 
 		\begin{itemize}
 			\item[--] La fonction $ f(x) = x^2$ est convexe. 
@@ -46,7 +46,7 @@
 	
 		%\subsection{Extrema}	
 		\paragraph*{Propriété d'une fonction dérivable : } (Extremum local) 
-		Parmi les propriétés de dérivabilité il existe une qui est mise en relation avec l'effect qu'une fonction doit être convexe. énoncé ci-dessous \cite[voir dans][page:212]{coulombeau2013math}.\\
+		Parmi les propriétés de dérivabilité il existe une qui est mise en relation avec l'effect qu'une fonction doit être convexe. énoncé ci-dessous \cite[][p. 212]{coulombeau2013math}.\\
 		\begin{list}{+}{Soit $I \rightarrow  \mathbb{R} $ une fonction et $a$ un point de $I$.}
 			\item  {On dit que $m$ est un \textbf{minimum local} de $f$ s'il existe $a > 0$ tel que $m$ soit le minimum de $f$ restreinte à $I \cap ] a-\alpha, a + \alpha [$. }
 			\item On dit que $M$ est un \textbf{maximum local} de $f$ s'il existe $a > 0$ tel que $M$ soit le maximum de $f$ restreinte à $I \cap ] a-\alpha, a + \alpha [$. 
@@ -92,7 +92,7 @@
 		
 		
 			
-		Le théorème de Taylor-Young assure \cite[voir dans][page:241]{coulombeau2013math} qu'une fonction $f$ dérivable n fois au point $x_0$ (avec ${\displaystyle n\geq 1}n\geq 1)$ admet un DLn en ce point :
+		Le théorème de Taylor-Young assure \cite[][p. 241]{coulombeau2013math} qu'une fonction $f$ dérivable n fois au point $x_0$ (avec ${\displaystyle n\geq 1}n\geq 1)$ admet un DLn en ce point :
 		
 		$$
 			{\displaystyle f(x)=f(x_{0})+f'(x_{0})(x-x_{0})+{\frac {f''(x_{0})}{2!}}(x-x_{0})^{2}+\dots +{\frac {f^{(n)}(x_{0})}{n!}}(x-x_{0})^{n}+o((x-x_{0})^{n})}
@@ -115,22 +115,22 @@
 		f(x)=f(x_{0})+f'(x_{0})\cdot (x-x_{0})+o(x-x_{0})
 		$$
 		
-	\subsubsection{Différentiabilité au sens de Fréchet} \label{sec:drv_frechet}
-		Soient $E$ un espace vectoriel normé, $F$ un espace vectoriel topologique séparé, $f$ une application de $E$ dans $F$ et $a$ un point de $E$. On abandonne la notation des vecteurs par des flèches dans ce paragraphe.
+	%\subsubsection{Différentiabilité au sens de Fréchet} \label{sec:drv_frechet}
+		%Soient $E$ un espace vectoriel normé, $F$ un espace vectoriel topologique séparé, $f$ une application de $E$ dans $F$ et $a$ un point de $E$. On abandonne la notation des vecteurs par des flèches dans ce paragraphe.
 			
-		On dit que $f$ est différentiable en $a$ (au sens de Fréchet) s'il existe une application linéaire continue ${\displaystyle L:E\to f}$ telle que :
-		$$
-			\forall h\in E\quad f(a+h)=f(a)+L(h)+o\left(\|h\|\right)
-		$$
-		ou, de manière équivalente :
+		%On dit que $f$ est différentiable en $a$ (au sens de Fréchet) s'il existe une application linéaire continue ${\displaystyle L:E\to f}$ telle que :
+		%$$
+		%	\forall h\in E\quad f(a+h)=f(a)+L(h)+o\left(\|h\|\right)
+		%$$
+		%ou, de manière équivalente :
 			
-		$$
-			\lim _{h\to 0}{\frac {f(a+h)-f(a)-L(h)}{\|h\|}}=0.
-		$$
+		%$$
+		%	\lim _{h\to 0}{\frac {f(a+h)-f(a)-L(h)}{\|h\|}}=0.
+		%$$
 			
-		Une telle application linéaire $L$ est alors unique.
-		L’opérateur $L$ est appelé différentielle de Fréchet (ou F-différentielle, ou Fréchet-différentielle) de $f$ au point $a$, et $f$ est dite Fréchet-différentiable (ou différentiable, ou différentiable au sens de Fréchet) au point $a$. La différentielle de $f$ au point $a$ est souvent notée $Df(a)$, la notation
-		$f'(a)$ est aussi utilisée.
+		%Une telle application linéaire $L$ est alors unique.
+		%L’opérateur $L$ est appelé différentielle de Fréchet (ou F-différentielle, ou Fréchet-différentielle) de $f$ au point $a$, et $f$ est dite Fréchet-différentiable (ou différentiable, ou différentiable au sens de Fréchet) au point $a$. La différentielle de $f$ au point $a$ est souvent notée $Df(a)$, la notation
+		%$f'(a)$ est aussi utilisée.
 	%\subsubsection{Fonctions dérivables}
 		
 	
@@ -143,7 +143,7 @@
 					\vdots \\
 					{\frac {\partial f(x)}{\partial x_{n}}}
 				\end{bmatrix}}} \in \mathbb{R}^n $$
-		\pagebreak
+		%\pagebreak
 		\paragraph*{Gradient sous forme de développement limité:}
 		\textit{Si une application admet un gradient en un point, alors on peut écrire ce développement limité du premier ordre (voir le point \ref{sec:dev_lim})}.
 		
@@ -164,12 +164,12 @@
 		
 		$\nabla f(x) \in \mathbb{R}^n$ et où l’on a posé que le reste $o(||h||) = ||h||\epsilon (h) \in \mathbb{R}^n$, avec $h \in \mathbb{R}^n$ 
 		\begin{center}
-			$\epsilon (h): \mathbb{R}^n\rightarrow \mathbb{R}, \hspace{1 cm} \lim\limits_{||h|| \rightarrow 0} \epsilon(h)=0$.
+			$\epsilon (h): \mathbb{R}^n\rightarrow \mathbb{R}, \qquad \lim\limits_{||h|| \rightarrow 0} \epsilon(h)=0$.
 		\end{center} 
-		Le vecteur $\nabla f(x)$ est unique et s’appelle \textbf{gradient} de $f(x)$ en $x$.
+		Le vecteur $\nabla f(x)$ est unique et nommé \textbf{gradient} de $f(x)$ en $x$.
 		Le gradient s’adresse aux fonctions scalaires à variables vectorielles.
-		\paragraph*{A propos de la notation $\textbf{o(||h||)}$:}
-		La notation de Landau $o(||h||)$ traduit le comportement d’une fonction de $h$ qui [est ??] tend vers $0$ d’un ordre de grandeur plus vite que $||h||$.\\\\
+		\paragraph*{A propos de la notation \textbf{$o(||h||)$}:}
+		La notation de Bachmann-Landau $o(||h||)$ traduit le comportement d’une fonction de $h$ qui tend vers $0$ d’un ordre de grandeur plus vite que $||h||$.\\\\
 		Elle est infiniment plus petit que $h$ dans le voisinage de $0$
 		
 		
@@ -335,7 +335,7 @@
 	\subsubsection{Généralité sur l'analyse bayésienne}
 		La statistique bayésienne est une théorie dans le domaine des statistiques basée sur l' interprétation bayésienne de la probabilité où la probabilité exprime un degré de croyance en un événement. Le degré de croyance peut être basé sur des connaissances antérieures sur l'événement, telles que les résultats d'expériences précédentes, ou sur des croyances personnelles sur l'événement. Cela diffère d'un certain nombre d'autres interprétations de la probabilité , telles que l' interprétation fréquentiste qui considère la probabilité comme la limite de la fréquence relative d'un événement après de nombreux essais [??].
 		
-		Les statistiques bayésiennes portent le nom de Thomas Bayes\footnote{Thomas Bayes était un Anglais statisticien , philosophe et ministre presbytérien qui est connu pour la formulation d' un cas spécifique du théorème qui porte son nom : théorème de Bayes.}, qui a formulé un cas spécifique du théorème de Bayes dans un article publié en 1763.
+		Les statistiques bayésiennes portent le nom de Thomas Bayes qui a formulé un cas spécifique du théorème de Bayes dans un article publié en 1763.
 		
 		
 		
@@ -570,10 +570,10 @@
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 	\subsubsection{Le cas non séparable }
 	
-		\begin{figure}
+		\begin{figure}[hth]
 			\centering
 			\includegraphics[width=\textwidth]{images/linearly_separable.png}
-			\caption{Classes linéairement séparables \cite[image de][page--48]{ml2008python}
+			\caption{Classes linéairement séparables \cite[image de][p. 48]{ml2008python}
 		}
 			\label{fig:linearly_separable}
 		\end{figure}
