@@ -1,0 +1,84 @@
+
+
+	
+\subsubsection{Jacobienne}
+\paragraph*{Définition mathématique:}
+Soit F une fonction d'un ouvert de $\mathbb{R}^{n}$ à valeurs dans $\mathbb{R}^{m}$ ($F:\mathbb{R}^{n}\to \mathbb {R}^{m}$). Une telle fonction est définie par ses $m$ fonctions composantes à valeurs réelles :
+
+$$ 
+{ F:
+	{\begin{pmatrix}
+			x_{1}\\\vdots \\
+			x_{n}
+	\end{pmatrix}}
+	\longmapsto 
+	{\begin{pmatrix}
+			f_{1}(x_{1},\dots ,x_{n})\\
+			\vdots \\f_{m}(x_{1},\dots ,x_{n})
+\end{pmatrix}}}.
+$$
+Les dérivées partielles de ces fonctions en un point $M$, si elles existent, peuvent être rangées dans une matrice à $m$ lignes et $n$ colonnes, appelée \textbf{matrice jacobienne\footnote{En analyse vectorielle, la matrice jacobienne est la matrice des dérivées partielles du premier ordre d'une fonction vectorielle en un point donné.}} de $F$ :
+$$
+J_{F}\left(M\right)={
+	\begin{pmatrix}
+		{\dfrac {\partial f_{1}}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{1}}{\partial x_{n}}}\\
+		\vdots &\ddots &\vdots \\
+		{\dfrac {\partial f_{m}}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{m}}{\partial x_{n}}}
+\end{pmatrix}}.
+$$
+
+La case sur la ligne i et la colonne j contient ${\displaystyle {\frac {\partial f_{i}}{\partial x_{j}}}}$ qui est la dérivée partielle de fi selon la variable xj. Cette matrice est notée :
+
+$${\displaystyle J_{F}\left(M\right),\qquad {\frac {\partial \left(f_{1},\ldots ,f_{m}\right)}{\partial \left(x_{1},\ldots ,x_{n}\right)}}\qquad {\text{ou}}\qquad {\frac {\mathrm {D} \left(f_{1},\ldots ,f_{m}\right)}{\mathrm {D} \left(x_{1},\ldots ,x_{n}\right)}}}$$
+
+Pour $i = 1, … , m,$ la i-ème ligne de cette matrice est la transposée du vecteur \textbf{gradient} (voir le point \ref{sec:gradient}) au point $M$ de la fonction $f_i$, lorsque celui-ci existe. La matrice jacobienne est également la matrice de la différentielle de la fonction, lorsque celle-ci existe.
+\paragraph*{Définition numérique:}
+
+Soit $f(x) : \mathbb{R}^n \to \mathbb{R}^m$ définie sur un ouvert $ \mathcal{O} \subset \mathbb{R} $. On dit que $f(x)$ est dérivable
+(au sens de Fréchet) en $x$, si chacune des composantes $f_i(x)$ est dérivable  en $x$. On a alors
+
+\begin{equation}
+	f(x + h) = f(x) + D_f (x)h + o(||h||)
+\end{equation}
+avec $D_f (x) \in  \mathbb{R}^{n \times m} $ et/où $ o(||h||)=||h|| \epsilon(h) \in \mathbb{R}^m $ avec $\lim\limits_{||h|| \to 0} \epsilon(h) = 0 $.
+Remarque :
+$$
+\lim\limits_{||h|| \to h} \frac{o(||h||^2)}{||h||} = 0  \in \mathbb{R}
+$$
+
+Soient 
+$x = 
+\begin{bmatrix}
+	x_1 & x_2& \cdots & x_n
+\end{bmatrix}^{T}
+\in \mathbb{R}^n $ et $ 
+f(x) = 
+\begin{bmatrix}
+	f_1(x) & f_2(x)& \cdots & f_n(x)
+\end{bmatrix}^{T} \in \mathbb{R}^m
+$
+
+$$
+D_f\left(x\right)={
+	\begin{bmatrix}
+		{\dfrac {\partial f_{1}(x)}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{1}(x)}{\partial x_{n}}}\\
+		\vdots &\ddots &\vdots \\
+		{\dfrac {\partial f_{m}(x)}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{m}(x)}{\partial x_{n}}}
+\end{bmatrix}}
+=
+\begin{bmatrix}
+	\nabla f_1(x)^T \\ \nabla f_2(x)^T\\ \vdots \\ \nabla f_m(x)^T
+\end{bmatrix}
+\in  \mathbb{R}^{n \times m},
+$$
+La matrice $D_f (x) \in  \mathbb{R}^{n \times m} $ est appelée \textbf{Jacobienne} de f(x) en x.
+La Jacobienne s’adresse aux fonctions vectorielles à variables vectorielles.
+
+\begin{description}
+	\item[Note:] Lorsque $m=1$ (m : nombre des lignes), la Jacobienne est la même que le gradient car il s'agit d'une généralisation du gradient.
+\end{description}
+
+
+
+
+

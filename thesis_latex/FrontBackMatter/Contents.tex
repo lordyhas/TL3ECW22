@@ -32,11 +32,11 @@
 
 
 %#
-\listoffigures
+%\listoffigures
 
 
-\vspace{8ex}
-\newpage
+%\vspace{8ex}
+%\newpage
 
 %----------------------------------------------------------------------------------------
 %	List of Tables
@@ -82,7 +82,11 @@
 	
 	\acro{OCR}{Optical character recognition}
 	\acro{ANPR}{Automatic number-plate recognition}
-	\acro{ALPR}Automatic license plate recognition{}
+	\acro{ALPR}{Automatic license plate recognition}
+	
+	\acro{GD}{Gradient Descent}
+	\acro{SGD}{Stochastic Gradient Descent}
+	\acro{ADALINE}{ADAptative LInear NEuron }
 	
 	
 	\acro{API}{Application Programming Interface}
@@ -90,3 +94,44 @@
 \end{acronym} 
                    
 \endgroup
+
+
+%----------------------------------------------------------------------------------------
+%	Symbol
+%----------------------------------------------------------------------------------------
+\refstepcounter{dummy}
+%\addcontentsline{toc}{chapter}{Acronyms} % Uncomment if you would like the acronyms to appear in the table of contents
+\pdfbookmark[1]{Notions}{notions} % Bookmark name visible in a PDF viewer
+
+\markboth{\spacedlowsmallcaps{Notions}}{\spacedlowsmallcaps{Notions}}
+
+\chapter*{Notions}
+
+\begin{tabular}{ll}
+	$\mathbb{N} $ & Ensemble des entiers naturels\\
+	%$\mathbb{R} $ &  \\
+	$\mathbb{R}^n $ & Ensemble des réels ou  Espace euclidien de dimension $n$ \\
+	$\mathbb{B}^n = \{0,1\}^n $ & Espace booléen de dimension $n$\\
+	$\mathcal{O}(\cdot) $ ou $ {\Omega}(\cdot) $ & L'ordre de grandeur maximal de complexité d'un algorithme \\
+	%$\mathcal{O}(\cdot) $ & Le grand O de la notation de Landeau \\
+	
+	
+	$x = \begin{pmatrix}
+		x_1 \\ \vdots \\ x_n 
+	\end{pmatrix} $ & Un vecteur\\ 
+	$x =  (x_1, \vdots,  x_n)^T$ & Un vecteur \\ 
+	$x^T =  (x_1, \vdots,  x_n)^T$ & Un vecteur transposé \\ 
+	$ \langle xy\rangle = x^Ty$  & Le produit vectoriel \\ 
+	$\parallel x \parallel $ & La norme du vecteur\\
+	
+	 
+	$M^{-1}$ & La matrice inverse d'une matrice $M$\\
+	$M^{T}$ & La matrice transposée \\
+	
+	$\frac{\partial}{\partial x}f(x,y) $ &  \\ 
+
+	
+	$ $ & \\ 
+	
+	
+\end{tabular}

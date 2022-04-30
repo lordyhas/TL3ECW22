@@ -10,7 +10,7 @@
 \section{Les bases d'optimisation numérique et statistique}
 	\subsection{Éléments de calcul différentiel}
 	%Cette section est inspirée des notes écrites par le Professeur TSHIMANGA \cite[voir][page:45-82]{jtshiman:2021} et d'autres consignes données par Nocedal et al dans \cite{bottou2018optimization} \cite{coulombeau2013math}[??].
-	\subsubsection{Convexité}
+	\subsubsection{\textbf{Convexité}}
 		\paragraph*{Définition : (Ensemble convexe)} 
 		Une partie $\mathcal{C} \subset \mathbb{R}^n $ est dite convexe si et seulement si pour tout $(x,y) \in \mathcal{C}^2$, 
 		et pour tout $ \alpha \in [0, 1]$,
@@ -36,8 +36,8 @@
 			f(\alpha x + (1 - \alpha)y) < \alpha f(x) + (1 - \alpha)f(y)
 			\label{eq_convexe-2}
 		\end{equation}
-		on dit que la fonction est strictement convexe dans $\mathcal{C}$,  \cite[][p. 45]{jtshiman:2021}\\\\
-		Exemple \cite{jtshiman:2021}: 
+		on dit que la fonction est strictement convexe dans $\mathcal{C}$,  \cite{jtshiman:2021}\\\\
+		Exemple: 
 		\begin{itemize}
 			\item[--] La fonction $ f(x) = x^2$ est convexe. 
 			\item[--] La fonction $ f(x) = x^T x$ est convexe.
@@ -55,7 +55,7 @@
 		Donc nous pouvons dire qu'une fonction convexe à un unique point minimum.
 		
 		 
-	\subsubsection{Développement limité}\label{sec:dev_lim}
+	\subsubsection{\textbf{Développement limité}}\label{sec:dev_lim}
 		En physique et en mathématiques, un développement limité (noté DL) d'une fonction en un point est une approximation polynomiale de cette fonction au voisinage de ce point, c'est-à-dire l'écriture de cette fonction sous la forme de la somme d'une fonction polynomiale et d'un reste négligeable au voisinage du point considéré \cite{coulombeau2013math}.
 		
 		Soit $f$ une fonction à valeurs réelles définie sur un intervalle $I$, et $x_0 \in I$. On dit que $f$ admet un développement limité d'ordre $n^2$ (abrégé par $DL_n$) en $x_0$, s'il existe $n + 1$ réels $a_0, a_1, \dots, a_n$  tels que la fonction ${\displaystyle R:I\to \mathbb {R} }$ définie par :
@@ -134,7 +134,7 @@
 	%\subsubsection{Fonctions dérivables}
 		
 	
-	\subsubsection{Gradient}\label{sec:gradient}
+	\subsubsection{\textbf{Gradient}}\label{sec:gradient}
 		\paragraph*{Définition:}Le gradient d'une fonction de plusieurs variables en un certain point est un vecteur qui caractérise la variabilité de cette fonction au voisinage de ce point. Défini en tout point où la fonction est différentiable, il définit un champ de vecteurs, également dénommé gradient. Le gradient est la généralisation à plusieurs variables de la dérivée d'une fonction d'une seule variable.%\\ \\
 		\paragraph*{Définition mathématique :} Dans un système de coordonnées cartésiennes, le gradient d'une fonction {$ f(x_{1},x_{2},\dots ,x_{n}$)} est le vecteur de composantes {$ \partial f/ \partial x_{i}\ (i=1,2,\dots ,n)$}, c'est-à-dire les dérivées partielles de $f$ par rapport aux coordonnées \cite{jtshiman:2021}.
 		$${\nabla f(x)={
@@ -175,7 +175,7 @@
 		
 		
 			
-	\subsubsection{Hessienne}
+	\subsubsection{\textbf{Hessienne}}
 		\paragraph*{Définition mathématique:}
 		Étant donnée une fonction ${f}$ à valeurs réelles
 		
@@ -208,90 +208,12 @@
 			\lim\limits_{||h|| \to h} \frac{o(||h||^2)}{||h||} = 0  \in \mathbb{R}
 		$$
 		La Hessienne s’adresse aux fonctions scalaires à variables vectorielles.
-			
-	\subsubsection{Jacobienne}
-		\paragraph*{Définition mathématique:}
-		Soit F une fonction d'un ouvert de $\mathbb{R}^{n}$ à valeurs dans $\mathbb{R}^{m}$ ($F:\mathbb{R}^{n}\to \mathbb {R}^{m}$). Une telle fonction est définie par ses $m$ fonctions composantes à valeurs réelles :
-		
-		$$ 
-		{ F:
-			{\begin{pmatrix}
-				x_{1}\\\vdots \\
-				x_{n}
-			\end{pmatrix}}
-			\longmapsto 
-			{\begin{pmatrix}
-				f_{1}(x_{1},\dots ,x_{n})\\
-				\vdots \\f_{m}(x_{1},\dots ,x_{n})
-			\end{pmatrix}}}.
-		$$
-		Les dérivées partielles de ces fonctions en un point $M$, si elles existent, peuvent être rangées dans une matrice à $m$ lignes et $n$ colonnes, appelée \textbf{matrice jacobienne\footnote{En analyse vectorielle, la matrice jacobienne est la matrice des dérivées partielles du premier ordre d'une fonction vectorielle en un point donné.}} de $F$ :
-		$$
-		J_{F}\left(M\right)={
-			\begin{pmatrix}
-				{\dfrac {\partial f_{1}}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{1}}{\partial x_{n}}}\\
-				\vdots &\ddots &\vdots \\
-				{\dfrac {\partial f_{m}}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{m}}{\partial x_{n}}}
-			\end{pmatrix}}.
-		$$
-		
-		La case sur la ligne i et la colonne j contient ${\displaystyle {\frac {\partial f_{i}}{\partial x_{j}}}}$ qui est la dérivée partielle de fi selon la variable xj. Cette matrice est notée :
-		
-		$${\displaystyle J_{F}\left(M\right),\qquad {\frac {\partial \left(f_{1},\ldots ,f_{m}\right)}{\partial \left(x_{1},\ldots ,x_{n}\right)}}\qquad {\text{ou}}\qquad {\frac {\mathrm {D} \left(f_{1},\ldots ,f_{m}\right)}{\mathrm {D} \left(x_{1},\ldots ,x_{n}\right)}}}$$
-		
-		Pour $i = 1, … , m,$ la i-ème ligne de cette matrice est la transposée du vecteur \textbf{gradient} (voir le point \ref{sec:gradient}) au point $M$ de la fonction $f_i$, lorsque celui-ci existe. La matrice jacobienne est également la matrice de la différentielle de la fonction, lorsque celle-ci existe.
-		\paragraph*{Définition numérique:}
-		
-		Soit $f(x) : \mathbb{R}^n \to \mathbb{R}^m$ définie sur un ouvert $ \mathcal{O} \subset \mathbb{R} $. On dit que $f(x)$ est dérivable
-		(au sens de Fréchet) en $x$, si chacune des composantes $f_i(x)$ est dérivable  en $x$. On a alors
-		
-		\begin{equation}
-			f(x + h) = f(x) + D_f (x)h + o(||h||)
-		\end{equation}
-		avec $D_f (x) \in  \mathbb{R}^{n \times m} $ et/où $ o(||h||)=||h|| \epsilon(h) \in \mathbb{R}^m $ avec $\lim\limits_{||h|| \to 0} \epsilon(h) = 0 $.
-		Remarque :
-		$$
-			\lim\limits_{||h|| \to h} \frac{o(||h||^2)}{||h||} = 0  \in \mathbb{R}
-		$$
-		
-		Soient 
-		$x = 
-			\begin{bmatrix}
-				x_1 & x_2& \cdots & x_n
-			\end{bmatrix}^{T}
-			\in \mathbb{R}^n $ et $ 
-		f(x) = 
-			\begin{bmatrix}
-				f_1(x) & f_2(x)& \cdots & f_n(x)
-			\end{bmatrix}^{T} \in \mathbb{R}^m
-		$
-		
-		$$
-		D_f\left(x\right)={
-			\begin{bmatrix}
-			{\dfrac {\partial f_{1}(x)}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{1}(x)}{\partial x_{n}}}\\
-			\vdots &\ddots &\vdots \\
-			{\dfrac {\partial f_{m}(x)}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{m}(x)}{\partial x_{n}}}
-			\end{bmatrix}}
-			=
-			\begin{bmatrix}
-			\nabla f_1(x)^T \\ \nabla f_2(x)^T\\ \vdots \\ \nabla f_m(x)^T
-			\end{bmatrix}
-			\in  \mathbb{R}^{n \times m},
-		$$
-		La matrice $D_f (x) \in  \mathbb{R}^{n \times m} $ est appelée \textbf{Jacobienne} de f(x) en x.
-		La Jacobienne s’adresse aux fonctions vectorielles à variables vectorielles.
-	
-		\begin{description}
-			\item[Note:] Lorsque $m=1$ (m : nombre des lignes), la Jacobienne est la même que le gradient car il s'agit d'une généralisation du gradient.
-		\end{description}
-	
-		
-		
-		
-	\subsection{Échantillonnage \& probabilité bayésienne}
+	%---------------------------------------------------
+	%	JACOBIENNE
+	%---------------------------------------------------			
+	\subsection{Échantillonnage (statistique)} % \& probabilité bayésienne}
 
-		\subsubsection{Échantillonnage (statistique)}
+		%\subsubsection{Échantillonnage (statistique)}
 		
 		En statistiques, l'échantillonnage est la sélection d'un sous-ensemble (un échantillon statistique ) d'individus au sein d'une population statistique pour estimer les caractéristiques de l'ensemble de la population. 
 		
@@ -315,7 +237,7 @@
 		\end{list}
 
 	
-		\subsubsection*{La collecte de données }
+		\subsubsection{\textbf{La collecte de données} }
 		
 		La collecte de données est le processus de collecte et de mesure des informations sur des variables ciblées dans un système établi, qui permet ensuite de répondre aux questions pertinentes et d'évaluer les résultats.
 		
@@ -332,21 +254,21 @@
 	
 	
 		
-	\subsubsection{Généralité sur l'analyse bayésienne}
-		La statistique bayésienne est une théorie dans le domaine des statistiques basée sur l' interprétation bayésienne de la probabilité où la probabilité exprime un degré de croyance en un événement. Le degré de croyance peut être basé sur des connaissances antérieures sur l'événement, telles que les résultats d'expériences précédentes, ou sur des croyances personnelles sur l'événement. Cela diffère d'un certain nombre d'autres interprétations de la probabilité , telles que l' interprétation fréquentiste qui considère la probabilité comme la limite de la fréquence relative d'un événement après de nombreux essais [??].
+	%\subsubsection{Généralité sur l'analyse bayésienne}
+		%La statistique bayésienne est une théorie dans le domaine des statistiques basée sur l' interprétation bayésienne de la probabilité où la probabilité exprime un degré de croyance en un événement. Le degré de croyance peut être basé sur des connaissances antérieures sur l'événement, telles que les résultats d'expériences précédentes, ou sur des croyances personnelles sur l'événement. Cela diffère d'un certain nombre d'autres interprétations de la probabilité , telles que l' interprétation fréquentiste qui considère la probabilité comme la limite de la fréquence relative d'un événement après de nombreux essais [??].
 		
-		Les statistiques bayésiennes portent le nom de Thomas Bayes qui a formulé un cas spécifique du théorème de Bayes dans un article publié en 1763.
+		%Les statistiques bayésiennes portent le nom de Thomas Bayes qui a formulé un cas spécifique du théorème de Bayes dans un article publié en 1763.
 		
 		
 		
-		\begin{thm}[Théorème de Bayes] Le théorème de Bayes est utilisé dans les méthodes bayésiennes pour mettre à jour les probabilités, qui sont des degrés de croyance, après avoir obtenu de nouvelles données. Compte tenu de deux événements $A$  et $B$, la probabilité conditionnelle de $A$ étant donné que $B$ est vrai s'exprime comme suit  :
-			\begin{equation}
-				\mathbb{P}(A|B) = \frac{\mathbb{P}(B|A) \mathbb{P}(A)}{\mathbb{P}(B)}
-			\end{equation}
+		%\begin{thm}[Théorème de Bayes] Le théorème de Bayes est utilisé dans les méthodes bayésiennes pour mettre à jour les probabilités, qui sont des degrés de croyance, après avoir obtenu de nouvelles données. Compte tenu de deux événements $A$  et $B$, la probabilité conditionnelle de $A$ étant donné que $B$ est vrai s'exprime comme suit  :
+			%\begin{equation}
+				%\mathbb{P}(A|B) = \frac{\mathbb{P}(B|A) \mathbb{P}(A)}{\mathbb{P}(B)}
+			%\end{equation}
 			
-		\end{thm}
+		%\end{thm}
 	
-		où $\mathbb{P}(B) \ne 0$ Bien que le théorème de Bayes soit un résultat fondamental de la théorie des probabilités , il a une interprétation spécifique dans les statistiques bayésiennes \cite[][]{antoine2018apprentissage}.
+		%où $\mathbb{P}(B) \ne 0$ Bien que le théorème de Bayes soit un résultat fondamental de la théorie des probabilités , il a une interprétation spécifique dans les statistiques bayésiennes \cite[][]{antoine2018apprentissage}.
 
 		
 %#############################################################################
@@ -358,7 +280,7 @@
 
 %\textcolor{cyan}{\chapter{Apprentissage automatique : Modélisation et Classification }}
 	%\section{Généralité}
-\section{La modélisation et la classification }
+\section{Apprentissage supervisé, modélisation et classification}
 	\subsection{Introduction}
 	\subsubsection{Les ingrédients d'apprentissage}
 		Résoudre un problème d'apprentissage, c'est d'abord le comprendre, c'est-à-dire discuter longuement avec les experts du domaine concerné pour identifier quelles sont les "entrées", les  "sorties" ou résultats désirés, les connaissances disponibles, les particularités des données, par exemple: valeurs manquantes, taux de bruit dans les mesures des attributs de description, proportions des classes, stationnarité ou pas de l'environnement. 
@@ -441,10 +363,9 @@
 	
 	Une partie cruciale du processus de modélisation consiste à évaluer si oui ou non un modèle mathématique donné décrit un système avec précision. Il peut être difficile de répondre à cette question car elle implique plusieurs types d'évaluation différents.
 	
-	????
-	Un modèle de régression linéaire ajusté peut être utilisé pour identifier la relation entre une seule variable prédictive $x_j$ et la variable de réponse $y$ lorsque toutes les autres variables prédictives du modèle sont "maintenues fixes". Plus précisément, l'interprétation de $\beta_j$ est la variation attendue de $y$ pour une variation d'une unité de $x_j$ lorsque les autres covariables sont maintenues fixes, c'est-à-dire la valeur attendue de la dérivée partielle de $y$ par rapport à $x_j$. Ceci est parfois appelé l'effet unique de $x_j$ sur $y$. En revanche, l'effet marginal de $x_j$ sur $y$ peut être évalué à l'aide d'un coefficient de corrélation ou d'un simple modèle de régression linéaire reliant uniquement $x_j$ à $y$; cet effet est la dérivée totale de $y$ par rapport à $x_j$.
+	
 
-	\subsection{Régression Linéaire}
+	\subsection{Les problèmes de régressions}
 	
 	L'algorithme d'apprentissage automatique est défini comme un algorithme capable d'améliorer les performances d'un programme informatique à certaines tâches via l'expérience est quelque peu abstraite. Pour rendre cela plus concret, Une des méthode d'apprentissage automatique basique est \emph{la régression linéaire} \cite{goodfellow2016deep}.
 	
@@ -461,56 +382,68 @@
 	
 	
 	\subsubsection{Le problème de la régression linéaire}
-		On appelle problèmes de régression de tels problèmes, dans lesquels la sortie est numérique, généralement un vecteur de réels, supposé dépendre de la valeur d'un certain nombre de facteurs en entrée.
+		On appelle problèmes de régression de tels problèmes, dans lesquels la sortie est numérique, généralement un vecteur de réels, supposé dépendre de la valeur d'un certain nombre de facteurs en entrée \cite{matloff2017statistical}.
 		
-		Le vecteur d'entrée $x = (1,2,...,x)^T$ est souvent appelé variable indépendante, tandis que le vecteur de sortie $y$ est appelé variable dépendante. On formalise le problème en supposant que la sortie résulte de la somme d'une fonction déterministe $f$ de l'entrée et d'un bruit aléatoire :
+		\begin{figure}[hth]%bth
+			\centering
+			\includegraphics[width=\textwidth]{images/linear_regression_quartet.png}
+			\caption{Images illustrant l'efficacité de la régression linéaire sur plusieurs type de modèle [image Wikipédia]
+			}
+			\label{fig:linear_regression_quartet}
+		\end{figure}
+		
+		Le vecteur d'entrée $x = (x_1,x_2,...,x_n)^T$ est souvent appelé variable indépendante, tandis que le vecteur de sortie $y$ est appelé variable dépendante. On formalise le problème en supposant que la sortie résulte de la somme d'une fonction déterministe $f$ de l'entrée et d'un bruit aléatoire :
 		\begin{equation}
 			y = f(x) + \epsilon
 		\end{equation}
 	
 		où $f(x)$ est la fonction inconnue que nous souhaitons approcher par un estimateur $h(x|w)$, où $h$ est défini à l'aide d'un vecteur $w$ de paramètres.\\
-		Si l'on suppose que le bruit $\epsilon$ est un phénomène gaussien de moyenne nulle et de variance constante $\sigma^2$, c'est-à-dire $ \epsilon = \mathcal{N}(0,\sigma^2)$, alors, en plaçant notre estimateur $h(\cdot)$ à la place de la fonction inconnue, on devrait avoir la densité conditionnelle réelle $p(y|x)$ vérifiant :
+		Si l'on suppose que le bruit $\epsilon$ est nulle et de variance constante $\sigma^2$, c'est-à-dire $ \epsilon = \mathcal{N}(0,\sigma^2)$, alors, en plaçant notre estimateur $h(\cdot)$ à la place de la fonction inconnue, on devrait avoir la densité conditionnelle réelle $p(y|x)$ vérifiant :
 		\begin{equation}
 			p(y|x) = \mathcal{N}(h(x|w),\sigma^2)
 		\end{equation}
 		
-		On peut estimer le vecteur de paramètres $w$ grâce au principe de maximisation de la vraisemblance. On suppose que les couples $(y_t, y_t)$ de l'échantillon d'apprentissage sont tirés par tirages indépendants d'une distribution de probabilités jointes inconnue $p(x, y)$, qui peut s'écrire :
+		On peut estimer le vecteur de paramètres $w$ grâce au principe de maximisation de la vraisemblance. On suppose que les couples $(x_t, y_t)$ de l'échantillon d'apprentissage sont tirés par tirages indépendants d'une distribution de probabilités jointes inconnue $p(x, y)$, qui peut s'écrire :
 		
 		$$
 			p(y|x) = p(y|x)p(x)
 		$$
-		où $p(y|x)$ est la probabilité de la sortie étant donnée l'entrée et $p(x)$ est la densité de probabilité sur les entrées.
+		où $p(y|x)$ est la probabilité de la sortie étant donnée l'entrée et $p(x)$ est la densité de probabilité sur les entrées.\cite{matloff2017statistical}
 		
-		\cite{matloff2017statistical}
+		Étant donné un échantillon d'apprentissage $S = \langle (x_t,y_t) \rangle_{1\leq t\leq m} $ supposé tiré de manière indépendante et identiquement distribuée.
+		Maximiser l'expression résultante revient alors à minimiser la somme de carrés des erreurs (SCE):
+		\begin{equation}\label{eq:sce_1}
+			SCE(w|\mathit{S}) = \frac{1}{2} \sum_{{t=1}}^{m}{ [ y_t - h(x_t|w) ]^2}	
+		\end{equation}
 		
 	%%%\subsubsection*{La régression non linéaire ou multiple}
 		%\lipsum[2]
 	\subsubsection{Le cas de la régression générale}
-		La plupart des modèles de régression proposent que $Y_{i}$ est une fonction de $X_{i}$ et $\beta$, avec $\epsilon_{i}$ représentant un terme d'erreur additif qui peut remplacer des déterminants non modélisés de $Y_{i}$ ou bruit statistique aléatoire :
+		La plupart des modèles de régression proposent que $Y_{i}$ est une fonction de $X_{i}$ et $w$, avec $\epsilon_{i}$ représentant un terme d'erreur additif ou bruit statistique aléatoire qui peut remplacer des déterminants non modélisés de $Y_{i}$ :
 		\begin{equation}
-			{\displaystyle Y_{i}=f(X_{i},\beta )+\epsilon_{i}}
+			{\displaystyle Y_{i}=f(X_{i},w )+\epsilon_{i}}
 		\end{equation}
 	
-		L'objectif est d'estimer la fonction ${\displaystyle f(X_{i},\beta )}$ qui correspond le mieux aux données.
+		L'objectif est d'estimer la fonction ${\displaystyle f(X_{i},w )}$ qui correspond le mieux aux données.
 		
-		 Pour effectuer une analyse de régression, la forme de la fonction $f$ doit être spécifié. Parfois, la forme de cette fonction est basée sur la connaissance de la relation entre $Y_{i}$ et $X_{i}$. 
-		 Si ces connaissances ne sont pas disponibles, un formulaire souple ou pratique pour $f$ est choisi. Par exemple, une simple régression univariée peut proposer
-		 $${\displaystyle f(X_{i},\beta )=\beta _{0}+\beta _{1}X_{i}}$$
-		 ou
-		 $${\displaystyle Y_{i}=\beta _{0}+\beta _{1}X_{i}+e_{i}}$$
-		 être une approximation raisonnable du processus statistique générant les données.
+		Pour effectuer une analyse de régression, la forme de la fonction $f$ doit être spécifié. Parfois, la forme de cette fonction est basée sur la connaissance de la relation entre $Y_{i}$ et $X_{i}$. 
+		Si ces connaissances ne sont pas disponibles, un formulaire souple ou pratique pour $f$ est choisi. Par exemple, une simple régression univariée peut proposer
+		 $${\displaystyle f(X_{i},w )= w_{0}+ w_{1}X_{i}}$$
+		ou
+		 $${\displaystyle Y_{i}= w_{0}+ w_{1}X_{i}+e_{i}}$$
+		être une approximation raisonnable du processus statistique générant les données.
 		 
-		 Différentes formes d'analyse de régression fournissent des outils pour estimer les paramètres. $\beta$. Par exemple, les moindres carrés trouvent la valeur de $\beta$ qui minimise la somme des carrés des erreurs $${\sum _{i}(Y_{i}-f(X_{i},\beta ))^{2}}$$ 
+		 Différentes formes d'analyse de régression fournissent des outils pour estimer les paramètres. $w$. Par exemple, les moindres carrés trouvent la valeur de $w$ qui minimise la somme des carrés des erreurs \cite{deepa2021ai} $${\sum _{i}(Y_{i}-f(X_{i},w ))^{2}}$$ 
 		 
 		 Étant donné un ensemble de données ${\displaystyle \{y_{i},\,x_{i1},\ldots ,x_{ip}\}_{i=1}^{n}}$ de $n$ unités statistiques, un modèle de régression linéaire suppose que la relation entre la variable dépendante $y$ et le vecteur $p$ des régresseurs $x$ est linéaire. Cette relation est modélisée par un terme de perturbation ou une variable d'erreur $\epsilon$ : une variable aléatoire non observée qui ajoute du "bruit" à la relation linéaire entre la variable dépendante et les régresseurs. Ainsi le modèle prend la forme
 		 
-		$${\displaystyle y_{i}=\beta _{0}+\beta _{1}x_{i1}+\cdots +\beta _{p}x_{ip}+\varepsilon _{i}=\mathbf { x} _{i}^{\mathsf {T}}{\boldsymbol {\beta }}+\varepsilon_{i},\qquad avec \quad i=1,\ldots ,n,}
+		$${\displaystyle y_{i}=w _{0}+w _{1}x_{i1}+\cdots +w _{p}x_{ip}+\varepsilon _{i}=\mathbf { x} _{i}^{\mathsf {T}}{\boldsymbol {w }}+\varepsilon_{i},\qquad avec \quad i=1,\ldots ,n,}
 		$$
 		
 		Souvent, ces $n$ équations sont empilées et écrites en notation matricielle comme
 		
 		$$
-		{\displaystyle \mathbf {y} =X{\boldsymbol {\beta }}+{\boldsymbol {\varepsilon}},\,}
+		{\displaystyle \mathbf {y} =X{\boldsymbol {w}}+{\boldsymbol {\varepsilon}},\,}
 		$$
 		
 		où
@@ -531,13 +464,13 @@
 					\vdots &\vdots &\ddots &\vdots \\
 					1&x_{n1}&\cdots &x_{np}
 				\end{pmatrix}},} \quad
-		{\displaystyle {\boldsymbol {\beta }}={
+		{\displaystyle {\boldsymbol {\mathcal{W}}}={
 				\begin{pmatrix}
-					\beta _{0}\\
-					\beta _{1}\\
-					\beta _{2}\\
+					w _{0}\\
+					w _{1}\\
+					w _{2}\\
 					\vdots \\
-					\beta _{p}
+					w _{p}
 				\end{pmatrix}},\quad 
 		{\boldsymbol {\varepsilon }}={
 			\begin{pmatrix}\varepsilon _{1}\\
@@ -550,9 +483,44 @@
 		
 		$X$ peut être vu comme une matrice de vecteurs-lignes $\mathbf {x} _{i}$ ou de vecteurs-colonnes à $n$ dimensions $X_{j}$, appelées régresseurs, variables explicatives, variables d'entrée, variables prédictives ou variables indépendantes. La matrice $X$ est parfois appelée la matrice de conception. 
 		
-		${\boldsymbol {\beta}}$ est un vecteur de paramètre de dimension $(p+1)$, où $\beta _{0}$ est le terme d'interception, s'il n'est inclus dans le modèle ${\boldsymbol {\beta}}$ est de dimension $p$. Ses éléments sont appelés effets ou coefficients de régression. 
-		En régression linéaire simple , $p = 1$, et le coefficient est appelé \textbf{pente} de régression.\\
-		L'estimation statistique et l'inférence dans la régression linéaire se concentrent sur $\beta$. Les éléments de ce vecteur de paramètres sont interprétés comme les dérivées partielles de la variable dépendante par rapport aux différentes variables indépendantes.
+		${\boldsymbol {w}}$ est un vecteur de paramètre de dimension $(p+1)$, où $w _{0}$ est le terme d'interception, s'il n'est pas inclus dans le modèle ${\boldsymbol {w}}$ est de dimension $p$. Ses éléments sont appelés coefficients de régression \cite{antoine2018apprentissage}. 
+		En régression linéaire simple, $p = 1$, et le coefficient est appelé \textbf{pente} de régression.\\
+		L'estimation statistique et l'inférence dans la régression linéaire se concentrent sur $w$. Les éléments de ce vecteur de paramètres sont interprétés comme les dérivées partielles de la variable dépendante par rapport aux différentes variables indépendantes \cite{darlington2016regression}.
+		
+		En définissant les vecteurs  et matrice ci dessous, ${\boldsymbol X}$, ${\boldsymbol w}$ et ${\boldsymbol y}$ (avec ${S_y = y}$) \cite{antoine2018apprentissage}; le critère de la somme des carrées des erreurs s'écrit alors:
+		\begin{equation}\label{eq:sce_2}
+			SCE(w|\mathit{S}) = \frac{1}{2} ({\boldsymbol S_y }- \mathbf{X}\boldsymbol w)^{\mathsf{T}}({ \boldsymbol S_y }- \mathbf{X} \boldsymbol w)
+		\end{equation}  
+		Il suffit de prendre la dérivée de la somme des carrés des erreurs (équation \ref{eq:sce_1}) par rapport à $w$, qui est maintenant remplacer par $w$, pour obtenir les équations: 
+		$$
+			\frac{\partial SCE}{\partial w} = -{\boldsymbol X}^T({\boldsymbol S_y }- \mathbf{X} \boldsymbol w)
+		$$
+		
+		$$
+		\frac{\partial^2 SCE}{\partial^2 w \partial^2 w^T} = -{\boldsymbol X}^T{\boldsymbol X}
+		$$
+		
+		En supposant que la matrice $X$ est non singulière, et donc que $X^TX$ est positive définie, et en posant que la dérivée première est nulle, on obtient :
+		
+		
+		\begin{equation}
+			{X^{T} Xw =  X^{T} S_y}
+		\end{equation}
+		\begin{tabular}{lr}
+			
+		\end{tabular}
+	
+		à partir de quoi on peut calculer l'unique solution par: 
+		\begin{equation}
+			\hat{w} = {(X^{T} X)^{-1} X^{T} S_y}
+		\end{equation}
+		La valeur $\hat{y}$ prédite pour une entrée $x_n$ est donc : 
+		$$
+			\hat{y} = \hat{w}\cdot x_n = {(X^{T} X)^{-1} X^{T} S_y}x_n 
+		$$ 
+		
+		
+		%Un modèle de régression linéaire ajusté peut être utilisé pour identifier la relation entre une seule variable prédictive $x_j$ et la variable de réponse $y$ lorsque toutes les autres variables prédictives du modèle sont "maintenues fixes". Plus précisément, l'interprétation de $\beta_j$ est la variation attendue de $y$ pour une variation d'une unité de $x_j$ lorsque les autres covariables sont maintenues fixes, c'est-à-dire la valeur attendue de la dérivée partielle de $y$ par rapport à $x_j$. Ceci est parfois appelé l'effet unique de $x_j$ sur $y$. En revanche, l'effet marginal de $x_j$ sur $y$ peut être évalué à l'aide d'un coefficient de corrélation ou d'un simple modèle de régression linéaire reliant uniquement $x_j$ à $y$; cet effet est la dérivée totale de $y$ par rapport à $x_j$.
 			
 		%\subsection{La régression linéaire simple}
 			%\lipsum[3]
@@ -561,40 +529,156 @@
 			%\subsubsection{Variance, Covariance, \& Corrélation}
 		%\subsection{La fonction prédictif \& d'erreur}
 			%\lipsum[1]
+			
+	\begin{figure}[hth]%bth
+		\centering
+		\includegraphics[width=\textwidth]{images/nonlinear-trend.png}
+		\caption{ L'efficacité de la régression non linéaire par rapport \`{a} une régression linéaire..}
+		\label{fig:nonlinear_trend}
+	\end{figure}
+
+	\paragraph*{}
+	La régression linéaire multiple est une généralisation de la régression linéaire simple au cas de plus d'une variable indépendante, et un cas particulier des modèles linéaires généraux, limités à une variable dépendante. Le modèle de base de la régression linéaire multiple est
 	
 	
-	\subsection{Régression Logistique}
-	\subsubsection{Le problème de classification}
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-	\subsubsection{Le cas séparable }
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-	\subsubsection{Le cas non séparable }
-	
-		\begin{figure}[hth]
+	\subsection{Les problèmes de classifications}
+		En apprentissage automatique, les classifieurs linéaires sont une famille d'algorithmes de classement statistique. Le rôle d'un classifieur est de classer dans des groupes (des classes) les échantillons qui ont des propriétés similaires, mesurées sur des observations. Un classifieur linéaire est un type particulier de classifieur, qui calcule la décision par combinaison linéaire des échantillons.
+		
+		\begin{figure}[bth]%bth
+			\centering
+			\includegraphics[width=15cm]{images/classification_vs_regression.png}
+			\caption{Classification vs régression \cite[image de][]{ml2008python}
+			}
+			\label{fig:class_vs_reg}
+		\end{figure}
+		
+		Nous nous plaçons dans le cadre où la variable dépendante ou à prédire prend ses valeurs dans un ensemble fini que l'on associe généralement à un ensemble de classes. A la différence de la régression linéaire où l’ensemble de valeurs à prédire est infini.
+		
+		Lorsque l'on se place dans un espace de représentation euclidien, on peut librement faire des hypothèses sur la géométrie des classes ou sur celles de leurs surfaces séparatrices. La plus simple d'entre elles est de supposer que deux classes peuvent être séparées par une certaine surface, définie par une équation; les paramètres qui régissent cette équation sont alors les variables à apprendre.
+		
+		Le nombre de paramètres à calculer est minimal si l'on suppose cette surface linéaire; aussi est-ce l'hypothèse qui prévaut souvent, en particulier lorsque l'échantillon de données est de taille réduite par rapport à la dimension de l'espace d'entrée, d'autant qu'elle permet de mener des calculs faciles et de visualiser précisément le résultat obtenu.
+		
+		Dans $\mathbb{R}^n$, une surface linéaire est un hyperplan $A$, défini par l'équation :
+		$$ 
+			a_0  + a^Tx = 0
+		$$
+		
+		avec a vecteur de dimension $n$ et $a_0$ scalaire. Si deux classes $\mathcal{C}_1$ et $\mathcal{C}_2$ sont \textit{séparables} par $A$, tous les points de la première classe sont par exemple tels que :
+		
+			\begin{equation}\label{eq:x_case_c1}
+			 x \in \mathcal{C}_1 \implies a_0 + a^Tx > 0
+			\end{equation}
+		
+		et ceux de la seconde vérifient alors :
+		
+			\begin{equation}\label{eq:x_case_c2}
+				x \in \mathcal{C}_2 \implies a_0 + a^Tx \leq 0
+			\end{equation}
+			
+		
+		Dans un espace de dimension $d = 1$, une séparation linéaire se réduit à la comparaison à un seuil. Prenons ce cas particulier pour donner deux exemples où un problème de discrimination à deux classes ne peut pas en pratique être complètement résolu par une séparatrice linéaire.
+		
+		\paragraph* {séparatrice linéaire :}On appelle hyperplan séparateur ou séparatrice linéaire un hyperplan qui sépare parfaitement deux classes, c'est-à-dire qui vérifie les équations \ref{eq:x_case_c1} et \ref{eq:x_case_c2}; en particulier, il sépare parfaitement leurs points d'apprentissage. Un hyperplan discriminant est un classificateur linéaire pour deux classes qui ne sont pas linéairement séparables. \cite{antoine2018apprentissage}
+		
+		
+		
+		
+		
+		\subsubsection{Le cas non séparable}
+		
+		\subsubsection{Calcul avec l'algorithme du perceptron}
+		
+		
+		
+		\begin{figure}[bth]%bth
 			\centering
 			\includegraphics[width=\textwidth]{images/linearly_separable.png}
 			\caption{Classes linéairement séparables \cite[image de][p. 48]{ml2008python}
-		}
+			}
 			\label{fig:linearly_separable}
 		\end{figure}
-		\lipsum[3]
-	\subsubsection{Le modèle de la régression logistique }
-		\lipsum[1]
+	
+		???\lipsum[1]
 		
-	\subsection{Classifications}
+		\subsubsection{Le modèle de la régression logistique}
+		
+		??? \lipsum[1]
+		
+		
+		\begin{figure}[bth]%bth
+			\centering
+			\includegraphics[width=8cm]{images/classification_minimisation.png}
+			\caption{Classification linéaire qui montre la zone de décision et la droite séparatrice.}
+			\label{fig:classification_zone}
+		\end{figure}
+	
+		La fonction de la droite séparatrice comme l'illustre la figure \ref{fig:classification_zone} est écrit:
+		$$
+		z(x) = w _{1}x_{1}+\cdots +w_{n}x_{n}+\varepsilon _{i}=\mathbf { x} _{i}^{\mathsf {T}}{\boldsymbol {w }}+b,\qquad avec \quad i=1,\ldots ,n, \quad et \ b = \varepsilon
+		$$
+	
+		La fonction logistique est de la forme :
+		$$
+		{\displaystyle p(x)={\frac {1}{1+e^{-(x-\mu )/s}}}}
+		$$
+		
+		où $\mu$ est un paramètre de localisation (le milieu de la courbe, où ${\displaystyle p(\mu )=1/2})$ et $s$ est un paramètre d'échelle. Cette expression peut être réécrite comme suit :
+		
+		$${\displaystyle p(x)={\frac {1}{1+e^{-( w_{0}+w _{1}x)}}}}$$
+		
+		où ${\displaystyle w _{0}=-\mu /s}$ et est connue sous le nom d' interception (c'est l'interception verticale ou $y$ ordonnée à l'origine de la ligne ${\displaystyle y=w _{0}+w _{1}x})$, et ${\displaystyle w _{1}=1/s}$ (paramètre d'échelle inverse ou paramètre de taux ) : il s'agit de l'ordonnée à l'origine et de la pente des log-odds en fonction de x . Inversement, ${\displaystyle \mu =-w _{0}/w _{1}}$ et ${\displaystyle s=1/w _{1}}$.
+		
+		\begin{figure}[bth]%bth
+			\centering
+			\includegraphics[width=8cm]{images/reg_log_curve.png}
+			\caption{Graphique d'une courbe de régression logistique ajustée aux données $(x_n , y_n)$. \cite[image de]{ml2008python}
+			}
+			\label{fig:reg_log_curve}
+		\end{figure}
+	
+	\paragraph*{La vraisemblance} 
+	
+	\begin{figure}[bth]%bth
+		\centering
+		\includegraphics[width=8cm]{images/classification_linear.png}
+		\caption{Classification linaire.}
+		\label{fig:classification_linear}
+	\end{figure}
+
+	
+		
+	
+	
+\section{Réseau de neurones, apprentissage en profondeur}
 	\lipsum[1]
-	
-	
-\section{Apprentissage profond (Deep Learning)}
-	
+	\begin{figure}[hth]%bth
+		\centering
+		\includegraphics[width=\textwidth]{images/neuron.png}
+		\caption{Neurone biologique \cite[image de]{ml2008python}
+		}
+		\label{fig:bio_neuron}
+	\end{figure}
+
+
 	\subsection{Perceptron}
-	
+	\lipsum[1]
+	\begin{figure}[hth]%bth
+		\centering
+		\includegraphics[width=\textwidth]{images/perceptron_neuron.png}
+		\caption{Neurone artificiel modèle : Perceptron \cite[image de]{ml2008python}
+		}
+		\label{fig:perceptron_neuron}
+	\end{figure}
+
+
 	\subsection{Neurones}
 	\lipsum[1]
+	
+	
 	\subsubsection{Réseau neuronal convolutif (CNN)}
 	\lipsum[1]
-	\subsubsection{Réseau neuronal récurrent (RNN)}
-	\lipsum[1]
+	%\subsubsection{Réseau neuronal récurrent (RNN)}
+	%\lipsum[1]
 	
 	%\section{Réseaux de neurones}
 	
