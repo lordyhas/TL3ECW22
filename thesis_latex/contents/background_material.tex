@@ -437,7 +437,7 @@
 		 
 		 Étant donné un ensemble de données ${\displaystyle \{y_{i},\,x_{i1},\ldots ,x_{ip}\}_{i=1}^{n}}$ de $n$ unités statistiques, un modèle de régression linéaire suppose que la relation entre la variable dépendante $y$ et le vecteur $p$ des régresseurs $x$ est linéaire. Cette relation est modélisée par un terme de perturbation ou une variable d'erreur $\epsilon$ : une variable aléatoire non observée qui ajoute du "bruit" à la relation linéaire entre la variable dépendante et les régresseurs. Ainsi le modèle prend la forme
 		 
-		$${\displaystyle y_{i}=w _{0}+w _{1}x_{i1}+\cdots +w _{p}x_{ip}+\varepsilon _{i}=\mathbf { x} _{i}^{\mathsf {T}}{\boldsymbol {w }}+\varepsilon_{i},\qquad avec \quad i=1,\ldots ,n,}
+		$${\displaystyle y_{i}=w _{0}+w _{1}x_{i1}+\cdots +w _{n}x_{in}+\varepsilon _{i}=\mathbf { x} _{i}^{\mathsf {T}}{\boldsymbol {w }}+\varepsilon_{i},\qquad avec \quad i=1,\ldots ,n,}
 		$$
 		
 		Souvent, ces $n$ équations sont empilées et écrites en notation matricielle comme
@@ -585,11 +585,6 @@
 		
 		
 		\subsubsection{Le cas non séparable}
-		
-		\subsubsection{Calcul avec l'algorithme du perceptron}
-		
-		
-		
 		\begin{figure}[bth]%bth
 			\centering
 			\includegraphics[width=\textwidth]{images/linearly_separable.png}
@@ -598,59 +593,133 @@
 			\label{fig:linearly_separable}
 		\end{figure}
 	
-		???\lipsum[1]
+	
 		
 		\subsubsection{Le modèle de la régression logistique}
 		
-		??? \lipsum[1]
+		Ce qu'il est convenu d'appeler \textit{régression logistique} concerne en fait une méthode de classification binaire, à l'instar du perceptron (voir le point \ref{sec:perceptron}). A la différence du perceptron, cependant, nous allons chercher à apprendre une hypothèse $h$ définie de $\mathbb{R}^n$ dans [0,1], et non pas dans {0,1},  une motivation étant d'interpréter $h(x)$ comme étant la probabilité que l'entrée $x$ appartienne à la classe d'intérêt que nous notons $\mathcal{C}_1$. \cite{antoine2018apprentissage}
+			
+		Dans le cas à deux classes, nous sommes intéressés par le rapport de probabilités conditionnelles :
+		\begin{equation}\label{eq:proba_cond}
+			\frac{\mathbf{P}(y=\mathcal{C}_1|\mathbf{x})}{\mathbf{P}(y=\mathcal{C}_2|\mathbf{x})} = \frac{\mathbf{P}(y=\mathcal{C}_1)}{\mathbf{P}(y=\mathcal{C}_2)} \ \frac{\mathbf{p}(\mathbf{x}|y=\mathcal{C}_1)}{\mathbf{p}(\mathbf{x}|y=\mathcal{C}_2)}
+		\end{equation}
+		
+		Bien entendu, on affecte l'entrée $x$ à la classe $\mathcal{C}_1$ si le rapport \ref{eq:proba_cond} est > 1, et à la classe $\mathcal{C}_1$ sinon \cite{antoine2018apprentissage}.
 		
 		
-		\begin{figure}[bth]%bth
-			\centering
-			\includegraphics[width=8cm]{images/classification_minimisation.png}
-			\caption{Classification linéaire qui montre la zone de décision et la droite séparatrice.}
-			\label{fig:classification_zone}
+		Le terme $\frac{\mathbf{p}(\mathbf{x}|y=\mathcal{C}_1)}{\mathbf{p}(\mathbf{x}|y=\mathcal{C}_2)}$ est n'est facile à estimer à partir des fréquences mesurées des classes $\mathcal{C}_1$ et $\mathcal{C}_2$. Pour estimer ce terme, il faut faire des hypothèses sur sa forme.
+		Dans la régression logistique, on fait l'hypothèse que le logarithme du rapport est de forme linéaire: 
+			%log p(xly=w₁) P(xy= =w₂) S = w x + wo
+		
+		$$ 
+		\log \left\lbrace \frac{\mathbf{p}(\mathbf{x}|y=\mathcal{C}_1)}{\mathbf{p}(\mathbf{x}|y=\mathcal{C}_2)} \right \rbrace  = w^Tx+b_0
+		$$
+		
+		Il est possible de ré-exprimer l'équation \ref{eq:proba_cond} en utilisant les propriétés logarithmique, rappel :
+		$$
+		\log(a.b) = \log(a)+\log(b) \qquad log(x)^n = n\log(x) 
+		$$
+		et en utilisant la règle de Bayes, l'équation \ref{eq:proba_cond} deviendra :
+		
+		\begin{equation}\label{eq:re_proba_cond}
+			\log\frac{\mathbf{P}(\mathcal{C}_1|\mathbf{x})}{1-\mathbf{P}(\mathcal{C}_1|\mathbf{x})} = \log\frac{\mathbf{P}(\mathcal{C}_1)}{\mathbf{P}(\mathcal{C}_2)} \ +\log\frac{\mathbf{p}(\mathbf{x}|y=\mathcal{C}_1)}{\mathbf{p}(\mathbf{x}|y=\mathcal{C}_2)} = w^Tx+b
+		\end{equation}
+		%\begin{figure}[bth]%bth
+		%	\centering
+			%\includegraphics[width=8cm]{images/classification_minimisation.png}
+			%\caption{Classification linéaire qui montre la zone de décision et la droite séparatrice.}
+			%\label{fig:classification_zone}
+		%\end{figure}
+		
+		%\begin{figure}[bth]%bth
+		%	\centering
+		%	\includegraphics[width=8cm]{images/classification_linear.png}
+		%	\caption{Classification linaire.}
+			%\label{fig:classification_linear}
+		%\end{figure}
+	
+		\begin{figure}[bth]
+			\myfloatalign
+			\subfloat[La zone de décision et la droite séparatrice.]
+			{\label{fig:classification_zone}
+				\includegraphics[width=.45\linewidth]{images/classification_minimisation.png}} \quad
+			\subfloat[Classification linaire de deux classes A et B]
+			{\label{fig:classification_linear}
+				\includegraphics[width=.45\linewidth]{images/classification_linear.png}} 
+			
+			\caption{Exemple de la classification}\label{fig:classification_2case}
 		\end{figure}
+		
+		La fonction de la droite séparatrice comme l'illustre la figure \ref{fig:classification_zone} et \ref{fig:classification_linear} s'écrit:
+		\begin{equation}\label{eq:droite_sep}
+			z = w _{1}x_{1}+\cdots +w_{n}x_{n}+b
+		\end{equation}
+		
+		avec $ i=1,\ldots ,n,$ %et $b = \varepsilon$
+		\\
+		$
+		\begin{cases}
+			\hat{y}=0 \ \ (y \in \mathcal{C}_1) & \quad \text{si  } z < 0\\
+			\hat{y}=1 \ \ (y \in \mathcal{C}_2) & \quad \text{si  } z \geq 0
+		\end{cases}
+		$\\
+		
+		
+		
+		%??? changement de plan
+		
+		La fonction logistique est une fonction sigmoïde , qui prend n'importe quelle entrée réelle $t$, et renvoie une valeur comprise entre zéro et un \cite{ml2008python}. La fonction logistique standard ${\displaystyle \sigma :\mathbb {R} \rightarrow (0,1)}$ est défini comme suit :
+		
+		$$
+		\sigma (t)={\frac {e^{t}}{e^{t}+1}}={\frac {1}{1+e^{-t}}}
+		$$
+		
+		Supposons que $t$ est une fonction linéaire (comme la droite de la formule \ref{eq:droite_sep}) $t = z$. Et la fonction logistique générale ${ p:\mathbb {R} \rightarrow (0,1)}$ peut maintenant l'écrire :
+		\begin{equation}\label{eq:sigmoid}
+			{\displaystyle p(x)=\sigma (t)= {\frac {1}{1+e^{-z}}} ={\frac {1}{1+e^{-(w _{1}x_{1}+\cdots +w_{n}x_{n}+b)}}}}
+		\end{equation}
+		
+		
+		
+		Dans le modèle logistique, $p(x)$ est interprété comme la probabilité de la variable dépendante ${Y}$ équivalant à un succès/cas-oui plutôt qu'à un échec/non-cas. Il est clair que les variables de réponse $Y_{i}$ ne sont pas identiquement répartis :$P(Y_{i}=1\mid X)$ diffère d'un point de données $X_{i}$ à l'autre, bien qu'ils soient indépendants étant donné la matrice de conception $X$ et paramètres partagés $w$ \cite{antoine2018apprentissage}. 
+		
 	
-		La fonction de la droite séparatrice comme l'illustre la figure \ref{fig:classification_zone} est écrit:
-		$$
-		z(x) = w _{1}x_{1}+\cdots +w_{n}x_{n}+\varepsilon _{i}=\mathbf { x} _{i}^{\mathsf {T}}{\boldsymbol {w }}+b,\qquad avec \quad i=1,\ldots ,n, \quad et \ b = \varepsilon
-		$$
-	
-		La fonction logistique est de la forme :
-		$$
-		{\displaystyle p(x)={\frac {1}{1+e^{-(x-\mu )/s}}}}
-		$$
-		
-		où $\mu$ est un paramètre de localisation (le milieu de la courbe, où ${\displaystyle p(\mu )=1/2})$ et $s$ est un paramètre d'échelle. Cette expression peut être réécrite comme suit :
-		
-		$${\displaystyle p(x)={\frac {1}{1+e^{-( w_{0}+w _{1}x)}}}}$$
-		
-		où ${\displaystyle w _{0}=-\mu /s}$ et est connue sous le nom d' interception (c'est l'interception verticale ou $y$ ordonnée à l'origine de la ligne ${\displaystyle y=w _{0}+w _{1}x})$, et ${\displaystyle w _{1}=1/s}$ (paramètre d'échelle inverse ou paramètre de taux ) : il s'agit de l'ordonnée à l'origine et de la pente des log-odds en fonction de x . Inversement, ${\displaystyle \mu =-w _{0}/w _{1}}$ et ${\displaystyle s=1/w _{1}}$.
-		
 		\begin{figure}[bth]%bth
 			\centering
 			\includegraphics[width=8cm]{images/reg_log_curve.png}
-			\caption{Graphique d'une courbe de régression logistique ajustée aux données $(x_n , y_n)$. \cite[image de]{ml2008python}
+			\caption{Graphique représentant fonction sigmoïde logistique ajustée aux données $(x_n , y_n)$. \cite[image de][]{ml2008python}
 			}
 			\label{fig:reg_log_curve}
 		\end{figure}
 	
-	\paragraph*{La vraisemblance} 
+	\paragraph*{La vraisemblance:}Indique la plausibilité du  modèle vis-a-vis du vraies données.
+	Soit l'échantillon $ \mathcal{S} = {(\mathbf{x}_1, y_1),..., (\mathbf{x}_m, y_m)}$, avec $y_i \in \{\mathcal{C}_1,\mathcal{C}_2\}, \forall_i \in (1,...,m)$. Sa vrai semblance en fonction des paramètres à apprendre s'écrit:
 	
-	\begin{figure}[bth]%bth
-		\centering
-		\includegraphics[width=8cm]{images/classification_linear.png}
-		\caption{Classification linaire.}
-		\label{fig:classification_linear}
-	\end{figure}
-
+	\begin{equation}\label{eq:likelyhood}
+		L = \prod_{i=1}^{m} {p_i}^{y_i} (1-p_i)^{1-y_i}
+	\end{equation}
 	
+	où $m$ est le nombre d'exemples d'apprentissage appartenant à la classe.
+	
+	Dans \cite{antoine2018apprentissage}, il est montré que ces paramètres peuvent être obtenus par maximisation de la vraisemblance des paramètres conditionnellement aux exemples. Il a été de plus montré que, sous des conditions très générales [?], le maximum de $L$ est unique.
+	La maximisation de la vraisemblance se fait sois en passant par le logarithme, pour obtenir la log-vraisemblance :
+	\begin{equation}
+		\begin{split}
+			\log(L)  & = \log(\prod_{i=1}^{m} {p_i}^{y_i} (1-p_i)^{1-y_i}) \\
+			& =\sum_{i=1}^{m} \log( {p_i}^{y_i}) +\log((1-p_i)^{1-y_i})\\
+			& =\sum_{i=1}^{m} {y_i}\log( {p_i}) +{(1-y_i)}\log(1-p_i)\\
+		\end{split}
+	\end{equation}
+	Comme en Machine Learning on est plus apte à minimiser qu'à maximiser et Maximiser une fonction $f(\cdot)$ consiste à Minimiser $-f(\cdot)$ alors le log-vraisemblance s'écrira: 
+	\begin{equation}\label{eq:log-likelyhood}
+		\mathcal{L} = -\frac{1}{m}\sum_{i=1}^{m} {y_i}\log( {p_i}) +{(1-y_i)}\log(1-p_i)
+	\end{equation}
+	avec le terme $\frac{1}{m}$ pour augmenter la précision.\\
+	Avec cette fonction, nous allons maximiser la vraisemblance $L$ en minimisant $-\log(L)$.	
 		
 	
 	
 \section{Réseau de neurones, apprentissage en profondeur}
-	\lipsum[1]
 	\begin{figure}[hth]%bth
 		\centering
 		\includegraphics[width=\textwidth]{images/neuron.png}
@@ -660,8 +729,15 @@
 	\end{figure}
 
 
-	\subsection{Perceptron}
-	\lipsum[1]
+	\subsection{Perceptron} \label{sec:perceptron}
+	Un perceptron est une unité de réseau neuronal (un neurone artificiel) qui effectue certains \textit{calculs} pour détecter des caractéristiques ou une intelligence économique dans les données d'entrée.\\ 
+	Le perceptron, à l'instar du neurone artificiel classique, est un algorithme d'apprentissage supervisé de classificateurs binaires. Un classificateur binaire est une fonction qui peut décider si une entrée, représentée par un vecteur de nombres, appartient ou non à une classe spécifique. Il s'agit d'un type de classificateur linéaire , c'est-à-dire un algorithme de classification qui fait ses prédictions sur la base d'une fonction prédictive linéaire combinant un ensemble de poids avec le vecteur de caractéristiques.
+	
+	\subsubsection{Calcul avec l'algorithme du perceptron}
+	???
+	
+	Les perceptrons à une seule couche ne sont capables d'apprendre que des motifs linéairement séparables . Pour une tâche de classification avec une fonction d'activation d'étape, un seul nœud aura une seule ligne divisant les points de données formant les motifs. Plus de nœuds peuvent créer plus de lignes de division, mais ces lignes doivent en quelque sorte être combinées pour former des classifications plus complexes. Une deuxième couche de perceptrons, voire de nœuds linéaires, suffit à résoudre de nombreux problèmes autrement non séparables.
+
 	\begin{figure}[hth]%bth
 		\centering
 		\includegraphics[width=\textwidth]{images/perceptron_neuron.png}
@@ -669,6 +745,9 @@
 		}
 		\label{fig:perceptron_neuron}
 	\end{figure}
+
+	\subsubsection{Perceptron Multicouche ???}
+
 
 
 	\subsection{Neurones}
