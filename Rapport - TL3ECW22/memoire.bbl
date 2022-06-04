@@ -1,0 +1,61 @@
+\begin{thebibliography}{10}
+
+\bibitem{ahadjitse2013reconnaissance}
+Yaovi Ahadjitse.
+\newblock {\em Reconnaissance d'objets en mouvement dans la vid{\'e}o par
+  description g{\'e}om{\'e}trique et apprentissage supervis{\'e}}.
+\newblock PhD thesis, Universit{\'e} du Qu{\'e}bec en Outaouais, 2013.
+
+\bibitem{akheel2021stochastic}
+T~Syed Akheel, V~Usha Shree, and S~Aruna Mastani.
+\newblock Stochastic gradient descent linear collaborative discriminant
+  regression classification based face recognition.
+\newblock {\em Evolutionary Intelligence}, pages 1--15, 2021.
+
+\bibitem{amari1993backpropagation}
+Shun-ichi Amari.
+\newblock Backpropagation and stochastic gradient descent method.
+\newblock {\em Neurocomputing}, 5(4-5):185--196, 1993.
+
+\bibitem{bottou2010large}
+L{\'e}on Bottou.
+\newblock Large-scale machine learning with stochastic gradient descent.
+\newblock In {\em Proceedings of COMPSTAT'2010}, pages 177--186. Springer,
+  2010.
+
+\bibitem{bottou2012stochastic}
+L{\'e}on Bottou.
+\newblock Stochastic gradient descent tricks.
+\newblock In {\em Neural networks: Tricks of the trade}, pages 421--436.
+  Springer, 2012.
+
+\bibitem{deepa2021ai}
+Natarajan Deepa, B~Prabadevi, Praveen~Kumar Maddikunta, Thippa~Reddy Gadekallu,
+  Thar Baker, M~Ajmal Khan, and Usman Tariq.
+\newblock An ai-based intelligent system for healthcare analysis using
+  ridge-adaline stochastic gradient descent classifier.
+\newblock {\em The Journal of Supercomputing}, 77:1998--2017, 2021.
+
+\bibitem{framling2004scaled}
+Kary Fr{\"a}mling.
+\newblock Scaled gradient descent learning rate.
+\newblock {\em Reinforcement Learning With Light-Seeking Robot, Proceedings of
+  ICINCO}, pages 1--8, 2004.
+
+\bibitem{friess1999kernel}
+Thilo-Thomas Frie{\ss} and Robert~F Harrison.
+\newblock A kernel based adaline.
+\newblock In {\em ESANN}, volume~72, pages 21--23. Citeseer, 1999.
+
+\bibitem{bishop2006pattern}
+Pattern Recognition and Machine Learning.
+\newblock {\em Christopher M. Bishop}.
+\newblock Springer, 2006.
+
+\bibitem{wijnhoven2010fast}
+Rob~GJ Wijnhoven and PHN de~With.
+\newblock Fast training of object detection using stochastic gradient descent.
+\newblock In {\em 2010 20th International Conference on Pattern Recognition},
+  pages 424--427. IEEE, 2010.
+
+\end{thebibliography}

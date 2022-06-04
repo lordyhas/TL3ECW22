@@ -1,0 +1,132 @@
+\documentclass[11pt,a4paper]{report}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{epsfig}
+%\usepackage{setspace}
+%\usepackage{url}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{thm}{Theorem}
+%\newcommand{\textit}{\italic}
+\newcommand{\italic}[1]{\textit{#1}}
+\newcommand{\n}{\\}
+\newcommand{\ie}{i.\,e.}
+\newcommand{\Ie}{I.\,e.}
+\newcommand{\eg}{e.\,g.}
+\newcommand{\Eg}{E.\,g.} 
+\newcommand{\cf}{\emph{cf.}} 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\Large{{\bf{Invariance des transformations géométriques et qualités des objets dans la  détection de plaques d'immatriculation}}\\
+{\textit{(Invariance of geometric transformations and object qualities in license plate detection)}}
+
+}}
+
+% title : Invariance des transformations géométriques et qualités des objets dans la  détection de plaques d'immatriculation
+% sub-title : (Invariance of geometric transformations and object qualities in license plate detection)
+\author{TSHELEKA KAJILA Hassan}
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+	
+	\renewcommand\thesubsubsection{\Alph{subsubsection}}
+	\setcounter{chapter}{-1}
+	
+	\pagenumbering{roman} 
+	
+	\maketitle
+
+	
+	%\pagebreak
+	
+	%\addcontentsline{toc}{chapter}{Résumé}
+	\addcontentsline{toc}{chapter}{Rapport}
+	
+	\chapter*{Rapport} 
+	
+	Ce travail vise à proposer une méthode  intelligente, basée sur l'intelligence artificielle, qui permet aux ordinateurs et aux systèmes informatiques de dériver des informations significatives à partir d'une images numériques, et d'autres entrées visuelles avec un coût plus bas que possible. Dans notre contexte la reconnaissance des plaques d’immatriculation des véhicules à l'aide d’un optimiseur de la famille de descente de gradient implémenter dans un réseau de neurones convolutifs (CNN) . \\
+	Des algorithmes d'optimisation de la famille de \textbf{descente de gradient stochastique} (en anglais: \textbf{Stochastic Gradient Descent}) montrent des performances étonnantes pour les problèmes à grande échelle, lorsque l'ensemble d'apprentissage est volumineux.
+	Les variants du SGD n'utilisent qu'un seul nouvel échantillon d'apprentissage à chaque itération, sont \\asymptotiquement efficaces après un seul passage sur l'ensemble d'apprentissage.
+	\\Pour minimiser la \textbf{fonction coût} du classificateur, la SGD adopte un modèle d'optimisation convexe. De plus, pour augmenter la vitesse de convergence du classificateur, à chaque étape, elle tire un échantillon aléatoire de l'ensemble des fonctions ($f_i$), de la fonction objectif, constituant la somme des pertes.\\\\
+	Pour la minimisation de la fonction coût nous utilisons des algorithmes comme ASGD, ADAM, ADADELTA, NAG. Puis faire une étude comparative de leurs performances et dire lequel de ces algorithmes produit un modèle entraîner efficace, sous la contrainte des différentes transformations géométrique d'une images.\\\\
+	Les modèles doivent être invariants sous des transformations géométriques et qualités des objets observés.
+	
+	 
+	\begin{itemize}
+		\item Invariance - rotation : une même image doit être reconnu même après une rotation.
+		\item Invariance - échelle : une même image doit être reconnu même sous une échelle différentes.
+		\item Invariance - transformations : une même image doit être reconnu même sous des angles différents.
+	\end{itemize}
+	Les différents algorithmes d'optimisation seront utilisés pour mesurer le taux d’erreur sous la contrainte d'invariance des transformations et qualités. 
+	
+	
+
+	
+		
+	
+	
+	
+
+	
+	%\vspace{1 cm}
+		
+	%\textbf{Mots clés~:} Apprentissage supervisé, vision par ordinateur, Descente de gradient stochastique, Adaline, ANPR, ALPR.
+	
+	%\pagebreak
+	
+	%\tableofcontents
+	
+	\pagebreak
+	
+	%\pagenumbering{arabic}
+	
+	%##########################################################################################
+	%                          			 CHAPTER
+	%##########################################################################################
+	
+	%\input{contents/intro.tex}
+	
+	%##########################################################################################
+	%                          			 CHAPTER
+	%##########################################################################################
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	%##########################################################################################
+	%                          			 BIBLIOGRAPHY
+	%##########################################################################################
+	 
+	
+	\nocite{*}
+	\bibliographystyle{plain}
+	\bibliography{biblio}
+	
+	
+	
+	
+	
+	
+\end{document}

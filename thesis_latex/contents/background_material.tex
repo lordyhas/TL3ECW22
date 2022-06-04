@@ -5,7 +5,7 @@
 %
 %#############################################################################
 
-\textcolor{cyan}{\chapter{Les éléments mathématiques pour l'apprentissage automatique}}
+\textcolor{cyan}{\chapter{Concepts et éléments mathématiques de l'apprentissage profond}}
 %\textcolor{cyan}{\chapter{Les bases mathématiques pour l'apprentissage automatique }}%Machine Learning
 \section{Les bases d'optimisation numérique et statistique}
 	\subsection{Éléments de calcul différentiel}
@@ -38,11 +38,11 @@
 		\end{equation}
 		on dit que la fonction est strictement convexe dans $\mathcal{C}$,  \cite{jtshiman:2021}\\\\
 		Exemple: 
-		\begin{itemize}
-			\item[--] La fonction $ f(x) = x^2$ est convexe. 
-			\item[--] La fonction $ f(x) = x^T x$ est convexe.
-			\item[--] La fonction $ f(x) = x^T Ax$ est convexe, ssi A est symétrique semi-définie positive.
-		\end{itemize}
+		%\begin{itemize}
+			%\item[--] La fonction $ f(x) = x^2$ est convexe. 
+			%\item[--] La fonction $ f(x) = x^T x$ est convexe.
+			%\item[--] La fonction $ f(x) = x^T Ax$ est convexe, ssi A est symétrique semi-définie %positive.
+		%\end{itemize}coulombeau2013math
 	
 		%\subsection{Extrema}	
 		\paragraph*{Propriété d'une fonction dérivable : } (Extremum local) 
@@ -92,7 +92,7 @@
 		
 		
 			
-		Le théorème de Taylor-Young assure \cite[][p. 241]{coulombeau2013math} qu'une fonction $f$ dérivable n fois au point $x_0$ (avec ${\displaystyle n\geq 1}n\geq 1)$ admet un DLn en ce point :
+		Le théorème de Taylor-Young assure \cite{coulombeau2013math} qu'une fonction $f$ dérivable n fois au point $x_0$ (avec ${\displaystyle n\geq 1}n\geq 1)$ admet un DLn en ce point :
 		
 		$$
 			{\displaystyle f(x)=f(x_{0})+f'(x_{0})(x-x_{0})+{\frac {f''(x_{0})}{2!}}(x-x_{0})^{2}+\dots +{\frac {f^{(n)}(x_{0})}{n!}}(x-x_{0})^{n}+o((x-x_{0})^{n})}
@@ -154,7 +154,7 @@
 		$$ {  
 			f(x-h)=f(x)-\langle \nabla f(x)\mid h\rangle +o(h)
 		}$$
-		\textit{Numériquement, il est très intéressant de faire ensuite la demi-différence des deux développements pour obtenir la valeur du gradient et on note que celui-ci ne dépend pas en fait de la valeur de la fonction au point $x : f (x)$. Cette formule a l'avantage de tenir compte des gradients du 2e ordre et est donc beaucoup plus précise et numériquement robuste. L'hypothèse est, en pratique, de connaitre les valeurs "passé" et "futur" de la fonction autour d'un petit voisinage du point $x$}.\\
+		\textit{Numériquement, il est très intéressant de faire ensuite la demi-différence des deux développements pour obtenir la valeur du gradient et on note que celui-ci ne dépend pas en fait de la valeur de la fonction au point $x : f (x)$. Cette formule a l'avantage de tenir compte des gradients du 2e ordre et est donc beaucoup plus précise et numériquement robuste. L'hypothèse est, en pratique, de connaitre les valeurs "passé" et "futur" de la fonction autour d'un petit voisinage du point $x$}\cite{jtshiman:2021}.\\
 		\paragraph*{Définition numérique:}
 		Une fonction multivariée (à variable vectorielle)
 		$ f(x)	: \mathbb{R}^n \rightarrow \mathbb{R} : x \rightarrow f(x) $ définie sur un ouvert $O \in \mathbb{R}^n$ est dite dérivable (au sens de Fréchet, voir le point \ref{sec:drv_frechet}) en $x$ ssi il existe un vecteur noté $\nabla f(x) \in \mathbb{R}^n$ tel que
@@ -280,7 +280,7 @@
 
 %\textcolor{cyan}{\chapter{Apprentissage automatique : Modélisation et Classification }}
 	%\section{Généralité}
-\section{Apprentissage supervisé, modélisation et classification}
+\section{Concepts de la modélisation et classification des données}
 	\subsection{Introduction}
 	\subsubsection{Les ingrédients d'apprentissage}
 		Résoudre un problème d'apprentissage, c'est d'abord le comprendre, c'est-à-dire discuter longuement avec les experts du domaine concerné pour identifier quelles sont les "entrées", les  "sorties" ou résultats désirés, les connaissances disponibles, les particularités des données, par exemple: valeurs manquantes, taux de bruit dans les mesures des attributs de description, proportions des classes, stationnarité ou pas de l'environnement. 
@@ -289,7 +289,7 @@
 		%\subsubsection{Algorithme qui apprennent}
 	
 	
-	\subsubsection{Modélisation}\label{sec:modelisation}
+	\subsubsection{Concepts de la modélisation}\label{sec:modelisation}
 	La modélisation est la conception et l'utilisation d'un \textit{modèle}. Selon son objectif et les moyens utilisés, la modélisation est dite mathématique, géométrique, 3D, empirique, etc. 
 	En informatique, la modélisation permet de concevoir l'architecture globale d'un système d'information, ainsi que l'organisation des informations à l'aide de la modélisation des données ;
 	
@@ -305,9 +305,9 @@
 	\Eg: Prenons l'exemple de données décrites dans l'espace d'entrée $\mathcal{X} = \mathbb{R}^n$ avec $n$ variables réelles et supposons-les étiquetées par $\times$ ou par $\bullet$. On cherche donc une fonction de décision $h$, appelée hypothèse ou modèle, telle qu'elle soit capable d'étiqueter toute entrée 
 	$x \in \mathcal{X}, h: x \rightarrow \{\times,\bullet\}$. Reste à définir l'espace des hypothèses ou modèles $\mathcal{H}$ que l'on est prêt à considérer.
 	
-	Toujours en considérant le problème de prédiction basique (présenté ci-dessus), on pourrait définir une hypothèse par une procédure qui examine les trois plus proches voisins du point à étiqueter $x$ et qui choisit l'étiquette majoritaire parmi ces trois points pour étiqueter $x$. Il n'y a évidemment plus de paramètres pour définir les modèles possibles \cite[p. 24]{antoine2018apprentissage}.
+	Toujours en considérant le problème de prédiction basique (présenté ci-dessus), on pourrait définir une hypothèse par une procédure qui examine les trois plus proches voisins du point à étiqueter $x$ et qui choisit l'étiquette majoritaire parmi ces trois points pour étiqueter $x$. Il n'y a évidemment plus de paramètres pour définir les modèles possibles \cite{antoine2018apprentissage}.
 	
-	Un \textbf{modèle non paramétrique} est construit selon les informations provenant des données. Dans \cite{antoine2018apprentissage} \cite[p. 120]{bishop2006pattern} il est expliqué que : La régression non paramétrique exige des tailles d'échantillons plus importantes que celles de la régression basée sur des modèles paramétriques parce que les données doivent fournir la structure du modèle ainsi que les estimations du modèle.
+	Un \textbf{modèle non paramétrique} est construit selon les informations provenant des données. Dans \cite{bishop2006pattern, antoine2018apprentissage} il est expliqué que : La régression non paramétrique exige des tailles d'échantillons plus importantes que celles de la régression basée sur des modèles paramétriques parce que les données doivent fournir la structure du modèle ainsi que les estimations du modèle.
 	
 	Un \textbf{modèle paramétrique} est, s'il est approximativement valide, plus puissant qu'un modèle non paramétrique, produisant des estimations d'une fonction de régression qui ont tendance à être plus précises que ce que nous donne l'approche non paramétrique \cite{matloff2017statistical}. Cela devrait également se traduire par une prédiction plus précise. 
 	
@@ -381,7 +381,7 @@
 	
 	
 	
-	\subsubsection{Le problème de la régression linéaire}
+	\subsubsection{Le cas de la régression linéaire}
 		On appelle problèmes de régression de tels problèmes, dans lesquels la sortie est numérique, généralement un vecteur de réels, supposé dépendre de la valeur d'un certain nombre de facteurs en entrée \cite{matloff2017statistical}.
 		
 		\begin{figure}[hth]%bth
@@ -538,11 +538,12 @@
 	\end{figure}
 
 	\paragraph*{}
-	La régression linéaire multiple est une généralisation de la régression linéaire simple au cas de plus d'une variable indépendante, et un cas particulier des modèles linéaires généraux, limités à une variable dépendante. Le modèle de base de la régression linéaire multiple est
+	La régression linéaire multiple est une généralisation de la régression linéaire simple au cas de plus d'une variable indépendante, et un cas particulier des modèles linéaires généraux, limités à une variable dépendante. Le modèle de base de la régression linéaire multiple est \n
+	???
 	
 	
 	\subsection{Les problèmes de classifications}
-		En apprentissage automatique, les classifieurs linéaires sont une famille d'algorithmes de classement statistique. Le rôle d'un classifieur est de classer dans des groupes (des classes) les échantillons qui ont des propriétés similaires, mesurées sur des observations. Un classifieur linéaire est un type particulier de classifieur, qui calcule la décision par combinaison linéaire des échantillons.
+		En apprentissage automatique, les classifieurs linéaires sont une famille d'algorithmes de classement statistique. Le rôle d'un classifieur est de classer dans des groupes (des classes) les échantillons qui ont des propriétés similaires, mesurées sur des observations. Un classifieur linéaire est un type particulier de classifieur, qui calcule la décision par combinaison linéaire des échantillons \cite{antoine2018apprentissage}.
 		
 		\begin{figure}[bth]%bth
 			\centering
@@ -723,7 +724,7 @@
 	\begin{figure}[hth]%bth
 		\centering
 		\includegraphics[width=\textwidth]{images/neuron.png}
-		\caption{Neurone biologique \cite[image de]{ml2008python}
+		\caption{Neurone biologique \cite{ml2008python}
 		}
 		\label{fig:bio_neuron}
 	\end{figure}
@@ -731,7 +732,7 @@
 
 	\subsection{Perceptron} \label{sec:perceptron}
 	Un perceptron est une unité de réseau neuronal (un neurone artificiel) qui effectue certains \textit{calculs} pour détecter des caractéristiques ou une intelligence économique dans les données d'entrée.\\ 
-	Le perceptron, à l'instar du neurone artificiel classique, est un algorithme d'apprentissage supervisé de classificateurs binaires. Un classificateur binaire est une fonction qui peut décider si une entrée, représentée par un vecteur de nombres, appartient ou non à une classe spécifique. Il s'agit d'un type de classificateur linéaire , c'est-à-dire un algorithme de classification qui fait ses prédictions sur la base d'une fonction prédictive linéaire combinant un ensemble de poids avec le vecteur de caractéristiques.
+	Le perceptron, à l'instar du neurone artificiel classique, est aussi un algorithme d'apprentissage supervisé de classificateurs binaires. Un classificateur binaire est une fonction qui peut décider si une entrée, représentée par un vecteur de nombres, appartient ou non à une classe spécifique. Il s'agit d'un type de classificateur linéaire , c'est-à-dire un algorithme de classification qui fait ses prédictions sur la base d'une fonction prédictive linéaire combinant un ensemble de poids avec le vecteur de caractéristiques.
 	
 	\subsubsection{Calcul avec l'algorithme du perceptron}
 	???
@@ -741,7 +742,7 @@
 	\begin{figure}[hth]%bth
 		\centering
 		\includegraphics[width=\textwidth]{images/perceptron_neuron.png}
-		\caption{Neurone artificiel modèle : Perceptron \cite[image de]{ml2008python}
+		\caption{Neurone artificiel modèle : Perceptron \cite[][]{ml2008python}
 		}
 		\label{fig:perceptron_neuron}
 	\end{figure}
@@ -750,11 +751,59 @@
 
 
 
-	\subsection{Neurones}
+	%	\subsection{Neurones}
+	%\lipsum[1]
+	%\subsubsection{Réseau des neurones}
+	
+	
+	\subsection{Réseau neuronal convolutif (CNN)}
+	???
+	\cite{shin2016deep} 
+	
+	\subsubsection{La convolution}
+	
+	La convolution est une opération mathématique simple généralement utilisée pour le traitement et la reconnaissance d’images. Sur une image, son effet s’assimile à un filtrage dont voici le fonctionnement
+	
+	???
 	\lipsum[1]
+	\subsubsection{Les différents couches d'un CNN}
+	\lipsum[1]
+	\subsubsection{L'architecture VGGNet}
+	
+	VGG signifie Visual Geometry Group; il s'agit d'une architecture standard de réseau de neurones à convolution profonde (CNN) à plusieurs couches. %Le "profond" fait référence au nombre de couches avec VGG-16 ou VGG-19 composé de 16 et 19 couches convolutionnelles.
 	
 	
-	\subsubsection{Réseau neuronal convolutif (CNN)}
+	
+	L'architecture VGG est  la base d'un modèle innovant de reconnaissance d'objets. Développé en tant que réseau neuronal profond,  VGGNet va au-delà d'ImageNet et dépasse la ligne de base  de nombreuses tâches et ensembles de données. De plus, c'est toujours l'une des architectures de reconnaissance d'images les plus populaires \cite{tammina2019transfer, antoine2018apprentissage}.
+	
+	Les VGGNet sont basés sur les caractéristiques les plus essentielles des réseaux de neurones convolutifs (CNN). Le graphique suivant montre le concept de base du fonctionnement d'un CNN.
+	
+	
+	\begin{list}{--}{Un bref coup d'œil à l'architecture de VGG :}
+		\item \textbf{Entrée} : Le VGGNet prend une taille d'entrée d'image de 224×224. Pour le concours ImageNet, les créateurs du modèle ont recadré le patch central 224 × 224 dans chaque image pour conserver la cohérence de la taille d'entrée de l'image\cite{simonyan2014very}.
+		
+		\item \textbf{Couches convolutives }: Les couches convolutives de VGG tirent parti d'un champ de réception minimal, c'est-à-dire 3 × 3, la plus petite taille possible qui capture toujours haut/bas et gauche/droite. De plus, il existe également des filtres de convolution 1 × 1 agissant comme une transformation linéaire de l'entrée. Vient ensuite une unité ReLU, qui est une énorme innovation d'AlexNet qui réduit le temps de formation. ReLU signifie fonction d'activation d'unité linéaire rectifiée ; c'est une fonction linéaire par morceaux qui produira l'entrée si elle est positive ; sinon, la sortie est nulle. La foulée de convolution est fixée à 1 pixel pour conserver la résolution spatiale préservée après la convolution (la foulée est le nombre de décalages de pixels sur la matrice d'entrée)   \cite{tammina2019transfer}.
+		
+		\item \textbf{Couches cachées} : Toutes les couches cachées du réseau VGG utilisent ReLU. VGG n'utilise généralement pas la normalisation de la réponse locale (LRN) car elle augmente la consommation de mémoire et le temps de formation. De plus, il n'apporte aucune amélioration à la précision globale \cite{tammina2019transfer}.
+		
+		\item \textbf{Couches entièrement connectées} : Le VGGNet a trois couches entièrement connectées. Sur les trois couches, les deux premières ont 4096 canaux chacune et la troisième a 1000 canaux, 1 pour chaque classe \cite{tammina2019transfer}.
+	
+	\end{list}
+	%------------------------------------------------------------------------------
+	%\cite{simonyan2014very}
+	%\cite{shin2016deep} 
+	%\cite[ReLU]{pretorius2018critical}
+	%------------------------------------------------------------------------------
+	
+
+	\begin{figure}[hth]%bth
+		\centering
+		\includegraphics[width=\textwidth]{images/VGG-16-network-architecture.png}
+		\caption{CNN : architecture VGG-16 \cite[][]{ml2008python}
+		}
+		\label{fig:VGG16_network}
+	\end{figure}
+	
 	\lipsum[1]
 	%\subsubsection{Réseau neuronal récurrent (RNN)}
 	%\lipsum[1]

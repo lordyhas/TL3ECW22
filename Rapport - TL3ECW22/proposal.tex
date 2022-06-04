@@ -1,0 +1,68 @@
+\documentclass[12pt,a4paper]{article}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{epsfig}
+%\usepackage{setspace}
+%\usepackage{url}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{thm}{Theorem}
+%\newcommand{\textit}{\italic}
+\newcommand{\italic}[1]{\textit{#1}}
+\newcommand{\n}{\\}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\Large{{\bf{Machine Learning: Étude de la minimisation d'erreur dans l'apprentissage supervisé, avec une application de la technologie ANPR}}\\
+\small{\textit{(Machine Learning: Study of error minimization in supervised learning, with an application to ANPR)}}
+%(Supervised learning, License  Recognition using the stochastic gradient descent algorithm)
+
+%Apprentissage supervisé, la reconnaissance de plaque d'immatriculation utilisant l'algorithme de descente de gradient stochastique.
+}
+}
+\author{TSHELEKA KAJILA Hassan}
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\section*{Résumé} 
+	
+	Au cours de la dernière décennie, la taille des données a augmenté plus rapidement que la vitesse des processeurs. Dans ce contexte, faire un traitement de {reconnaissance} des formes dans des images et vidéos, les ensembles de données d'entraînement pour les problèmes de détection d'objets sont généralement très volumineux et les capacités des méthodes d'apprentissage automatique statistique sont limitées par le temps de calcul plutôt que par la taille de l'échantillon. 
+	
+	Le cas des problèmes d'apprentissage à grande échelle implique la complexité de calcul de l'algorithme d'optimisation sous-jacent de manière non triviale. Des algorithmes d'optimisation improbables tels que la \textbf{descente de gradient stochastique} (en anglais: \textbf{Stochastic Gradient Descent} ou SGD) montre des performances étonnantes pour les problèmes à grande échelle, lorsque l'ensemble d'apprentissage est volumineux. \\
+	En particulier, les variants du SGD n'utilisent qu'un seul nouvel échantillon d'apprentissage à chaque itération, sont asymptotiquement efficaces après un seul passage sur l'ensemble d'apprentissage.	
+	
+	Ce travail vise à proposer une méthode  intelligente, basée sur l'intelligence artificielle, qui permet aux ordinateurs et aux systèmes informatiques de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, avec un coût plus bas que possible. Dans notre contexte la reconnaissance des plaques d’immatriculation des véhicules à l'aide d’un classificateur de la famille de descente de gradient stochastique. Pour minimiser la \textbf{fonction coût} du classificateur, la SGD adopte un modèle d'optimisation convexe. De plus, pour augmenter la vitesse de convergence du classificateur, la descente de gradient stochastique, à chaque étape, elle tire un échantillon aléatoire de l'ensemble des fonctions ($f_i$), de la fonction objectif, constituant la somme.
+	
+
+	
+	\vspace{1 cm}
+		
+	\textbf{Mots clés~:} Apprentissage supervisé, vision par ordinateur, Descente de gradient stochastique, Adaline, ANPR, ALPR. 
+	
+	\nocite{*}
+	\bibliographystyle{plain}
+	\bibliography{biblio}
+	
+	
+	
+	
+\end{document}

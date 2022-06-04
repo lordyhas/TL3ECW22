@@ -1,0 +1,63 @@
+
+\chapter{Introduction}
+	\section{Présentation (généralités)}
+	
+		L’intelligence désigne communément le potentiel des capacités mentales et cognitives d'un individu, animal ou humain, lui permettant de résoudre un problème ou de s'adapter à son environnement. L'intelligence nous fait ressentir ce besoin d’apprendre pour arriver à nos fins, extrinsèquement l'intelligence c’est l'apprentissage. Pour que nous puissions dire qu’une machine est intelligente, premièrement elle doit passer par une phase d'apprentissage.  Apprendre à résoudre des problèmes ou à réaliser des tâches par lui-même d’une façon autonome. Dans le IA nous parlons de l’apprentissage automatique (en anglais: machine Learning, ML), nous utilisons plusieurs paradigmes d’apprentissage automatique:  apprentissage supervisé, apprentissage non supervisé, apprentissage par renforcement, apprentissage en profondeur.\\
+	
+		L'apprentissage supervisé représente une grande partie de l'activité de recherche en apprentissage automatique (ML) et de nombreuses techniques d'apprentissage supervisé ont trouvé une application dans le traitement de contenu multimédia. La caractéristique qui définit l'apprentissage supervisé est la disponibilité de données d'apprentissage annotées\cite{cunningham2008supervised}. Le nom évoque l'idée d'un \textbf{superviseur} qui instruit le système d'apprentissage sur les étiquettes à associer à des modèles \footnote{Un modèle de machine learning est le résultat généré lorsque vous entraînez votre algorithme d'apprentissage automatique avec des données.} d'entraînement.\\ 
+		
+		L’application de cette étude est orientée vers la reconnaissance automatique d'objet dans les vidéos et images, une des applications intéressantes, parmi tant d'autres, dans l'intelligence artificielle.\\
+		La reconnaissance automatique d'objet est un problème important dans la vision par ordinateur (Computer Vision 
+			\footnote{La vision par ordinateur est un domaine de l'intelligence artificielle (IA) qui permet aux ordinateurs et aux systèmes de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, et de prendre des mesures ou de faire des recommandations sur la base de ces informations.}) 
+		et en traitement d'images. Cette tâche est très utile vue l'accroissement du nombre de vidéos générées par des smartphones, des systèmes de sécurité, des caméras de circulation et autres dispositifs dotés d'instruments visuels. La reconnaissance automatique des objets en vidéo peut ainsi renforcer la sécurité, faciliter la gestion des vidéos ainsi que permettre de nouvelles applications en interaction homme/machine.	
+		Par ailleurs, les images numériques et la vidéo sont devenues indispensables pour divers domaines d'application, tels que la détection d'intrusions pour la sécurité, la surveillance du trafic routier, la médecine pour l'imagerie médicale, ou encore lors des événements sportifs (ex., renforcement de l'arbitrage, création automatique de résumés).
+		Des contraintes d'exploitation découlent des observations citées ci-dessus, parmi lesquelles nous citerons celles qui sont liées à la reconnaissance des objets en mouvement dans les vidéos. Par exemple, de nos jours, un très grand nombre de caméras est déployé exclusivement pour la surveillance vidéo \cite{ahadjitse2013reconnaissance} . 
+		Souvent, le contenu de ces vidéos est interprété par des opérateurs humains qui engendrent des coûts exorbitants pour le suivi et l'analyse du contenu, sans mentionner les erreurs qui peuvent être induites par la fatigue et l'inattention humaine. 
+		Une des interrogations importantes abordés lors  l'apprentissage supervisé appliqué dans la surveillance vidéo est la reconnaissance des types d'objets en mouvement et leurs actions. Afin de détecter, par exemple, des menaces potentielles (ex., vols, attentats, accidents), ou tout simplement pour des fins de statistiques (ex., compter le nombre d'individus, de voitures dans une entrée de parc).\\	
+		Les applications du monde réel démontrent l'importance de la vision par ordinateur pour les entreprises, les secteurs du divertissement, des transports, des soins de santé et dans la vie quotidienne. L'un des principaux moteurs de la croissance de ces applications est le flot d'informations visuelles provenant des médias numériques (ex., internet, la télévision, les vidéos personnelles, la surveillance vidéo). 
+		
+		
+
+	\section{Contexte et problématique de notre recherche}
+	
+		Ce travail présente les résultats d'une étude approfondie sur les algorithmes de minimisation d’erreur, la fonction coût\footnote{Dans l'optimisation mathématique et en statistique, une fonction de perte ou une fonction de coût est généralement utilisée pour l'estimation des paramètres , et l'événement en question est une fonction de la différence entre les valeurs estimées et vraies pour une instance de données.} (en anglias : loss function). \\
+		
+		Dans ce contexte, faire une une application dans le traitement de reconnaissance des formes dans des vidéos, les ensembles de données d'entraînement pour les  problèmes de détection d'objets sont généralement très volumineux et les capacités des méthodes d'apprentissage automatique statistique sont limitées par le temps de calcul plutôt que par la taille de l'échantillon\cite{bottou2010large}.\\
+		Par exemple, pour entraîner une machine à reconnaître des plaques d'immatriculation de voiture, elle doit recevoir de grandes quantités d'images de plaques d'immatriculation et d'éléments liés aux plaques pour apprendre les différences et reconnaître une plaque, en particulier la voiture qui porte une plaque sans défaut. Plus nous avons des données, plus nous gagnons en précision et plus la complexité en temps augmente.\\
+		
+		Une analyse plus précise révèle des compromis qualitativement différents pour le cas des problèmes d'apprentissage à petite et à grande échelle \cite{bottou2010large}. La complexité de calcul de l'algorithme d'apprentissage devient le facteur limitant critique lorsque l'on envisage de très grands ensembles de données. C'est à ce point critique qu'entre en jeu cette étude, la minimisation des erreurs sans alourdir la complexité en temps et espace de l’algorithme d’apprentissage. Minimiser les erreurs dans les modèles d’apprentissage a toujours été une tâche très importante pour renforcer la fiabilité de notre Machine Learning Model\cite{ibm2018ml}. Établir un algorithme d’apprentissage qui s'adapte au mieux à notre modèle, selon la nature du problème métier traité, il existe différentes approches qui varient selon le type et le volume des données. Dans cette section, nous discutons des algorithmes de descente de gradient stochastique parce qu’ils montrent des performances  d'optimisation incroyables pour les problèmes à grande échelle \cite{bottou2010large}.\\
+		
+		Le travail de  léon bottou et al (\eg, \cite{bottou2010large} \cite{wijnhoven2010fast} \cite{bottou2012stochastic} ), présente \textit{la descente de gradient stochastique comme un algorithme d'apprentissage fondamental}.
+		L'un des piliers de l'apprentissage automatique est l'optimisation mathématique \cite[Jorge Nocedal dans][page: 3]{bottou2018optimization}, qui, dans ce contexte, implique le calcul numérique de minimisation des paramètres d'un système conçu pour prendre des décisions basées sur des données actuellement disponibles, ces paramètres sont choisis pour être optimaux par rapport à un problème d'apprentissage donné.
+		
+		Dans l'ensemble, ce document tente d'apporter des réponses aux questions suivantes.
+		\begin{enumerate}
+			\item Comment les problèmes de minimisation surviennent-ils dans les applications d'apprentissage automatique et qu'est-ce qui les rend difficiles ?
+			\item Quelles ont été les méthodes minimisation les plus efficaces pour l'apprentissage supervisé à grande échelle et pourquoi ?
+			\item Comment des algorithmes d'apprentissage supervisé arrivent-t-ils résoudre le problème de la reconnaissance automatique d'objet ?
+			\item Quelles avancées récentes ont été réalisées dans la conception d'algorithmes d'apprentissage et quelles sont les questions ouvertes dans ce domaine de recherche ?
+		\end{enumerate}
+		
+		
+	
+	\section{Objectifs de notre étude}
+		
+		Le but de cette étude est de fournir une revue et un commentaire sur le passé, le présent et le futur de l'utilisation des algorithmes d'optimisation numérique, précisément de minimisation, dans le contexte des applications d'apprentissage automatique qui permet aux ordinateurs et aux systèmes informatiques de dériver des informations significatives à partir d'images numériques, de vidéos et d'autres entrées visuelles, avec un coût plus bas que possible. \\
+		
+		Expressément, nous faisons la reconnaissance des plaques d’immatriculation des véhicules à l'aide d’un classificateur de la famille de descente de gradient stochastique (SGD) [?]. Pour minimiser la fonction de coût du classificateur, le SGD adopte un modèle d'optimisation convexe. De plus, pour augmenter la vitesse de convergence du classificateur, la descente de gradient stochastique, à chaque étape, elle tire un échantillon aléatoire de l'ensemble des fonctions ($f_i$), de la fonction objectif, constituant la somme.\\
+		
+		Pour chaque algorithme, nous examinons l'efficacité et comparons le score pour différents cas.
+		\begin{list}{}{Les objectifs de notre travail regroupent les points suivants:}
+			\item 1. État des connaissances, c’est sont les éléments sur lequel je me base pour constituer ce travail, nous parlons des base mathématique essentiel pour le Machine Learning: les éléments différentiel, statistique, l'optimisation de modèle linéaire convexe, etc.
+			\item 2. La méthodologie utilisée parmi tant d’autres, pour entraîner les modèles d’apprentissage automatique (Machine learning Model) de façon optimale. Pour la minimisation de la fonction coût nous utilisons des algorithmes comme SGD, ADAM, ADAGRAD, ADADELTA, ASGD, NAG. Puis faire une étude comparative de leurs performances. 
+			Et aussi des méthodes intelligentes de classification des images pour application reconnaissance automatique d’objet.
+			
+			\item 3. Nous construirons des modèles à partir d’une base de données annotée pour l'apprentissage et pour les tests de reconnaissance d'objets. Les résultats concluants de cette étude pourront conduire à un déploiement de notre système dans les domaines comme  celui de la surveillance vidéo de voitures dans une entrée de parking. Des métriques connues pour mesurer les erreurs et en déduire le score du classificateur seront utilisées pour évaluer la qualité de la reconnaissance automatique des plaques d’immatriculation par notre approche.
+		\end{list}
+	
+	
+
+		
+		
+		
+		
