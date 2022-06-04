@@ -284,7 +284,7 @@
 	\subsection{Introduction}
 	\subsubsection{Les ingrédients d'apprentissage}
 		Résoudre un problème d'apprentissage, c'est d'abord le comprendre, c'est-à-dire discuter longuement avec les experts du domaine concerné pour identifier quelles sont les "entrées", les  "sorties" ou résultats désirés, les connaissances disponibles, les particularités des données, par exemple: valeurs manquantes, taux de bruit dans les mesures des attributs de description, proportions des classes, stationnarité ou pas de l'environnement. 
-		C'est aussi réaliser un gros travail de \textit{préparation des données}: nettoyage, ré-organisation, enrichissement, intégration avec d'autres sources de données, etc. Ces étapes de compréhension du problème, de préparation des données, de mise au point du protocole d'apprentissage et des mesures d'évaluation des résultats, prennent, et de loin, la plus grande partie du temps pour (tenter de) résoudre un problème d'apprentissage \cite{antoine2018apprentissage}. 
+		C'est aussi réaliser un gros travail de \textit{préparation des données}: nettoyage, ré-organisation, enrichissement, intégration avec d'autres sources de données, etc.Ces étapes de compréhension du problème, de préparation des données, de mise au point du protocole d'apprentissage et des mesures d'évaluation des résultats, prennent, et de loin, la plus grande partie du temps pour (tenter de) résoudre un problème d'apprentissage \cite{antoine2018apprentissage}. 
 		Nous avons toujours tendance à largement sous-estimer ces étapes et à vouloir se concentrer uniquement sur la phase excitante de l'essai de méthodes d'apprentissage sur des données supposées bonnes à la consommation. 
 		%\subsubsection{Algorithme qui apprennent}
 	
@@ -313,7 +313,7 @@
 	
 	
 	
-	\begin{list}{--}{Selon \cite[A. Cornuéjols][]{antoine2018apprentissage}, nous pouvons construire un modèle d'apprentissage, ou l'espaces des hypothèses d'apprentissage, par: }
+	\begin{list}{--}{Selon \cite{antoine2018apprentissage}, nous pouvons construire un modèle d'apprentissage, ou l'espaces des hypothèses d'apprentissage, par: }
 		\item La classification
 		\item La régression
 		\item Les distributions de probabilités
@@ -358,7 +358,7 @@
 	
 	\subsubsection*{Entraînement du modèle}
 	
-	Tout modèle, où toutes les informations nécessaires ne sont pas disponibles, contient certains paramètres qui peuvent être utilisés pour adapter le modèle au système qu'il est censé décrire. Si la modélisation est effectuée par un réseau de neurones artificiels ou un autre apprentissage automatique, l'optimisation des paramètres est appelée \textbf{entraînement} (en anglais : \textbf{training}), tandis que l'optimisation des hyperparamètres du modèle est appelée \textbf{réglage} (en anglais: \textbf{tuning}) et utilise souvent la validation croisée [??]. Dans une modélisation plus conventionnelle à travers des fonctions mathématiques explicitement données, les paramètres sont souvent déterminés par ajustement de courbe (voir le point ??).
+	Tout modèle, où toutes les informations nécessaires ne sont pas disponibles, contient certains paramètres qui peuvent être utilisés pour adapter le modèle au système qu'il est censé décrire. Si la modélisation est effectuée par un réseau de neurones artificiels ou un autre apprentissage automatique, l'optimisation des paramètres est appelée \textbf{entraînement} (en anglais : \textbf{training}), tandis que l'optimisation des hyperparamètres du modèle est appelée \textbf{réglage} (en anglais: \textbf{tuning}) et utilise souvent la validation croisée \cite{goodfellow2016deep}. Dans une modélisation plus conventionnelle à travers des fonctions mathématiques explicitement données, les paramètres sont souvent déterminés par ajustement de courbe (voir le point ??).
 	
 	
 	Une partie cruciale du processus de modélisation consiste à évaluer si oui ou non un modèle mathématique donné décrit un système avec précision. Il peut être difficile de répondre à cette question car elle implique plusieurs types d'évaluation différents.
@@ -367,7 +367,7 @@
 
 	\subsection{Les problèmes de régressions}
 	
-	L'algorithme d'apprentissage automatique est défini comme un algorithme capable d'améliorer les performances d'un programme informatique à certaines tâches via l'expérience est quelque peu abstraite. Pour rendre cela plus concret, Une des méthode d'apprentissage automatique basique est \emph{la régression linéaire} \cite{goodfellow2016deep}.
+	L'algorithme d'apprentissage automatique est défini comme un algorithme capable d'améliorer les performances d'un programme informatique à certaines tâches via l'expérience est quelque peu abstraite. Pour rendre cela plus concret, Une des méthode d'apprentissage automatique basique est \emph{la régression linéaire}\cite{goodfellow2016deep}.
 	
 	Dans la modélisation statistique, l'analyse de régression est un ensemble de processus statistiques permettant d'estimer les relations entre une variable dépendante et une ou plusieurs variables indépendantes [??].\\
 	En statistique, la régression linéaire est une approche linéaire pour modéliser (voir le point \ref{sec:modelisation}) la relation entre une réponse scalaire et une ou plusieurs variables explicatives (également appelées variables dépendantes et indépendantes). Le cas d'une variable explicative est appelé régression linéaire simple; pour plus d'un, le processus est appelé régression linéaire multiple.
@@ -382,7 +382,7 @@
 	
 	
 	\subsubsection{Le cas de la régression linéaire}
-		On appelle problèmes de régression de tels problèmes, dans lesquels la sortie est numérique, généralement un vecteur de réels, supposé dépendre de la valeur d'un certain nombre de facteurs en entrée \cite{matloff2017statistical}.
+		On appelle problèmes de régression de tels problèmes, dans lesquels la sortie est numérique, généralement un vecteur de réels, supposé dépendre de la valeur d'un certain nombre de facteurs en entrée\cite{matloff2017statistical}.
 		
 		\begin{figure}[hth]%bth
 			\centering
@@ -397,7 +397,7 @@
 			y = f(x) + \epsilon
 		\end{equation}
 	
-		où $f(x)$ est la fonction inconnue que nous souhaitons approcher par un estimateur $h(x|w)$, où $h$ est défini à l'aide d'un vecteur $w$ de paramètres.\\
+		où $f(x)$ est la fonction inconnue que nous souhaitons approcher par un estimateur $h(x|w)$, où $h$ est défini à l'aide d'un vecteur $w$ de paramètres\cite{alpaydin2010introduction}.\\
 		Si l'on suppose que le bruit $\epsilon$ est nulle et de variance constante $\sigma^2$, c'est-à-dire $ \epsilon = \mathcal{N}(0,\sigma^2)$, alors, en plaçant notre estimateur $h(\cdot)$ à la place de la fonction inconnue, on devrait avoir la densité conditionnelle réelle $p(y|x)$ vérifiant :
 		\begin{equation}
 			p(y|x) = \mathcal{N}(h(x|w),\sigma^2)
@@ -408,7 +408,7 @@
 		$$
 			p(y|x) = p(y|x)p(x)
 		$$
-		où $p(y|x)$ est la probabilité de la sortie étant donnée l'entrée et $p(x)$ est la densité de probabilité sur les entrées.\cite{matloff2017statistical}
+		où $p(y|x)$ est la probabilité de la sortie étant donnée l'entrée et $p(x)$ est la densité de probabilité sur les entrées \cite{matloff2017statistical}.
 		
 		Étant donné un échantillon d'apprentissage $S = \langle (x_t,y_t) \rangle_{1\leq t\leq m} $ supposé tiré de manière indépendante et identiquement distribuée.
 		Maximiser l'expression résultante revient alors à minimiser la somme de carrés des erreurs (SCE):
@@ -557,7 +557,7 @@
 		
 		Lorsque l'on se place dans un espace de représentation euclidien, on peut librement faire des hypothèses sur la géométrie des classes ou sur celles de leurs surfaces séparatrices. La plus simple d'entre elles est de supposer que deux classes peuvent être séparées par une certaine surface, définie par une équation; les paramètres qui régissent cette équation sont alors les variables à apprendre.
 		
-		Le nombre de paramètres à calculer est minimal si l'on suppose cette surface linéaire; aussi est-ce l'hypothèse qui prévaut souvent, en particulier lorsque l'échantillon de données est de taille réduite par rapport à la dimension de l'espace d'entrée, d'autant qu'elle permet de mener des calculs faciles et de visualiser précisément le résultat obtenu.
+		Le nombre de paramètres à calculer est minimal si l'on suppose cette surface linéaire; aussi est-ce l'hypothèse qui prévaut souvent, en particulier lorsque l'échantillon de données est de taille réduite par rapport à la dimension de l'espace d'entrée, d'autant qu'elle permet de mener des calculs faciles et de visualiser précisément le résultat obtenu \cite{sarkar2017practical}.
 		
 		Dans $\mathbb{R}^n$, une surface linéaire est un hyperplan $A$, défini par l'équation :
 		$$ 
@@ -702,7 +702,7 @@
 	
 	où $m$ est le nombre d'exemples d'apprentissage appartenant à la classe.
 	
-	Dans \cite{antoine2018apprentissage}, il est montré que ces paramètres peuvent être obtenus par maximisation de la vraisemblance des paramètres conditionnellement aux exemples. Il a été de plus montré que, sous des conditions très générales [?], le maximum de $L$ est unique.
+	Dans \cite{antoine2018apprentissage}, il est montré que ces paramètres peuvent être obtenus par maximisation de la vraisemblance des paramètres conditionnellement aux exemples. Il a été de plus montré que, sous des conditions très générales \cite{sarkar2017practical}, le maximum de $L$ est unique.
 	La maximisation de la vraisemblance se fait sois en passant par le logarithme, pour obtenir la log-vraisemblance :
 	\begin{equation}
 		\begin{split}
@@ -724,8 +724,7 @@
 	\begin{figure}[hth]%bth
 		\centering
 		\includegraphics[width=\textwidth]{images/neuron.png}
-		\caption{Neurone biologique \cite{ml2008python}
-		}
+		\caption{Neurone biologique \cite{ml2008python}}
 		\label{fig:bio_neuron}
 	\end{figure}
 
@@ -734,21 +733,64 @@
 	Un perceptron est une unité de réseau neuronal (un neurone artificiel) qui effectue certains \textit{calculs} pour détecter des caractéristiques ou une intelligence économique dans les données d'entrée.\\ 
 	Le perceptron, à l'instar du neurone artificiel classique, est aussi un algorithme d'apprentissage supervisé de classificateurs binaires. Un classificateur binaire est une fonction qui peut décider si une entrée, représentée par un vecteur de nombres, appartient ou non à une classe spécifique. Il s'agit d'un type de classificateur linéaire , c'est-à-dire un algorithme de classification qui fait ses prédictions sur la base d'une fonction prédictive linéaire combinant un ensemble de poids avec le vecteur de caractéristiques.
 	
+	Le perceptron est l'élément de traitement de base. Il a des entrées qui peuvent provenir de l'environnement ou peuvent être les sorties d'autres perceptrons.
+	Associé à chaque entrée, $ x_j \in \mathbb{R}, j = 1,2, \dots , n, $ est un \textit{poids de connexion, ou poids} synaptique (voir le point \ref{sec:activation_weight}) $w_j \in \mathbb{R} $, et la sortie, $y$, dans le cas le plus simple est une somme pondérée des entrées \cite{alpaydin2010introduction}.
+	
+	$$ {y = \sum _{j=1}^{n}w_{j}x_{j} + w_0} $$
+	
+	$w_0$ est la valeur d'interception pour rendre le modèle plus général, il est généralement modélisé comme la pondération provenant d'une unité de biais supplémentaire, $x_0$ , qui est toujours +1. Nous pouvons écrire la sortie du perceptron sous la forme d'un produit scalaire.
+	$$ y = x^Tw $$
+	
+	Pendant le test, avec des poids donnés, $w$, pour l'entrée $x$, nous calculons la sortie $y$. Pour implémenter une tâche donnée, nous avons besoin d'apprendre les poids w, les paramètres du système, de sorte que des sorties correctes soient générées compte tenu des entrées.
+	
 	\subsubsection{Calcul avec l'algorithme du perceptron}
 	???
 	
-	Les perceptrons à une seule couche ne sont capables d'apprendre que des motifs linéairement séparables . Pour une tâche de classification avec une fonction d'activation d'étape, un seul nœud aura une seule ligne divisant les points de données formant les motifs. Plus de nœuds peuvent créer plus de lignes de division, mais ces lignes doivent en quelque sorte être combinées pour former des classifications plus complexes. Une deuxième couche de perceptrons, voire de nœuds linéaires, suffit à résoudre de nombreux problèmes autrement non séparables.
+	Les perceptrons à une seule couche ne sont capables d'apprendre que des motifs linéairement séparables. Pour une tâche de classification avec une fonction d'activation d'étape, un seul nœud aura une seule ligne divisant les points de données formant les motifs. Plus de nœuds peuvent créer plus de lignes de division, mais ces lignes doivent en quelque sorte être combinées pour former des classifications plus complexes. Une deuxième couche de perceptrons, voire de nœuds linéaires, suffit à résoudre de nombreux problèmes autrement non séparables \cite{antoine2018apprentissage}.
 
 	\begin{figure}[hth]%bth
 		\centering
 		\includegraphics[width=\textwidth]{images/perceptron_neuron.png}
-		\caption{Neurone artificiel modèle : Perceptron \cite[][]{ml2008python}
+		\caption{Neurone artificiel modèle : Perceptron \cite{ml2008python}
 		}
 		\label{fig:perceptron_neuron}
 	\end{figure}
 
-	\subsubsection{Perceptron Multicouche ???}
+	\subsubsection{Le réseau de neurones artificiels (Perceptron Multicouche)}
+	
+	Les réseaux de neurones ont été introduits pour la première fois comme méthode d'apprentissage par Frank Rosenblatt, bien que le modèle d'apprentissage appelé perceptron soit différent des réseaux de neurones modernes, nous pouvons toujours considérer le perceptron comme le premier réseau de neurones artificiels \cite{sarkar2017practical}.
 
+	Le perceptron multicouche (en anglais: multilayer perceptron MLP) est un type de réseau neuronal artificiel organisé en plusieurs couches, où les informations ne circulent que de la couche d'entrée à la couche de sortie. Il s'agit donc d'un réseau à propagation directe (feed forward), autrement dit le réseau profond à action directe. Un perceptron multicouche est juste une fonction mathématique mappant un ensemble de valeurs d'entrée à des valeurs de sortie. La fonction est formée en composant de nombreuses fonctions plus simples. Nous pouvons considérer chaque application d'une fonction mathématique différente comme fournissant une nouvelle représentation de l'entrée. \cite{goodfellow2016deep,antoine2018apprentissage}.
+	
+	Les réseaux de neurones artificiels (ANN) fonctionnent vaguement sur le principe de l'apprentissage d'une distribution distribuée de données.
+	L'hypothèse sous-jacente est que les données générées sont le résultat d'une combinaison non linéaire d'un ensemble de facteurs latents et si nous sommes capables d'apprendre cette représentation distribuée, nous pouvons alors faire des prédictions précises sur un nouvel ensemble de données inconnues. Le réseau de neurones le plus simple aura une couche d'entrée, une couche cachée (résultat de l'application d'une transformation non linéaire aux données d'entrée) et une couche de sortie. Les paramètres du modèle ANN sont les poids de chaque connexion qui existent dans le réseau et parfois un paramètre de biais \cite{sarkar2017practical}.
+	
+	
+	
+	\begin{figure}[hth]%bth
+		\centering
+		\includegraphics[width=9cm]{images/colored_neural_network.png}
+		\caption{Un réseau de neurones artificiels est un groupe de nœuds inter-connectés, inspiré d'une simplification des neurones d'un cerveau. Ici, chaque nœud circulaire représente un neurone artificiel et une flèche représente une connexion de la sortie d'un neurone artificiel à l'entrée d'un autre.}
+		\label{fig:colored_neural_network}
+	\end{figure}
+	
+	\subsection{Fonctions d'activation, poids et biais} \label{sec:activation_weight}
+	\subsubsection{Poids et Biais}
+	\subsubsection{Fonction d'activation Sigmoïde}
+	La fonction d'activation est responsable de la transformation de l'entrée pondérée sommée du nœud en activation du nœud ou de la sortie pour cette entrée.
+	Pour un nœud donné, les entrées sont multipliées par les poids d'un nœud et additionnées. Cette valeur est appelée activation sommée du nœud. L'activation sommée est ensuite transformée via une fonction d'activation et définit la sortie spécifique ou « activation » du nœud.
+	La fonction sigmoïde (aussi appelé fonction logistique voir le point ??) est utilisée ici comme une fonction d'activation ???
+	
+	Les fonctions d'activation non linéaires sont préférées car elles permettent aux nœuds d'apprendre des structures plus complexes dans les données. Traditionnellement, deux fonctions d'activation non linéaires largement utilisées sont les fonctions d'activation tangente sigmoïde et hyperbolique .
+	\subsubsection{Fonction d'activation ReLU}
+	
+	Dans le domaine des réseaux de neurones artificiels, ReLU (Rectified Linear Unit) ou fonction d'activation du redresseur est une fonction d'activation définie comme la partie positive de son argument.
+	$${\displaystyle f(x)=x^{+}=\max(0,x)}$$
+	ReLU est une fonction linéaire par morceaux qui produira l'entrée directement si elle est positive, sinon, elle produira zéro. C'est devenu la fonction d'activation par défaut pour de nombreux types de réseaux de neurones, car un modèle qui l'utilise est plus facile à former et atteint souvent de meilleures performances.
+	
+	
+	La conception d'unités cachées est un domaine de recherche extrêmement actif et ne dispose pas encore de nombreux principes directeurs théoriques définitifs.
+	Les fonctions d'activations ReLU sont un excellent choix par défaut d'unité cachée. De nombreux autres types d'unités cachées sont disponibles. Il peut être diﬃcile de déterminer quand utiliser quel type, bien que les unités linéaires rectiﬁées soient généralement un choix acceptable \cite{goodfellow2016deep}.
 
 
 	%	\subsection{Neurones}
@@ -770,11 +812,11 @@
 	\lipsum[1]
 	\subsubsection{L'architecture VGGNet}
 	
-	VGG signifie Visual Geometry Group; il s'agit d'une architecture standard de réseau de neurones à convolution profonde (CNN) à plusieurs couches. %Le "profond" fait référence au nombre de couches avec VGG-16 ou VGG-19 composé de 16 et 19 couches convolutionnelles.
+	VGG signifie Visual Geometry Group, il s'agit d'une architecture standard de réseau de neurones à convolution profonde (CNN) à plusieurs couches. %Le "profond" fait référence au nombre de couches avec VGG-16 ou VGG-19 composé de 16 et 19 couches convolutionnelles.
 	
 	
 	
-	L'architecture VGG est  la base d'un modèle innovant de reconnaissance d'objets. Développé en tant que réseau neuronal profond,  VGGNet va au-delà d'ImageNet et dépasse la ligne de base  de nombreuses tâches et ensembles de données. De plus, c'est toujours l'une des architectures de reconnaissance d'images les plus populaires \cite{tammina2019transfer, antoine2018apprentissage}.
+	L'architecture VGG est  la base d'un modèle innovant de reconnaissance d'objets. Développé en tant que réseau neuronal profond, VGGNet va au-delà d'ImageNet et dépasse la ligne de base  de nombreuses tâches et ensembles de données. De plus, c'est toujours l'une des architectures de reconnaissance d'images les plus populaires \cite{tammina2019transfer, antoine2018apprentissage}.
 	
 	Les VGGNet sont basés sur les caractéristiques les plus essentielles des réseaux de neurones convolutifs (CNN). Le graphique suivant montre le concept de base du fonctionnement d'un CNN.
 	
@@ -799,7 +841,7 @@
 	\begin{figure}[hth]%bth
 		\centering
 		\includegraphics[width=\textwidth]{images/VGG-16-network-architecture.png}
-		\caption{CNN : architecture VGG-16 \cite[][]{ml2008python}
+		\caption{CNN : architecture VGG-16 \cite{ml2008python}
 		}
 		\label{fig:VGG16_network}
 	\end{figure}
