@@ -280,6 +280,8 @@
 
 %\textcolor{cyan}{\chapter{Apprentissage automatique : Modélisation et Classification }}
 	%\section{Généralité}
+	
+	\pagebreak
 \section{Concepts de la modélisation et classification des données}
 	\subsection{Introduction}
 	\subsubsection{Les ingrédients d'apprentissage}
@@ -365,7 +367,7 @@
 	
 	
 
-	\subsection{Les problèmes de régressions}
+	\subsection{Les problèmes de régressions} \label{sec:regression_problem}
 	
 	L'algorithme d'apprentissage automatique est défini comme un algorithme capable d'améliorer les performances d'un programme informatique à certaines tâches via l'expérience est quelque peu abstraite. Pour rendre cela plus concret, Une des méthode d'apprentissage automatique basique est \emph{la régression linéaire}\cite{goodfellow2016deep}.
 	
@@ -542,13 +544,13 @@
 	???
 	
 	
-	\subsection{Les problèmes de classifications}
+	\subsection{Les problèmes de classifications} \label{sec:classificarion_problem}
 		En apprentissage automatique, les classifieurs linéaires sont une famille d'algorithmes de classement statistique. Le rôle d'un classifieur est de classer dans des groupes (des classes) les échantillons qui ont des propriétés similaires, mesurées sur des observations. Un classifieur linéaire est un type particulier de classifieur, qui calcule la décision par combinaison linéaire des échantillons \cite{antoine2018apprentissage}.
 		
 		\begin{figure}[bth]%bth
 			\centering
 			\includegraphics[width=15cm]{images/classification_vs_regression.png}
-			\caption{Classification vs régression \cite[image de][]{ml2008python}
+			\caption{Classification vs régression \cite{ml2008python}
 			}
 			\label{fig:class_vs_reg}
 		\end{figure}
@@ -596,7 +598,7 @@
 	
 	
 		
-		\subsubsection{Le modèle de la régression logistique}
+		\subsubsection{Le modèle de la régression logistique} \label{subsec:reg_logistique}
 		
 		Ce qu'il est convenu d'appeler \textit{régression logistique} concerne en fait une méthode de classification binaire, à l'instar du perceptron (voir le point \ref{sec:perceptron}). A la différence du perceptron, cependant, nous allons chercher à apprendre une hypothèse $h$ définie de $\mathbb{R}^n$ dans [0,1], et non pas dans {0,1},  une motivation étant d'interpréter $h(x)$ comme étant la probabilité que l'entrée $x$ appartienne à la classe d'intérêt que nous notons $\mathcal{C}_1$. \cite{antoine2018apprentissage}
 			
@@ -670,15 +672,14 @@
 		%??? changement de plan
 		
 		La fonction logistique est une fonction sigmoïde , qui prend n'importe quelle entrée réelle $t$, et renvoie une valeur comprise entre zéro et un \cite{ml2008python}. La fonction logistique standard ${\displaystyle \sigma :\mathbb {R} \rightarrow (0,1)}$ est défini comme suit :
-		
-		$$
+		\begin{equation} \label{eq:sigmoid-simple}
 		\sigma (t)={\frac {e^{t}}{e^{t}+1}}={\frac {1}{1+e^{-t}}}
-		$$
+		\end{equation}
 		
 		Supposons que $t$ est une fonction linéaire (comme la droite de la formule \ref{eq:droite_sep}) $t = z$. Et la fonction logistique générale ${ p:\mathbb {R} \rightarrow (0,1)}$ peut maintenant l'écrire :
-		\begin{equation}\label{eq:sigmoid}
+		\begin{equation}\label{eq:sigmoid-dev}
 			{\displaystyle p(x)=\sigma (t)= {\frac {1}{1+e^{-z}}} ={\frac {1}{1+e^{-(w _{1}x_{1}+\cdots +w_{n}x_{n}+b)}}}}
-		\end{equation}
+		\end{equation} 
 		
 		
 		
@@ -687,10 +688,10 @@
 	
 		\begin{figure}[bth]%bth
 			\centering
-			\includegraphics[width=8cm]{images/reg_log_curve.png}
-			\caption{Graphique représentant fonction sigmoïde logistique ajustée aux données $(x_n , y_n)$. \cite[image de][]{ml2008python}
+			\includegraphics[width=10cm]{images/sigmoid_graph.png}
+			\caption{Graphique représentant fonction sigmoïde logistique ajustée aux données $(x_n , y_n)$. \cite{ml2008python}
 			}
-			\label{fig:reg_log_curve}
+			\label{fig:reg_log_sigmoid}
 		\end{figure}
 	
 	\paragraph*{La vraisemblance:}Indique la plausibilité du  modèle vis-a-vis du vraies données.
@@ -718,7 +719,7 @@
 	avec le terme $\frac{1}{m}$ pour augmenter la précision.\\
 	Avec cette fonction, nous allons maximiser la vraisemblance $L$ en minimisant $-\log(L)$.	
 		
-	
+	\pagebreak
 	
 \section{Réseau de neurones, apprentissage en profondeur}
 	\begin{figure}[hth]%bth
@@ -760,7 +761,7 @@
 	
 	Les réseaux de neurones ont été introduits pour la première fois comme méthode d'apprentissage par Frank Rosenblatt, bien que le modèle d'apprentissage appelé perceptron soit différent des réseaux de neurones modernes, nous pouvons toujours considérer le perceptron comme le premier réseau de neurones artificiels \cite{sarkar2017practical}.
 
-	Le perceptron multicouche (en anglais: multilayer perceptron MLP) est un type de réseau neuronal artificiel organisé en plusieurs couches, où les informations ne circulent que de la couche d'entrée à la couche de sortie. Il s'agit donc d'un réseau à propagation directe (feed forward), autrement dit le réseau profond à action directe. Un perceptron multicouche est juste une fonction mathématique mappant un ensemble de valeurs d'entrée à des valeurs de sortie. La fonction est formée en composant de nombreuses fonctions plus simples. Nous pouvons considérer chaque application d'une fonction mathématique différente comme fournissant une nouvelle représentation de l'entrée. \cite{goodfellow2016deep,antoine2018apprentissage}.
+	Le perceptron multicouche (en anglais: multilayer perceptron MLP) est un type de réseau neuronal artificiel organisé en plusieurs couches, où les informations ne circulent que de la couche d'entrée à la couche de sortie. Il s'agit donc d'un réseau à propagation directe (feed forward), autrement dit le réseau profond à action directe. Un perceptron multicouche est juste une fonction mathématique mappant un ensemble de valeurs d'entrée à des valeurs de sortie. La fonction est formée en composant de nombreuses fonctions plus simples. Nous pouvons considérer chaque application d'une fonction mathématique différente comme fournissant une nouvelle représentation de l'entrée \cite{goodfellow2016deep,antoine2018apprentissage}.
 	
 	Les réseaux de neurones artificiels (ANN) fonctionnent vaguement sur le principe de l'apprentissage d'une distribution distribuée de données.
 	L'hypothèse sous-jacente est que les données générées sont le résultat d'une combinaison non linéaire d'un ensemble de facteurs latents et si nous sommes capables d'apprendre cette représentation distribuée, nous pouvons alors faire des prédictions précises sur un nouvel ensemble de données inconnues. Le réseau de neurones le plus simple aura une couche d'entrée, une couche cachée (résultat de l'application d'une transformation non linéaire aux données d'entrée) et une couche de sortie. Les paramètres du modèle ANN sont les poids de chaque connexion qui existent dans le réseau et parfois un paramètre de biais \cite{sarkar2017practical}.
@@ -769,28 +770,55 @@
 	
 	\begin{figure}[hth]%bth
 		\centering
-		\includegraphics[width=9cm]{images/colored_neural_network.png}
+		\includegraphics[width=7cm]{images/colored_neural_network.png}
 		\caption{Un réseau de neurones artificiels est un groupe de nœuds inter-connectés, inspiré d'une simplification des neurones d'un cerveau. Ici, chaque nœud circulaire représente un neurone artificiel et une flèche représente une connexion de la sortie d'un neurone artificiel à l'entrée d'un autre.}
 		\label{fig:colored_neural_network}
 	\end{figure}
 	
 	\subsection{Fonctions d'activation, poids et biais} \label{sec:activation_weight}
 	\subsubsection{Poids et Biais}
-	\subsubsection{Fonction d'activation Sigmoïde}
+	\subsubsection{Fonctions d'activation tangente (Sigmoïde et  hyperbolique)}
 	La fonction d'activation est responsable de la transformation de l'entrée pondérée sommée du nœud en activation du nœud ou de la sortie pour cette entrée.
-	Pour un nœud donné, les entrées sont multipliées par les poids d'un nœud et additionnées. Cette valeur est appelée activation sommée du nœud. L'activation sommée est ensuite transformée via une fonction d'activation et définit la sortie spécifique ou « activation » du nœud.
-	La fonction sigmoïde (aussi appelé fonction logistique voir le point ??) est utilisée ici comme une fonction d'activation ???
+	Pour un nœud donné, les entrées sont multipliées par les poids d'un nœud et additionnées. Cette valeur est appelée activation sommée du nœud. L'activation sommée est ensuite transformée via une fonction d'activation et définit la sortie spécifique ou « activation » du nœud \cite{ml2008python}.\\
+	La fonction sigmoïde (aussi appelé fonction logistique voir le point \ref{sec:classificarion_problem} \ref{subsec:reg_logistique}) est utilisée ici comme une fonction d'activation.	
 	
-	Les fonctions d'activation non linéaires sont préférées car elles permettent aux nœuds d'apprendre des structures plus complexes dans les données. Traditionnellement, deux fonctions d'activation non linéaires largement utilisées sont les fonctions d'activation tangente sigmoïde et hyperbolique .
+	La fonction d'activation la plus simple est appelée activation linéaire, où aucune transformation n'est appliquée. Un réseau composé uniquement de fonctions d'activation linéaires est très facile à former, mais ne peut pas apprendre des fonctions de cartographie complexes. Les fonctions d'activation linéaires sont toujours utilisées dans la couche de sortie pour les réseaux qui prédisent une quantité (par exemple, les problèmes de régression, voir le point \ref{sec:regression_problem}) \cite{geron2017hands}.
+	
+	Les fonctions d'activation non linéaires sont préférées car elles permettent aux nœuds d'apprendre des structures plus complexes dans les données. Traditionnellement, deux fonctions d'activation non linéaires largement utilisées sont les fonctions d'activation tangente sigmoïde et hyperbolique \cite{goodfellow2016deep}.
+	
+	La fonction \textbf{d'activation sigmoïde}, également appelée fonction logistique, est traditionnellement une fonction d'activation très populaire pour les réseaux de neurones. L'entrée de la fonction est transformée en une valeur comprise entre $0,0$ et $1,0$. Les entrées qui sont beaucoup plus grandes que $1,0$ sont transformées à la valeur $1,0$, de même, les valeurs beaucoup plus petites que $0,0$ sont alignées sur $0,0$. La forme de la fonction pour toutes les entrées possibles est une forme en S de zéro jusqu'à 0,5 à 1,0. Pendant longtemps, jusqu'au début des années 1990, c'était l'activation par défaut utilisée sur les réseaux de neurones.
+	
+	
+	La fonction \textbf{tangente hyperbolique}, ou \textbf{tanh} en abrégé, est une fonction d'activation non linéaire de forme similaire qui génère des valeurs comprises entre -1,0 et 1,0. À la fin des années 1990 et au cours des années 2000, la fonction tanh a été préférée à la fonction d'activation sigmoïde car les modèles qui l'utilisaient étaient plus faciles à entraîner et avaient souvent de meilleures performances prédictives \cite{goodfellow2016deep}.
+	la fonction d'activation tangente hyperbolique fonctionne généralement mieux que la sigmoïde logistique.
+	\subsubsection*{Limitations des fonctions d'activation sigmoïde et tanh}
+	Cela signifie que pour tanh et sigmoïde, les grandes valeurs sont alignées sur 1,0 et les petites valeurs sont alignées sur -1 ou 0. De plus, la fonction n'est vraiment sensible qu'aux changements proches du point médian de l'entrée. Par exemple, 0,5 pour les sigmoïdes et 0,0 pour la tanh.
+	
+	 Les unités sigmoïdales saturent sur la majeure partie de leur domaine - elles saturent à une valeur élevée lorsque z est très positif, saturent à une valeur faible lorsque z est très négatif et ne sont fortement sensibles à leur entrée que lorsque z est proche de 0 \cite{ml2008python}.
+	 
+	 La sensibilité et la saturation limitées de la fonction se produisent indépendamment du fait que l'activation additionnée du nœud fourni en entrée contient des informations utiles ou non. Une fois saturé, il devient difficile pour l'algorithme d'apprentissage de continuer à adapter les poids pour améliorer les performances du modèle.
+	 
+	 Les couches profondes des grands réseaux utilisant ces fonctions d'activation non linéaires ne reçoivent pas d'informations de gradient utiles. L'erreur est rétropropagée (voir le point ???) sur le réseau et utilisée pour mettre à jour les pondérations. La quantité d'erreur diminue considérablement avec chaque couche supplémentaire à travers laquelle elle se propage, compte tenu de la dérivée de la fonction d'activation choisie. C'est ce qu'on appelle le problème du gradient de fuite et empêche les réseaux profonds (multicouches) d'apprendre efficacement \cite{geron2017hands}.
+	 
+	 Bien que l'utilisation de fonctions d'activation non linéaires permette aux réseaux de neurones d'apprendre des fonctions de cartographie complexes, elles empêchent efficacement l'algorithme d'apprentissage de fonctionner avec des réseaux profonds.
+	 
+	 
+	
+	
+	
 	\subsubsection{Fonction d'activation ReLU}
 	
-	Dans le domaine des réseaux de neurones artificiels, ReLU (Rectified Linear Unit) ou fonction d'activation du redresseur est une fonction d'activation définie comme la partie positive de son argument.
+	Dans le domaine des réseaux de neurones artificiels, ReLU (Rectified Linear Unit) ou fonction d'activation du redresseur est une fonction d'activation définie comme la partie positive de son argument\cite{goodfellow2016deep}..
 	$${\displaystyle f(x)=x^{+}=\max(0,x)}$$
-	ReLU est une fonction linéaire par morceaux qui produira l'entrée directement si elle est positive, sinon, elle produira zéro. C'est devenu la fonction d'activation par défaut pour de nombreux types de réseaux de neurones, car un modèle qui l'utilise est plus facile à former et atteint souvent de meilleures performances.
+	ReLU est une fonction linéaire par morceaux qui produira l'entrée directement si elle est positive, sinon, elle produira zéro. C'est devenu la fonction d'activation par défaut pour de nombreux types de réseaux de neurones, car un modèle qui l'utilise est plus facile à former et atteint souvent de meilleures performances\cite{géron2017hands}.
 	
 	
 	La conception d'unités cachées est un domaine de recherche extrêmement actif et ne dispose pas encore de nombreux principes directeurs théoriques définitifs.
 	Les fonctions d'activations ReLU sont un excellent choix par défaut d'unité cachée. De nombreux autres types d'unités cachées sont disponibles. Il peut être diﬃcile de déterminer quand utiliser quel type, bien que les unités linéaires rectiﬁées soient généralement un choix acceptable \cite{goodfellow2016deep}.
+	
+	???
+	
+	Pour un exemple de la façon dont ReLU peut résoudre le problème des gradients de fuite, consultez le didacticiel 
 
 
 	%	\subsection{Neurones}
