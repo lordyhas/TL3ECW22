@@ -776,17 +776,19 @@
 	\end{figure}
 	
 	\subsection{Fonctions d'activation, poids et biais} \label{sec:activation_weight}
-	\subsubsection{Poids et Biais}
+	
+	\subsubsection{Poids et biais}
+	
 	\subsubsection{Fonctions d'activation tangente (Sigmoïde et  hyperbolique)}
 	La fonction d'activation est responsable de la transformation de l'entrée pondérée sommée du nœud en activation du nœud ou de la sortie pour cette entrée.
 	Pour un nœud donné, les entrées sont multipliées par les poids d'un nœud et additionnées. Cette valeur est appelée activation sommée du nœud. L'activation sommée est ensuite transformée via une fonction d'activation et définit la sortie spécifique ou « activation » du nœud \cite{ml2008python}.\\
 	La fonction sigmoïde (aussi appelé fonction logistique voir le point \ref{sec:classificarion_problem} \ref{subsec:reg_logistique}) est utilisée ici comme une fonction d'activation.	
 	
-	La fonction d'activation la plus simple est appelée activation linéaire, où aucune transformation n'est appliquée. Un réseau composé uniquement de fonctions d'activation linéaires est très facile à former, mais ne peut pas apprendre des fonctions de cartographie complexes. Les fonctions d'activation linéaires sont toujours utilisées dans la couche de sortie pour les réseaux qui prédisent une quantité (par exemple, les problèmes de régression, voir le point \ref{sec:regression_problem}) \cite{geron2017hands}.
+	La fonction d'activation la plus simple est appelée activation linéaire, où aucune transformation n'est appliquée. Un réseau composé uniquement de fonctions d'activation linéaires est très facile à former, mais ne peut pas apprendre des fonctions de cartographie complexes. Les fonctions d'activation linéaires sont toujours utilisées dans la couche de sortie pour les réseaux qui prédisent une quantité (par exemple, les problèmes de régression, voir le point \ref{sec:regression_problem}) \cite{geron2017hands, krizhevsky2012imagenet}.
 	
 	Les fonctions d'activation non linéaires sont préférées car elles permettent aux nœuds d'apprendre des structures plus complexes dans les données. Traditionnellement, deux fonctions d'activation non linéaires largement utilisées sont les fonctions d'activation tangente sigmoïde et hyperbolique \cite{goodfellow2016deep}.
 	
-	La fonction \textbf{d'activation sigmoïde}, également appelée fonction logistique, est traditionnellement une fonction d'activation très populaire pour les réseaux de neurones. L'entrée de la fonction est transformée en une valeur comprise entre $0,0$ et $1,0$. Les entrées qui sont beaucoup plus grandes que $1,0$ sont transformées à la valeur $1,0$, de même, les valeurs beaucoup plus petites que $0,0$ sont alignées sur $0,0$. La forme de la fonction pour toutes les entrées possibles est une forme en S de zéro jusqu'à 0,5 à 1,0. Pendant longtemps, jusqu'au début des années 1990, c'était l'activation par défaut utilisée sur les réseaux de neurones.
+	La fonction \textbf{d'activation sigmoïde}, est traditionnellement une fonction d'activation très populaire pour les réseaux de neurones. L'entrée de la fonction est transformée en une valeur comprise entre $0,0$ et $1,0$. Les entrées qui sont beaucoup plus grandes que $1,0$ sont transformées à la valeur $1,0$, de même, les valeurs beaucoup plus petites que $0,0$ sont alignées sur $0,0$. La forme de la fonction pour toutes les entrées possibles est une forme en S de zéro jusqu'à 0,5 à 1,0. Pendant longtemps, jusqu'au début des années 1990, c'était l'activation par défaut utilisée sur les réseaux de neurones \cite{krizhevsky2012imagenet}.
 	
 	
 	La fonction \textbf{tangente hyperbolique}, ou \textbf{tanh} en abrégé, est une fonction d'activation non linéaire de forme similaire qui génère des valeurs comprises entre -1,0 et 1,0. À la fin des années 1990 et au cours des années 2000, la fonction tanh a été préférée à la fonction d'activation sigmoïde car les modèles qui l'utilisaient étaient plus faciles à entraîner et avaient souvent de meilleures performances prédictives \cite{goodfellow2016deep}.
@@ -802,15 +804,13 @@
 	 
 	 Bien que l'utilisation de fonctions d'activation non linéaires permette aux réseaux de neurones d'apprendre des fonctions de cartographie complexes, elles empêchent efficacement l'algorithme d'apprentissage de fonctionner avec des réseaux profonds.
 	 
-	 
-	
 	
 	
 	\subsubsection{Fonction d'activation ReLU}
 	
-	Dans le domaine des réseaux de neurones artificiels, ReLU (Rectified Linear Unit) ou fonction d'activation du redresseur est une fonction d'activation définie comme la partie positive de son argument\cite{goodfellow2016deep}..
+	Dans le domaine des réseaux de neurones artificiels, ReLU (Rectified Linear Unit) ou fonction d'activation du redresseur est une fonction d'activation définie comme la partie positive de son argument \cite{goodfellow2016deep}.
 	$${\displaystyle f(x)=x^{+}=\max(0,x)}$$
-	ReLU est une fonction linéaire par morceaux qui produira l'entrée directement si elle est positive, sinon, elle produira zéro. C'est devenu la fonction d'activation par défaut pour de nombreux types de réseaux de neurones, car un modèle qui l'utilise est plus facile à former et atteint souvent de meilleures performances\cite{géron2017hands}.
+	ReLU est une fonction linéaire par morceaux qui produira l'entrée directement si elle est positive, sinon, elle produira zéro. C'est devenu la fonction d'activation par défaut pour de nombreux types de réseaux de neurones, car un modèle qui l'utilise est plus facile à former et atteint souvent de meilleures performances \cite{geron2017hands}.
 	
 	
 	La conception d'unités cachées est un domaine de recherche extrêmement actif et ne dispose pas encore de nombreux principes directeurs théoriques définitifs.
@@ -827,6 +827,14 @@
 	
 	
 	\subsection{Réseau neuronal convolutif (CNN)}
+	
+	Le réseau neuronal convolutif est un type de réseau neuronal artificiel qui utilise plusieurs perceptrons qui analysent les entrées d'image et ont des poids et des bases apprenables sur plusieurs parties d'images et capables de se séparer les unes des autres \cite{tammina2019transfer}.
+	
+	???
+	
+	L'un des avantages de l'utilisation du réseau de neurones convolutifs est qu'il exploite l'utilisation de la cohérence spatiale locale dans les images d'entrée, ce qui leur permet d'avoir moins de poids car certains paramètres sont partagés \cite{tammina2019transfer}.
+	
+	
 	???
 	\cite{shin2016deep} 
 	
@@ -834,10 +842,11 @@
 	
 	La convolution est une opération mathématique simple généralement utilisée pour le traitement et la reconnaissance d’images. Sur une image, son effet s’assimile à un filtrage dont voici le fonctionnement
 	
-	???
-	\lipsum[1]
+	??? 
+	
 	\subsubsection{Les différents couches d'un CNN}
-	\lipsum[1]
+	???
+	
 	\subsubsection{L'architecture VGGNet}
 	
 	VGG signifie Visual Geometry Group, il s'agit d'une architecture standard de réseau de neurones à convolution profonde (CNN) à plusieurs couches. %Le "profond" fait référence au nombre de couches avec VGG-16 ou VGG-19 composé de 16 et 19 couches convolutionnelles.
@@ -850,9 +859,9 @@
 	
 	
 	\begin{list}{--}{Un bref coup d'œil à l'architecture de VGG :}
-		\item \textbf{Entrée} : Le VGGNet prend une taille d'entrée d'image de 224×224. Pour le concours ImageNet, les créateurs du modèle ont recadré le patch central 224 × 224 dans chaque image pour conserver la cohérence de la taille d'entrée de l'image\cite{simonyan2014very}.
+		\item \textbf{Entrée} : Le VGGNet prend une taille d'entrée d'image de 224×224. Pour le concours ImageNet, les créateurs du modèle ont recadré le patch central 224 × 224 dans chaque image pour conserver la cohérence de la taille d'entrée de l'image \cite{simonyan2014very}.
 		
-		\item \textbf{Couches convolutives }: Les couches convolutives de VGG tirent parti d'un champ de réception minimal, c'est-à-dire 3 × 3, la plus petite taille possible qui capture toujours haut/bas et gauche/droite. De plus, il existe également des filtres de convolution 1 × 1 agissant comme une transformation linéaire de l'entrée. Vient ensuite une unité ReLU, qui est une énorme innovation d'AlexNet qui réduit le temps de formation. ReLU signifie fonction d'activation d'unité linéaire rectifiée ; c'est une fonction linéaire par morceaux qui produira l'entrée si elle est positive ; sinon, la sortie est nulle. La foulée de convolution est fixée à 1 pixel pour conserver la résolution spatiale préservée après la convolution (la foulée est le nombre de décalages de pixels sur la matrice d'entrée)   \cite{tammina2019transfer}.
+		\item \textbf{Couches convolutives }: Les couches convolutives de VGG tirent parti d'un champ de réception minimal, c'est-à-dire 3 × 3, la plus petite taille possible qui capture toujours haut/bas et gauche/droite. De plus, il existe également des filtres de convolution 1 × 1 agissant comme une transformation linéaire de l'entrée. Vient ensuite une unité ReLU, qui est une énorme innovation d'AlexNet qui réduit le temps de formation. ReLU signifie fonction d'activation d'unité linéaire rectifiée ; c'est une fonction linéaire par morceaux qui produira l'entrée si elle est positive ; sinon, la sortie est nulle. La foulée de convolution est fixée à 1 pixel pour conserver la résolution spatiale préservée après la convolution (la foulée est le nombre de décalages de pixels sur la matrice d'entrée) \cite{krizhevsky2012imagenet,tammina2019transfer}.
 		
 		\item \textbf{Couches cachées} : Toutes les couches cachées du réseau VGG utilisent ReLU. VGG n'utilise généralement pas la normalisation de la réponse locale (LRN) car elle augmente la consommation de mémoire et le temps de formation. De plus, il n'apporte aucune amélioration à la précision globale \cite{tammina2019transfer}.
 		
@@ -874,7 +883,7 @@
 		\label{fig:VGG16_network}
 	\end{figure}
 	
-	\lipsum[1]
+	
 	%\subsubsection{Réseau neuronal récurrent (RNN)}
 	%\lipsum[1]
 	
