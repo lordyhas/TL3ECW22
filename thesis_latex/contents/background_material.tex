@@ -686,7 +686,7 @@
 		Dans le modèle logistique, $p(x)$ est interprété comme la probabilité de la variable dépendante ${Y}$ équivalant à un succès/cas-oui plutôt qu'à un échec/non-cas. Il est clair que les variables de réponse $Y_{i}$ ne sont pas identiquement répartis :$P(Y_{i}=1\mid X)$ diffère d'un point de données $X_{i}$ à l'autre, bien qu'ils soient indépendants étant donné la matrice de conception $X$ et paramètres partagés $w$ \cite{antoine2018apprentissage}. 
 		
 	
-		\begin{figure}[bth]%bth
+		\begin{figure}[H]%bth
 			\centering
 			\includegraphics[width=10cm]{images/sigmoid_graph.png}
 			\caption{Graphique représentant fonction sigmoïde logistique ajustée aux données $(x_n , y_n)$. \cite{ml2008python}
@@ -716,8 +716,7 @@
 	\begin{equation}\label{eq:log-likelyhood}
 		\mathcal{L} = -\frac{1}{m}\sum_{i=1}^{m} {y_i}\log( {p_i}) +{(1-y_i)}\log(1-p_i)
 	\end{equation}
-	avec le terme $\frac{1}{m}$ pour augmenter la précision.\\
-	Avec cette fonction, nous allons maximiser la vraisemblance $L$ en minimisant $-\log(L)$.	
+	avec le terme $\frac{1}{m}$ pour augmenter la précision. Avec cette fonction, nous allons maximiser la vraisemblance $L$ en minimisant $-\log(L)$.	
 		
 	\pagebreak
 	
@@ -731,10 +730,13 @@
 
 
 	\subsection{Perceptron} \label{sec:perceptron}
-	Un perceptron est une unité de réseau neuronal (un neurone artificiel) qui effectue certains \textit{calculs} pour détecter des caractéristiques ou une intelligence économique dans les données d'entrée.\\ 
-	Le perceptron, à l'instar du neurone artificiel classique, est aussi un algorithme d'apprentissage supervisé de classificateurs binaires. Un classificateur binaire est une fonction qui peut décider si une entrée, représentée par un vecteur de nombres, appartient ou non à une classe spécifique. Il s'agit d'un type de classificateur linéaire , c'est-à-dire un algorithme de classification qui fait ses prédictions sur la base d'une fonction prédictive linéaire combinant un ensemble de poids avec le vecteur de caractéristiques.
 	
-	Le perceptron est l'élément de traitement de base. Il a des entrées qui peuvent provenir de l'environnement ou peuvent être les sorties d'autres perceptrons.
+	Le perceptron est un modèle simplifié d'un neurone biologique. Alors que la complexité des modèles de neurones biologiques est souvent nécessaire pour bien comprendre le comportement neuronal, la recherche suggère qu'un modèle linéaire de type perceptron peut produire certains comportements observés dans de vrais neurones.
+	
+	Un perceptron est donc une unité de réseau neuronal, l'élément de traitement de base, qui effectue certains \textit{calculs} pour détecter des caractéristiques ou une intelligence économique dans les données d'entrée.\\ 
+	Le perceptron, à l'instar du neurone artificiel classique, est aussi un algorithme d'apprentissage supervisé de classificateurs binaires. Un classificateur binaire est une fonction qui peut décider si une entrée, représentée par un vecteur de nombres, appartient ou non à une classe spécifique [??]. Il s'agit d'un type de classificateur linéaire , c'est-à-dire un algorithme de classification qui fait ses prédictions sur la base d'une fonction prédictive linéaire combinant un ensemble de poids avec le vecteur de caractéristiques.
+	
+	Le perceptron a des entrées qui peuvent provenir de l'environnement ou peuvent être les sorties d'autres perceptrons.
 	Associé à chaque entrée, $ x_j \in \mathbb{R}, j = 1,2, \dots , n, $ est un \textit{poids de connexion, ou poids} synaptique (voir le point \ref{sec:activation_weight}) $w_j \in \mathbb{R} $, et la sortie, $y$, dans le cas le plus simple est une somme pondérée des entrées \cite{alpaydin2010introduction}.
 	
 	$$ {y = \sum _{j=1}^{n}w_{j}x_{j} + w_0} $$
@@ -745,9 +747,17 @@
 	Pendant le test, avec des poids donnés, $w$, pour l'entrée $x$, nous calculons la sortie $y$. Pour implémenter une tâche donnée, nous avons besoin d'apprendre les poids w, les paramètres du système, de sorte que des sorties correctes soient générées compte tenu des entrées.
 	
 	\subsubsection{Calcul avec l'algorithme du perceptron}
+	
+	Le premier concept de règle d'apprentissage du perceptron, a été publié par Frank Rosenblatt [??],  basé sur le modèle neuronal  MP Neuron (McCulloch-Pitts Neuron). 
+	
+	%(F. Rosenblatt, The Perceptron, a Perceiving and Recognizing Automaton. Cornell Aeronautical Laboratory, 1957).
+	
+	Avec sa règle de perceptron, Il a proposé un algorithme qui apprendrait automatiquement les coefficients de poids optimaux qui sont ensuite multipliés par les caractéristiques d'entrée afin de décider si un neurone se déclenche ou non. Dans le cadre de l'apprentissage supervisé et de la classification, un tel algorithme pourrait alors être utilisé pour prédire si un échantillon appartient à une classe ou à l'autre \cite{ml2008python}.
+	
+	Il est important de noter que la convergence du perceptron n'est garantie que si les deux classes sont linéairement séparables et que le taux d'apprentissage est suffisamment faible. Si les deux classes ne peuvent pas être séparées par une limite de décision linéaire, nous pouvons définir un nombre maximum de passages sur l'ensemble de données d'apprentissage (époques) et/ou un seuil pour le nombre d'erreurs de classification tolérées - le perceptron n'arrêterait jamais de mettre à jour les poids autrement:
 	???
 	
-	Les perceptrons à une seule couche ne sont capables d'apprendre que des motifs linéairement séparables. Pour une tâche de classification avec une fonction d'activation d'étape, un seul nœud aura une seule ligne divisant les points de données formant les motifs. Plus de nœuds peuvent créer plus de lignes de division, mais ces lignes doivent en quelque sorte être combinées pour former des classifications plus complexes. Une deuxième couche de perceptrons, voire de nœuds linéaires, suffit à résoudre de nombreux problèmes autrement non séparables \cite{antoine2018apprentissage}.
+	
 
 	\begin{figure}[hth]%bth
 		\centering
@@ -762,6 +772,8 @@
 	Les réseaux de neurones ont été introduits pour la première fois comme méthode d'apprentissage par Frank Rosenblatt, bien que le modèle d'apprentissage appelé perceptron soit différent des réseaux de neurones modernes, nous pouvons toujours considérer le perceptron comme le premier réseau de neurones artificiels \cite{sarkar2017practical}.
 
 	Le perceptron multicouche (en anglais: multilayer perceptron MLP) est un type de réseau neuronal artificiel organisé en plusieurs couches, où les informations ne circulent que de la couche d'entrée à la couche de sortie. Il s'agit donc d'un réseau à propagation directe (feed forward), autrement dit le réseau profond à action directe. Un perceptron multicouche est juste une fonction mathématique mappant un ensemble de valeurs d'entrée à des valeurs de sortie. La fonction est formée en composant de nombreuses fonctions plus simples. Nous pouvons considérer chaque application d'une fonction mathématique différente comme fournissant une nouvelle représentation de l'entrée \cite{goodfellow2016deep,antoine2018apprentissage}.
+	
+	Les perceptrons à une seule couche ne sont capables d'apprendre que des motifs linéairement séparables. Pour une tâche de classification avec une fonction d'activation d'étape, un seul nœud aura une seule ligne divisant les points de données formant les motifs. Plus de nœuds peuvent créer plus de lignes de division, mais ces lignes doivent en quelque sorte être combinées pour former des classifications plus complexes. Une deuxième couche de perceptrons, voire de nœuds linéaires, suffit à résoudre de nombreux problèmes autrement non séparables \cite{antoine2018apprentissage}.
 	
 	Les réseaux de neurones artificiels (ANN) fonctionnent vaguement sur le principe de l'apprentissage d'une distribution distribuée de données.
 	L'hypothèse sous-jacente est que les données générées sont le résultat d'une combinaison non linéaire d'un ensemble de facteurs latents et si nous sommes capables d'apprendre cette représentation distribuée, nous pouvons alors faire des prédictions précises sur un nouvel ensemble de données inconnues. Le réseau de neurones le plus simple aura une couche d'entrée, une couche cachée (résultat de l'application d'une transformation non linéaire aux données d'entrée) et une couche de sortie. Les paramètres du modèle ANN sont les poids de chaque connexion qui existent dans le réseau et parfois un paramètre de biais \cite{sarkar2017practical}.
