@@ -540,8 +540,7 @@
 	\end{figure}
 
 	\paragraph*{}
-	La régression linéaire multiple est une généralisation de la régression linéaire simple au cas de plus d'une variable indépendante, et un cas particulier des modèles linéaires généraux, limités à une variable dépendante. Le modèle de base de la régression linéaire multiple est \n
-	???
+	La régression linéaire multiple est une généralisation de la régression linéaire simple au cas de plus d'une variable indépendante, et un cas particulier des modèles linéaires généraux, limités à une variable dépendante.
 	
 	
 	\subsection{Les problèmes de classifications} \label{sec:classificarion_problem}
@@ -566,7 +565,7 @@
 			a_0  + a^Tx = 0
 		$$
 		
-		avec a vecteur de dimension $n$ et $a_0$ scalaire. Si deux classes $\mathcal{C}_1$ et $\mathcal{C}_2$ sont \textit{séparables} par $A$, tous les points de la première classe sont par exemple tels que :
+		avec $a$ vecteur de dimension $n$ et $a_0$ scalaire. Si deux classes $\mathcal{C}_1$ et $\mathcal{C}_2$ sont \textit{séparables} par $A$, tous les points de la première classe sont par exemple tels que :
 		
 			\begin{equation}\label{eq:x_case_c1}
 			 x \in \mathcal{C}_1 \implies a_0 + a^Tx > 0
@@ -581,7 +580,7 @@
 		
 		Dans un espace de dimension $d = 1$, une séparation linéaire se réduit à la comparaison à un seuil. Prenons ce cas particulier pour donner deux exemples où un problème de discrimination à deux classes ne peut pas en pratique être complètement résolu par une séparatrice linéaire.
 		
-		\paragraph* {séparatrice linéaire :}On appelle hyperplan séparateur ou séparatrice linéaire un hyperplan qui sépare parfaitement deux classes, c'est-à-dire qui vérifie les équations \ref{eq:x_case_c1} et \ref{eq:x_case_c2}; en particulier, il sépare parfaitement leurs points d'apprentissage. Un hyperplan discriminant est un classificateur linéaire pour deux classes qui ne sont pas linéairement séparables. \cite{antoine2018apprentissage}
+		\paragraph* {séparatrice linéaire :}On appelle hyperplan séparateur ou séparatrice linéaire un hyperplan qui sépare parfaitement deux classes, c'est-à-dire qui vérifie les équations \ref{eq:x_case_c1} et \ref{eq:x_case_c2}; en particulier, il sépare parfaitement leurs points d'apprentissage. Un hyperplan discriminant est un classificateur linéaire pour deux classes qui ne sont pas linéairement séparables \cite{antoine2018apprentissage}.
 		
 		
 		
@@ -641,7 +640,7 @@
 			%\label{fig:classification_linear}
 		%\end{figure}
 	
-		\begin{figure}[bth]
+		\begin{figure}[H]
 			\myfloatalign
 			\subfloat[La zone de décision et la droite séparatrice.]
 			{\label{fig:classification_zone}
@@ -652,13 +651,13 @@
 			
 			\caption{Exemple de la classification}\label{fig:classification_2case}
 		\end{figure}
-		
+		\vspace*{3cm}
 		La fonction de la droite séparatrice comme l'illustre la figure \ref{fig:classification_zone} et \ref{fig:classification_linear} s'écrit:
 		\begin{equation}\label{eq:droite_sep}
 			z = w _{1}x_{1}+\cdots +w_{n}x_{n}+b
 		\end{equation}
 		
-		avec $ i=1,\ldots ,n,$ %et $b = \varepsilon$
+		avec $ i=1,\ldots ,n,$ et $w_i$ et $b$ des paramètres de la droite.  %et $b = \varepsilon$
 		\\
 		$
 		\begin{cases}
@@ -666,9 +665,6 @@
 			\hat{y}=1 \ \ (y \in \mathcal{C}_2) & \quad \text{si  } z \geq 0
 		\end{cases}
 		$\\
-		
-		
-		
 		%??? changement de plan
 		
 		La fonction logistique est une fonction sigmoïde , qui prend n'importe quelle entrée réelle $t$, et renvoie une valeur comprise entre zéro et un \cite{ml2008python}. La fonction logistique standard ${\displaystyle \sigma :\mathbb {R} \rightarrow (0,1)}$ est défini comme suit :
@@ -678,7 +674,7 @@
 		
 		Supposons que $t$ est une fonction linéaire (comme la droite de la formule \ref{eq:droite_sep}) $t = z$. Et la fonction logistique générale ${ p:\mathbb {R} \rightarrow (0,1)}$ peut maintenant l'écrire :
 		\begin{equation}\label{eq:sigmoid-dev}
-			{\displaystyle p(x)=\sigma (t)= {\frac {1}{1+e^{-z}}} ={\frac {1}{1+e^{-(w _{1}x_{1}+\cdots +w_{n}x_{n}+b)}}}}
+			{\displaystyle p(x)=\sigma (z)= {\frac {1}{1+e^{-z}}} ={\frac {1}{1+e^{-(w _{1}x_{1}+\cdots +w_{n}x_{n}+b)}}}}
 		\end{equation} 
 		
 		
@@ -734,38 +730,73 @@
 	Le perceptron est un modèle simplifié d'un neurone biologique. Alors que la complexité des modèles de neurones biologiques est souvent nécessaire pour bien comprendre le comportement neuronal, la recherche suggère qu'un modèle linéaire de type perceptron peut produire certains comportements observés dans de vrais neurones.
 	
 	Un perceptron est donc une unité de réseau neuronal, l'élément de traitement de base, qui effectue certains \textit{calculs} pour détecter des caractéristiques ou une intelligence économique dans les données d'entrée.\\ 
-	Le perceptron, à l'instar du neurone artificiel classique, est aussi un algorithme d'apprentissage supervisé de classificateurs binaires. Un classificateur binaire est une fonction qui peut décider si une entrée, représentée par un vecteur de nombres, appartient ou non à une classe spécifique [??]. Il s'agit d'un type de classificateur linéaire , c'est-à-dire un algorithme de classification qui fait ses prédictions sur la base d'une fonction prédictive linéaire combinant un ensemble de poids avec le vecteur de caractéristiques.
+	Le perceptron, à l'instar du neurone artificiel classique, est conçu avec un algorithme d'apprentissage supervisé du même nom. %Un classificateur binaire est une fonction qui peut décider si une entrée, représentée par un vecteur de nombres, appartient ou non à une classe spécifique [??]. Il s'agit d'un type de classificateur linéaire , c'est-à-dire un algorithme de classification qui fait ses prédictions sur la base d'une fonction prédictive linéaire combinant un ensemble de poids avec le vecteur de caractéristiques.
+	\begin{figure}[H]%bth
+		\centering
+		\includegraphics[width=9cm]{images/neuron-3-param.png}
+		\caption{Neurone logique avec deux entrées $x_1$ et $x_2$ et les paramètres $w_1$, $w_2$ ($w_i$ dans un réseau de neurones il est nommé poids) et $b$ aussi appelé biais. le fonction d'agrégation $z$ (voir le point \ref{subsec:reg_logistique}, section \ref{sec:regression_problem}  et la formule \ref{eq:droite_sep})  sera: $z=w_1 x_1 +w_2 x_2 + b$.}
+		\label{fig:logic_neuron}
+	\end{figure}
 	
 	Le perceptron a des entrées qui peuvent provenir de l'environnement ou peuvent être les sorties d'autres perceptrons.
-	Associé à chaque entrée, $ x_j \in \mathbb{R}, j = 1,2, \dots , n, $ est un \textit{poids de connexion, ou poids} synaptique (voir le point \ref{sec:activation_weight}) $w_j \in \mathbb{R} $, et la sortie, $y$, dans le cas le plus simple est une somme pondérée des entrées \cite{alpaydin2010introduction}.
+	Associé à chaque entrée, $ x_j \in \mathbb{R}$, avec $ j = 1,2, \dots , n, $ est un \textit{poids de connexion, ou poids} synaptique $w_j \in \mathbb{R}$, et la sortie, $\hat{y}$. Dans le cas le plus simple $\hat{y}$ est une somme pondérée des entrées \cite{alpaydin2010introduction}.
 	
-	$$ {y = \sum _{j=1}^{n}w_{j}x_{j} + w_0} $$
+	$$ {\hat{y} = \sum _{j=1}^{n}w_{j}x_{j} + w_0} $$
 	
-	$w_0$ est la valeur d'interception pour rendre le modèle plus général, il est généralement modélisé comme la pondération provenant d'une unité de biais supplémentaire, $x_0$ , qui est toujours +1. Nous pouvons écrire la sortie du perceptron sous la forme d'un produit scalaire.
-	$$ y = x^Tw $$
+	$w_0$ est la valeur d'interception pour rendre le modèle plus général, il est généralement modélisé comme la pondération provenant d'une unité de biais supplémentaire, $b = w_0 x_0$, avec $x_0$ qui est toujours égale $+1$. Nous pouvons écrire la sortie du perceptron sous la forme d'un produit scalaire.
+	$$ \hat{y} = x^Tw $$
 	
-	Pendant le test, avec des poids donnés, $w$, pour l'entrée $x$, nous calculons la sortie $y$. Pour implémenter une tâche donnée, nous avons besoin d'apprendre les poids w, les paramètres du système, de sorte que des sorties correctes soient générées compte tenu des entrées.
+	Pendant le test, avec des poids donnés, $w$, pour l'entrée $x$, nous calculons la sortie $\hat{y}$. Pour implémenter une tâche donnée, nous avons besoin d'apprendre les poids $w$, les paramètres du système, de sorte que des sorties correctes soient générées compte tenu des entrées.
+	
+	\begin{figure}[hth]%bth
+		\centering
+		\includegraphics[width=\textwidth]{images/perceptron_neuron.png}
+		\caption{Neurone artificiel modèle perceptron \cite{ml2008python}, cette figure est plus adapté pour représenter le modèle du perceptron.}
+		\label{fig:perceptron_neuron}
+	\end{figure}
 	
 	\subsubsection{Calcul avec l'algorithme du perceptron}
 	
-	Le premier concept de règle d'apprentissage du perceptron, a été publié par Frank Rosenblatt [??],  basé sur le modèle neuronal  MP Neuron (McCulloch-Pitts Neuron). 
+	Le premier concept de règle d'apprentissage du perceptron, a été publié par Frank Rosenblatt \cite{antoine2018apprentissage}, basé sur le modèle neuronal MP Neuron (McCulloch-Pitts Neuron). 
 	
 	%(F. Rosenblatt, The Perceptron, a Perceiving and Recognizing Automaton. Cornell Aeronautical Laboratory, 1957).
 	
 	Avec sa règle de perceptron, Il a proposé un algorithme qui apprendrait automatiquement les coefficients de poids optimaux qui sont ensuite multipliés par les caractéristiques d'entrée afin de décider si un neurone se déclenche ou non. Dans le cadre de l'apprentissage supervisé et de la classification, un tel algorithme pourrait alors être utilisé pour prédire si un échantillon appartient à une classe ou à l'autre \cite{ml2008python}.
 	
-	Il est important de noter que la convergence du perceptron n'est garantie que si les deux classes sont linéairement séparables et que le taux d'apprentissage est suffisamment faible. Si les deux classes ne peuvent pas être séparées par une limite de décision linéaire, nous pouvons définir un nombre maximum de passages sur l'ensemble de données d'apprentissage (époques) et/ou un seuil pour le nombre d'erreurs de classification tolérées - le perceptron n'arrêterait jamais de mettre à jour les poids autrement:
+	Il est important de noter que la convergence du perceptron n'est garantie que si les deux classes sont linéairement séparables et que le taux d'apprentissage est suffisamment faible. Si les deux classes ne peuvent pas être séparées par une limite de décision linéaire, nous pouvons définir un nombre maximum de passages sur l'ensemble de données d'apprentissage (époques) et/ou un seuil pour le nombre d'erreurs de classification tolérées - le perceptron n'arrêterait jamais de mettre à jour les poids autrement.
+	
+	???
+	L'algorithme du perceptron travaille directement sur le vecteur a qui caractérise la surface discriminante cherchée. On n'a donc plus besoin ici de se placer dans l'espace de représentation de dimension d+1 ni d'utiliser le vecteur A. Cet algorithme utilise un protocole d'apprentissage itératif : il prend les données d'apprentissage les unes après les autres, chacune étant choisie soit par un passage systématique dans l'ensemble d'apprentissage (version « non stochastique »), soit par un tirage au hasard dans celui-ci (version « stochastique »). Son nombre d'étapes effectives peut être important: un seul (exactement ou en moyenne) passage des données n'est en effet pas suffisant pour le faire converger.
+	
 	???
 	
 	
-
-	\begin{figure}[hth]%bth
-		\centering
-		\includegraphics[width=\textwidth]{images/perceptron_neuron.png}
-		\caption{Neurone artificiel modèle : Perceptron \cite{ml2008python}
-		}
-		\label{fig:perceptron_neuron}
-	\end{figure}
+	\begin{algorithm}[H]
+		\caption{Perceptron, version stochastique}
+		\begin{algorithmic} 
+			\REQUIRE $n \geq 0 \vee x \neq 0$
+			\STATE $t \leftarrow 0$
+			
+			\WHILE{$N \neq 0$}
+				\STATE get random $x_i \in X$ set
+				\IF{$x$ is classed}
+					\STATE $a_{t+1} \leftarrow a_t$
+				\ELSE[]
+					\IF{$x \in \mathcal{W}_1$}
+						\STATE	$a_{t+1} \leftarrow a_t + \alpha x$
+					\ELSE[]
+						\STATE	$a_{t+1} \leftarrow a_t - \alpha x$
+					\ENDIF
+					\STATE $t \leftarrow t + 1 $
+	
+				\ENDIF
+			\ENDWHILE
+			
+			
+			
+		\end{algorithmic}
+	\end{algorithm}
+	
 
 	\subsubsection{Le réseau de neurones artificiels (Perceptron Multicouche)}
 	
@@ -782,14 +813,14 @@
 	
 	\begin{figure}[hth]%bth
 		\centering
-		\includegraphics[width=7cm]{images/colored_neural_network.png}
+		\includegraphics[width=6cm]{images/colored_neural_network.png}
 		\caption{Un réseau de neurones artificiels est un groupe de nœuds inter-connectés, inspiré d'une simplification des neurones d'un cerveau. Ici, chaque nœud circulaire représente un neurone artificiel et une flèche représente une connexion de la sortie d'un neurone artificiel à l'entrée d'un autre.}
 		\label{fig:colored_neural_network}
 	\end{figure}
 	
 	\subsection{Fonctions d'activation, poids et biais} \label{sec:activation_weight}
 	
-	\subsubsection{Poids et biais}
+	%\subsubsection{Poids et biais}
 	
 	\subsubsection{Fonctions d'activation tangente (Sigmoïde et  hyperbolique)}
 	La fonction d'activation est responsable de la transformation de l'entrée pondérée sommée du nœud en activation du nœud ou de la sortie pour cette entrée.
@@ -842,6 +873,11 @@
 	
 	Le réseau neuronal convolutif est un type de réseau neuronal artificiel qui utilise plusieurs perceptrons qui analysent les entrées d'image et ont des poids et des bases apprenables sur plusieurs parties d'images et capables de se séparer les unes des autres \cite{tammina2019transfer}.
 	
+	Un réseau de neurones convolutifs (CNN, Convolutional Neural Network ou ConvNet) est un type de réseau de neurones artificiels acyclique à propagation avant, dans lequel le motif de connexion entre les neurones est inspiré par le cortex visuel des animaux. Les neurones de cette région du cerveau sont arrangés de sorte à ce qu'ils correspondent à des régions (appelés champs réceptifs) qui se chevauchent lors du pavage du champ visuel. Ils sont de plus organisés de manière hiérarchique, en couches (aire visuelle primaire V1, secondaire V2, puis aires V3, V4, V5 et V6, gyrus temporal inférieur), chacune des couches étant spécialisée dans une tâche, de plus en plus abstraite \cite{antoine2018apprentissage}. En simplifiant à l'extrême, une fois que les signaux lumineux sont reçus par la rétine et convertis en potentiels d'action:
+	\begin{itemize}
+		\item L'aire primaire V1 s'intéresse principalement à la détection de contours, ces contours étant définis comme des zones de fort constrate de signaux visuels re
+	\end{itemize}
+	
 	???
 	
 	L'un des avantages de l'utilisation du réseau de neurones convolutifs est qu'il exploite l'utilisation de la cohérence spatiale locale dans les images d'entrée, ce qui leur permet d'avoir moins de poids car certains paramètres sont partagés \cite{tammina2019transfer}.
@@ -862,6 +898,10 @@
 	\subsubsection{L'architecture VGGNet}
 	
 	VGG signifie Visual Geometry Group, il s'agit d'une architecture standard de réseau de neurones à convolution profonde (CNN) à plusieurs couches. %Le "profond" fait référence au nombre de couches avec VGG-16 ou VGG-19 composé de 16 et 19 couches convolutionnelles.
+	
+	???
+	
+	Les réseaux VGG (Visual Geometry Group, université d'Oxford) [SZ14] ont été les premiers à utiliser de petits filtres de convolution (3×3) et à les combiner pour décrire des séquences de convolution, l'idée étant d'émuler l'effet de larges champs réceptifs par cette séquence. Cette technique amène malheureusement à un nombre exponentiel de paramètres (le modèle entraîné qui peut être téléchargé a une taille de plus de 500 Mo). VGG a concouru à ILSVRC 2014, a obtenu un taux de bonne classification de 92.3 \% mais n'a pas remporté le concours. Aujourd'hui, VGG est une famille de réseaux profonds (de A à E) qui varient par leur architecture (figure 10.9). Le nombre de paramètres (en millions) pour les réseaux de A à E est 133, 133, 134, 138 et 144. Les réseaux VGG-D et VGG-E sont les plus précis et populaires.???
 	
 	
 	
