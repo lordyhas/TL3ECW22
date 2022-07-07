@@ -77,19 +77,45 @@
 \chapter*{Liste des acronymes}
 
 \begin{acronym}[UML]
+	\acro{IA}{Intelligence Artificielle}
+	\acro{AI}{Artificial Intelligence}
+	\acro{SA}{Supervised Learning}
+	\acro{AI}{Artificial Intelligence}
+	
 	\acro{ML}{Machine Learning}
 	\acro{CV}{Computer Vision}
 	
-	\acro{OCR}{Optical character recognition}
-	\acro{ANPR}{Automatic number-plate recognition}
-	\acro{ALPR}{Automatic license plate recognition}
+	\acro{OCR}{Optical Character Recognition}
+	\acro{ANPR}{Automatic Number-Plate Recognition}
+	\acro{ALPR}{Automatic License Plate Recognition}
+	
 	
 	\acro{GD}{Gradient Descent}
 	\acro{SGD}{Stochastic Gradient Descent}
 	\acro{ADALINE}{ADAptative LInear NEuron }
 	
+	\acro{CNN}{Convolutional Neural Network}
+	\acro{ANN}{Artificial Neural Network}
+	\acro{VGG}{Visual Geometry Group}
+	\acro{ILSVRC}{ImageNet Large Scale Visual Recognition Challenge}
+	
+	\acro{NAG}{Nesterov Accelerated Gradient}
+	
+	\acro{ReLu}{Rectified Linear Unit}
+	\acro{MSE}{Mean Squared Error}
+	\acro{MLP}{MultiLayer perceptron}
+	
+	\acro{SLNN}{Single-Layer Neural Network}
+	
+	\acro{DL}{Développment Limité}
+	
+	%\acro{NAG}{}
+	%\acro{NAG}{}
+	
 	
 	\acro{API}{Application Programming Interface}
+	
+	
 	\acro{UML}{Unified Modeling Language}
 \end{acronym} 
                    
@@ -106,8 +132,11 @@
 \markboth{\spacedlowsmallcaps{Notions}}{\spacedlowsmallcaps{Notions}}
 
 \chapter*{Notions}
+%\resizebox{\textwidth}{!}
 
-\begin{tabular}{ll}
+
+
+\begin{tabular}{l p{0.85\linewidth}}
 	$\mathbb{N} $ & Ensemble des entiers naturels\\
 	%$\mathbb{R} $ &  \\
 	$\mathbb{R}^n $ & Ensemble des réels ou  Espace euclidien de dimension $n$ \\
@@ -137,12 +166,16 @@
 	 $ $ & \textbf{  \ \ \ \ \ \ \ \ \textsc{Les éléments en apprentissage}} \\
 	
 	$ \mathcal{S} $ & L'échantillon d'apprentissage (un ensemble ou une suite d'exemple)  \\ 
-	$ \hat{y}$ & valeurs prédite après l'entrainement d'un modèle d'apprentissage automatique \\ 
-	$ \mathcal{H} $ & \\
-	$ h \in \mathcal{H} $ & \\
-	$y = h(x) $ & \\
-	$ \ell(f(x),h(x)) $ & \\
+	$ \hat{y}$ & La valeurs prédite après l'entrainement d'un modèle d'apprentissage automatique \\ 
+	$ \hat{y}_i \in  \mathcal{Y} $ & La prédiction, ou sortie désirée, d'un exemple \\
+	$ \mathcal{H} $ &  Espace des hypothèses d'apprentissages \\
+	$ h \in \mathcal{H} $ & Une hypothèses produite par un algorithme d'apprentissage \\
+	$ y = h(x) \in \mathcal{Y} $ & La prédiction faite par l'hypothèse $h$ sur la description $s$ d'un exemple \\
+	$ \ell(f(x),h(x)) $ & La fonction perte ou fonction coût entre la fonction  cible et une hypothèse sur $x$ d'un exemple \\
 	
-	$ $ & \\
+	$ \mathcal{C} $ & L'ensemble des classes \\
+	$ C $ & Le nombre de classes \\
+	$ \mathit{c_i} \in \mathcal{C}  $ & Une sous classe de $\mathcal{C}$ \\
+	
 	
 \end{tabular}

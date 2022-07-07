@@ -5,12 +5,12 @@
 %
 %#############################################################################
 
-\textcolor{cyan}{\chapter{Concepts et éléments mathématiques de l'apprentissage profond}}
+\textcolor{cyan}{\chapter{Concepts et éléments mathématiques de l'apprentissage profond}\label{chap:concept}}
 %\textcolor{cyan}{\chapter{Les bases mathématiques pour l'apprentissage automatique }}%Machine Learning
 \section{Les bases d'optimisation numérique et statistique}
-	\subsection{Éléments de calcul différentiel}
+	\subsection{Éléments de calcul différentiel}\label{sec:diffierential}
 	%Cette section est inspirée des notes écrites par le Professeur TSHIMANGA \cite[voir][page:45-82]{jtshiman:2021} et d'autres consignes données par Nocedal et al dans \cite{bottou2018optimization} \cite{coulombeau2013math}[??].
-	\subsubsection{\textbf{Convexité}}
+	\subsubsection{\textbf{Convexité}} \label{subsec:convex}
 		\paragraph*{Définition : (Ensemble convexe)} 
 		Une partie $\mathcal{C} \subset \mathbb{R}^n $ est dite convexe si et seulement si pour tout $(x,y) \in \mathcal{C}^2$, 
 		et pour tout $ \alpha \in [0, 1]$,
@@ -19,7 +19,7 @@
 		\begin{figure}[bth]
 			\centering
 			\includegraphics{images/convex_function_graph.png}
-			\caption{Illustration fonction convexe [image de Wikipédia]}
+			\caption[Illustration fonction convexe]{Illustration d'une fonction convexe, avec $\alpha=t$. }
 			\label{fig:convexe_graph}
 		\end{figure}	
 		
@@ -36,8 +36,8 @@
 			f(\alpha x + (1 - \alpha)y) < \alpha f(x) + (1 - \alpha)f(y)
 			\label{eq_convexe-2}
 		\end{equation}
-		on dit que la fonction est strictement convexe dans $\mathcal{C}$,  \cite{jtshiman:2021}\\\\
-		Exemple: 
+		on dit que la fonction est strictement convexe dans $\mathcal{C}$,  \cite{jtshiman:2021}.\\\\
+		%Exemple: 
 		%\begin{itemize}
 			%\item[--] La fonction $ f(x) = x^2$ est convexe. 
 			%\item[--] La fonction $ f(x) = x^T x$ est convexe.
@@ -45,13 +45,51 @@
 		%\end{itemize}coulombeau2013math
 	
 		%\subsection{Extrema}	
-		\paragraph*{Propriété d'une fonction dérivable : } (Extremum local) 
-		Parmi les propriétés de dérivabilité il existe une qui est mise en relation avec l'effect qu'une fonction doit être convexe. énoncé ci-dessous \cite[][p. 212]{coulombeau2013math}.\\
-		\begin{list}{+}{Soit $I \rightarrow  \mathbb{R} $ une fonction et $a$ un point de $I$.}
-			\item  {On dit que $m$ est un \textbf{minimum local} de $f$ s'il existe $a > 0$ tel que $m$ soit le minimum de $f$ restreinte à $I \cap ] a-\alpha, a + \alpha [$. }
-			\item On dit que $M$ est un \textbf{maximum local} de $f$ s'il existe $a > 0$ tel que $M$ soit le maximum de $f$ restreinte à $I \cap ] a-\alpha, a + \alpha [$. 
-		\end{list} 
+		\paragraph*{Extremum d'une fonction : }
+		%Parmi les propriétés de dérivabilité il existe une qui est mise en relation avec l'effect qu'une fonction doit être convexe. 
+		%\cite[][p. 212]{coulombeau2013math}
+		\begin{list}{+}{Soit $I \rightarrow  \mathbb{R} $ une fonction et $a$ un point de $I$ ($a \in I$).}
+			\item  {On dit que $m$ est un \textbf{minimum local} de $f$, si pour tout $x \in I,\ f(x) \leq f(a)$ ou
+				s'il existe $\alpha > 0$ tel que $m$ soit le minimum de $f$ restreinte à $I \cap ] a-\alpha, a + \alpha [$. }
+			\item On dit que $M$ est un \textbf{maximum local} de $f$, si pour tout $x \in I,\ f(x) \geq f(a)$ ou s'il existe $\alpha > 0$ tel que $M$ soit le maximum de $f$ restreinte à $I \cap ] a-\alpha, a + \alpha [$. 
+		\end{list}
 		
+		
+		La recherche des extrema est liée au calcul différentiel, grâce notamment au théorème suivant.
+		\begin{theorem}
+			
+			Soit $I$  un intervalle ouvert et $f:  I\rightarrow \mathbb{R} $ dérivable. Si $f$ admet un extremum local en $a$ alors $f'(a) = 0$.
+		\end{theorem}
+		La réciproque de ce théorème est fausse comme le montre l'exemple de la fonction cube, dont la dérivée s'annule en $0$, mais qui ne possède pas d'extremum en ce point. En général, on étudie la fonction, et notamment le signe de $f'$ pour déterminer si $a$ est effectivement un extremum, et si c'est un maximum ou un minimum.
+		
+		Pour les fonctions de plusieurs variables, on remplace la dérivée par la différentielle et on affine l'étude avec les dérivées partielles secondes. On a ainsi le résultat suivant.
+	
+		\begin{theorem}
+			
+			Soit $f: \mathbb{R}^2\rightarrow \mathbb{R} $  et $a \in \mathbb{R}^2 $.
+			\begin{itemize}
+				\item Si $f$ est différentiable, et si $f$ admet extremum local en $a$, alors 
+				$$
+				\frac{\partial f}{\partial x}(a)=0 \quad et \quad \frac{\partial f}{\partial y}(a)=0.
+				$$
+				On dit alors que $a$ est un \textbf{point stationnaire} ou \textbf{point critique} de $a$.
+				\item Si $f \in I^2$ et, si  $a$ est point stationnaire de $f$, on pose
+				$$ 
+				r = \frac{\partial^2 f}{\partial x^2 }(a), \quad
+				s = \frac{\partial^2 f}{\partial x \partial y }(a), \quad
+				t = \frac{\partial^2 f}{\partial y^2 }(a).
+				$$
+				On distingue les cas suivants
+				\begin{enumerate}
+					\item Si $rt-s^2 > 0$ et $r > 0,\ f$ admet un minimum relatif en $a$.
+					\item Si $rt-s^2 > 0$ et $r < 0,\ f$ admet un maximum relatif en $a$.
+					\item Si $rt-s^2 < 0,\ f$ n'admet pas maximum en $a$ on parle de \textbf{point col}, ou de \textbf{point selle}.
+					\item Si $rt-s^2 = 0$, on ne peut pas conclure.	
+				\end{enumerate} 
+			\end{itemize}
+		\end{theorem}
+	
+
 		Donc nous pouvons dire qu'une fonction convexe à un unique point minimum.
 		
 		 
@@ -389,8 +427,7 @@
 		\begin{figure}[hth]%bth
 			\centering
 			\includegraphics[width=\textwidth]{images/linear_regression_quartet.png}
-			\caption{Images illustrant l'efficacité de la régression linéaire sur plusieurs type de modèle [image Wikipédia]
-			}
+			\caption{Images illustrant l'efficacité de la régression linéaire sur plusieurs type de modèle.}
 			\label{fig:linear_regression_quartet}
 		\end{figure}
 		
@@ -549,8 +586,7 @@
 		\begin{figure}[bth]%bth
 			\centering
 			\includegraphics[width=15cm]{images/classification_vs_regression.png}
-			\caption{Classification vs régression \cite{ml2008python}
-			}
+			\caption[Classification vs Régression.]{Classification vs régression \cite{ml2008python}}
 			\label{fig:class_vs_reg}
 		\end{figure}
 		
@@ -590,8 +626,7 @@
 		\begin{figure}[bth]%bth
 			\centering
 			\includegraphics[width=\textwidth]{images/linearly_separable.png}
-			\caption{Classes linéairement séparables \cite[image de][p. 48]{ml2008python}
-			}
+			\caption[Classes linéairement séparables.]{Classes linéairement séparables \cite{ml2008python}}
 			\label{fig:linearly_separable}
 		\end{figure}
 	
@@ -685,8 +720,7 @@
 		\begin{figure}[H]%bth
 			\centering
 			\includegraphics[width=10cm]{images/sigmoid_graph.png}
-			\caption{Graphique représentant fonction sigmoïde logistique ajustée aux données $(x_n , y_n)$. \cite{ml2008python}
-			}
+			\caption[Graphique représentant fonction sigmoïde logistique.]{Graphique représentant fonction sigmoïde logistique ajustée aux données $(x_n , y_n)$. \cite{ml2008python}}
 			\label{fig:reg_log_sigmoid}
 		\end{figure}
 	
@@ -734,7 +768,7 @@
 	\begin{figure}[H]%bth
 		\centering
 		\includegraphics[width=9cm]{images/neuron-3-param.png}
-		\caption{Neurone logique avec deux entrées $x_1$ et $x_2$ et les paramètres $w_1$, $w_2$ ($w_i$ dans un réseau de neurones il est nommé poids) et $b$ aussi appelé biais. le fonction d'agrégation $z$ (voir le point \ref{subsec:reg_logistique}, section \ref{sec:regression_problem}  et la formule \ref{eq:droite_sep})  sera: $z=w_1 x_1 +w_2 x_2 + b$.}
+		\caption[Neurone logique avec deux entrées $x_1$ et $x_2$ et les paramètres $w_1$, $w_2$ et $b$.]{Neurone logique avec deux entrées $x_1$ et $x_2$ et les paramètres $w_1$, $w_2$ ($w_i$ dans un réseau de neurones il est nommé poids) et $b$ aussi appelé biais. le fonction d'agrégation $z$ (voir le point \ref{subsec:reg_logistique}, section \ref{sec:regression_problem}  et la formule \ref{eq:droite_sep})  sera: $z=w_1 x_1 +w_2 x_2 + b$.}
 		\label{fig:logic_neuron}
 	\end{figure}
 	
@@ -751,7 +785,7 @@
 	\begin{figure}[hth]%bth
 		\centering
 		\includegraphics[width=\textwidth]{images/perceptron_neuron.png}
-		\caption{Neurone artificiel modèle perceptron \cite{ml2008python}, cette figure est plus adapté pour représenter le modèle du perceptron.}
+		\caption[Neurone artificiel modèle perceptron.]{Neurone artificiel modèle perceptron \cite{ml2008python}, cette figure est plus adapté pour représenter le modèle du perceptron.}
 		\label{fig:perceptron_neuron}
 	\end{figure}
 	
@@ -771,31 +805,86 @@
 	???
 	
 	
-	\begin{algorithm}[H]
-		\caption{Perceptron, version stochastique}
-		\begin{algorithmic} 
-			\REQUIRE $n \geq 0 \vee x \neq 0$
-			\STATE $t \leftarrow 0$
-			
-			\WHILE{$N \neq 0$}
-				\STATE get random $x_i \in X$ set
-				\IF{$x$ is classed}
-					\STATE $a_{t+1} \leftarrow a_t$
-				\ELSE[]
-					\IF{$x \in \mathcal{W}_1$}
-						\STATE	$a_{t+1} \leftarrow a_t + \alpha x$
-					\ELSE[]
-						\STATE	$a_{t+1} \leftarrow a_t - \alpha x$
-					\ENDIF
-					\STATE $t \leftarrow t + 1 $
+	%\begin{algorithm}[H]
+	%	\caption{Perceptron, version stochastique}
+	%	\begin{algorithmic} 
+	%		\REQUIRE $n \geq 0 \vee x \neq 0$
+	%		\STATE $t \leftarrow 0$		
+	%		\WHILE{$N \neq 0$}
+	%			\STATE get random $x_i \in X$ set
+	%			\IF{$x$ is classed}
+	%				\STATE $a_{t+1} \leftarrow a_t$
+	%			\ELSE[]
+	%				\IF{$x \in \mathcal{W}_1$}
+	%					\STATE	$a_{t+1} \leftarrow a_t + \alpha x$
+	%				\ELSE[]
+	%					\STATE	$a_{t+1} \leftarrow a_t - \alpha x$
+	%				\ENDIF
+	%				\STATE $t \leftarrow t + 1 $
+	%			\ENDIF
+	%		\ENDWHILE		
+	%	\end{algorithmic}
+	%\end{algorithm}
 	
-				\ENDIF
-			\ENDWHILE
+	\begin{lstlisting}[language=python]
+	
+	class Perceptron(object):
+		"""Perceptron classifier.
+		Parameters
+		------------
+		eta : float
+		Learning rate (between 0.0 and 1.0)
+		n_iter : int
+		Passes over the training dataset.
+		random_state : int # Random number generator seed for random weight initialization.
+		
+		Attributes
+		-----------
+		w_ : 1d-array
+		Weights after fitting.
+		errors_ : list
+		Number of misclassifications (updates) in each epoch.
+		"""
+		def __init__(self, eta=0.01, n_iter=50, random_state=1):
+			self.eta = eta
+			self.n_iter = n_iter
+			self.random_state = random_state
+		
+		def fit(self, X, y):
+			"""Fit training data.
+			Parameters
+			----------
+			X : {array-like}, shape = [n_samples, n_features]
+			Training vectors, where n_samples is the number of samples and
+			n_features is the number of features.
+			y : array-like, shape = [n_samples]
+			Target values.
+			Returns
+			-------
+			self : object
+			"""
+			rgen = np.random.RandomState(self.random_state)
+			self.w_ = rgen.normal(loc=0.0, scale=0.01, size=1 + X.shape[1])
+			self.errors_ = []
 			
-			
-			
-		\end{algorithmic}
-	\end{algorithm}
+			for _ in range(self.n_iter):
+			errors = 0
+			for xi, target in zip(X, y):
+			update = self.eta * (target - self.predict(xi))
+			self.w_[1:] += update * xi
+			self.w_[0] += update
+			errors += int(update != 0.0)
+			self.errors_.append(errors)
+			return self
+		
+		def net_input(self, X):
+			"""Calculate net input"""
+			return np.dot(X, self.w_[1:]) + self.w_[0]
+		
+		def predict(self, X):
+			"""Return class label after unit step"""
+			return np.where(self.net_input(X) >= 0.0, 1, -1)
+	\end{lstlisting}
 	
 
 	\subsubsection{Le réseau de neurones artificiels (Perceptron Multicouche)}
@@ -814,7 +903,7 @@
 	\begin{figure}[hth]%bth
 		\centering
 		\includegraphics[width=6cm]{images/colored_neural_network.png}
-		\caption{Un réseau de neurones artificiels est un groupe de nœuds inter-connectés, inspiré d'une simplification des neurones d'un cerveau. Ici, chaque nœud circulaire représente un neurone artificiel et une flèche représente une connexion de la sortie d'un neurone artificiel à l'entrée d'un autre.}
+		\caption[Un réseau de neurones artificiels est un groupe de nœuds inter-connecté]{Un réseau de neurones artificiels est un groupe de nœuds inter-connectés, inspiré d'une simplification des neurones d'un cerveau. Ici, chaque nœud circulaire représente un neurone artificiel et une flèche représente une connexion de la sortie d'un neurone artificiel à l'entrée d'un autre.}
 		\label{fig:colored_neural_network}
 	\end{figure}
 	
@@ -825,7 +914,7 @@
 	\subsubsection{Fonctions d'activation tangente (Sigmoïde et  hyperbolique)}
 	La fonction d'activation est responsable de la transformation de l'entrée pondérée sommée du nœud en activation du nœud ou de la sortie pour cette entrée.
 	Pour un nœud donné, les entrées sont multipliées par les poids d'un nœud et additionnées. Cette valeur est appelée activation sommée du nœud. L'activation sommée est ensuite transformée via une fonction d'activation et définit la sortie spécifique ou « activation » du nœud \cite{ml2008python}.\\
-	La fonction sigmoïde (aussi appelé fonction logistique voir le point \ref{sec:classificarion_problem} \ref{subsec:reg_logistique}) est utilisée ici comme une fonction d'activation.	
+	La fonction sigmoïde (aussi appelé fonction logistique voir le point \ref{subsec:reg_logistique}, section \ref{sec:classificarion_problem} ) est utilisée ici comme une fonction d'activation.	
 	
 	La fonction d'activation la plus simple est appelée activation linéaire, où aucune transformation n'est appliquée. Un réseau composé uniquement de fonctions d'activation linéaires est très facile à former, mais ne peut pas apprendre des fonctions de cartographie complexes. Les fonctions d'activation linéaires sont toujours utilisées dans la couche de sortie pour les réseaux qui prédisent une quantité (par exemple, les problèmes de régression, voir le point \ref{sec:regression_problem}) \cite{geron2017hands, krizhevsky2012imagenet}.
 	
@@ -835,7 +924,8 @@
 	
 	
 	La fonction \textbf{tangente hyperbolique}, ou \textbf{tanh} en abrégé, est une fonction d'activation non linéaire de forme similaire qui génère des valeurs comprises entre -1,0 et 1,0. À la fin des années 1990 et au cours des années 2000, la fonction tanh a été préférée à la fonction d'activation sigmoïde car les modèles qui l'utilisaient étaient plus faciles à entraîner et avaient souvent de meilleures performances prédictives \cite{goodfellow2016deep}.
-	la fonction d'activation tangente hyperbolique fonctionne généralement mieux que la sigmoïde logistique.
+	L a fonction d'activation tangente hyperbolique fonctionne généralement mieux que la sigmoïde logistique.
+	
 	\subsubsection*{Limitations des fonctions d'activation sigmoïde et tanh}
 	Cela signifie que pour tanh et sigmoïde, les grandes valeurs sont alignées sur 1,0 et les petites valeurs sont alignées sur -1 ou 0. De plus, la fonction n'est vraiment sensible qu'aux changements proches du point médian de l'entrée. Par exemple, 0,5 pour les sigmoïdes et 0,0 pour la tanh.
 	
@@ -843,31 +933,31 @@
 	 
 	 La sensibilité et la saturation limitées de la fonction se produisent indépendamment du fait que l'activation additionnée du nœud fourni en entrée contient des informations utiles ou non. Une fois saturé, il devient difficile pour l'algorithme d'apprentissage de continuer à adapter les poids pour améliorer les performances du modèle.
 	 
-	 Les couches profondes des grands réseaux utilisant ces fonctions d'activation non linéaires ne reçoivent pas d'informations de gradient utiles. L'erreur est rétropropagée (voir le point ???) sur le réseau et utilisée pour mettre à jour les pondérations. La quantité d'erreur diminue considérablement avec chaque couche supplémentaire à travers laquelle elle se propage, compte tenu de la dérivée de la fonction d'activation choisie. C'est ce qu'on appelle le problème du gradient de fuite et empêche les réseaux profonds (multicouches) d'apprendre efficacement \cite{geron2017hands}.
+	 Les couches profondes des grands réseaux utilisant ces fonctions d'activation non linéaires ne reçoivent pas d'informations de gradient utiles. L'erreur est rétropropagée (voir le chapitre \ref{chap:methode}, section \ref{sec:backprop}) sur le réseau et utilisée pour mettre à jour les pondérations. La quantité d'erreur diminue considérablement avec chaque couche supplémentaire à travers laquelle elle se propage, compte tenu de la dérivée de la fonction d'activation choisie. C'est ce qu'on appelle le problème du gradient de fuite et empêche les réseaux profonds (multicouches) d'apprendre efficacement \cite{geron2017hands}.
 	 
 	 Bien que l'utilisation de fonctions d'activation non linéaires permette aux réseaux de neurones d'apprendre des fonctions de cartographie complexes, elles empêchent efficacement l'algorithme d'apprentissage de fonctionner avec des réseaux profonds.
 	 
 	
 	
-	\subsubsection{Fonction d'activation ReLU}
+	\subsubsection{Fonction d'activation ReLU}\label{subsec:relu}
 	
-	Dans le domaine des réseaux de neurones artificiels, ReLU (Rectified Linear Unit) ou fonction d'activation du redresseur est une fonction d'activation définie comme la partie positive de son argument \cite{goodfellow2016deep}.
+	Dans le domaine des réseaux de neurones artificiels, ReLU (Rectified Linear Unit) ou fonction d'activation d'unité linéaire rectifiée est une fonction d'activation définie comme la partie positive de son argument \cite{goodfellow2016deep}.
 	$${\displaystyle f(x)=x^{+}=\max(0,x)}$$
-	ReLU est une fonction linéaire par morceaux qui produira l'entrée directement si elle est positive, sinon, elle produira zéro. C'est devenu la fonction d'activation par défaut pour de nombreux types de réseaux de neurones, car un modèle qui l'utilise est plus facile à former et atteint souvent de meilleures performances \cite{geron2017hands}.
+	 %ReLU signifie fonction d'activation d'unité linéaire rectifiée; c'est une fonction linéaire par morceaux qui produira l'entrée si elle est positive; sinon, la sortie est nulle.
+	ReLU est une fonction linéaire par morceaux qui produira l'entrée directement si elle est positive, sinon, la sortie est nulle \cite{tammina2019transfer}. C'est devenu la fonction d'activation par défaut pour de nombreux types de réseaux de neurones, car un modèle qui l'utilise est plus facile à former et atteint souvent de meilleures performances \cite{geron2017hands}.
 	
+	\begin{wrapfigure}{r}{0.5\textwidth}
+		\myfloatalign{\includegraphics[width=5cm]{images/relu_activation}}
+		\caption{ReLU}\label{fig:relu}
+	\end{wrapfigure}
 	
 	La conception d'unités cachées est un domaine de recherche extrêmement actif et ne dispose pas encore de nombreux principes directeurs théoriques définitifs.
-	Les fonctions d'activations ReLU sont un excellent choix par défaut d'unité cachée. De nombreux autres types d'unités cachées sont disponibles. Il peut être diﬃcile de déterminer quand utiliser quel type, bien que les unités linéaires rectiﬁées soient généralement un choix acceptable \cite{goodfellow2016deep}.
-	
-	???
-	
-	Pour un exemple de la façon dont ReLU peut résoudre le problème des gradients de fuite, consultez le didacticiel 
+	Les fonctions d'activations ReLU sont un excellent choix par défaut d'unité cachée.\\De nombreux autres types d'unités cachées sont disponibles. Il peut être diﬃcile de déterminer quand utiliser quel type, bien que les unités linéaires rectiﬁées soient généralement un choix acceptable \cite{goodfellow2016deep}. ReLU peut résoudre le problème des gradients de fuite, consultez le didacticiel \cite{pretorius2018critical}.
 
 
 	%	\subsection{Neurones}
 	%\lipsum[1]
 	%\subsubsection{Réseau des neurones}
-	
 	
 	\subsection{Réseau neuronal convolutif (CNN)}
 	
@@ -875,22 +965,25 @@
 	
 	Un réseau de neurones convolutifs (CNN, Convolutional Neural Network ou ConvNet) est un type de réseau de neurones artificiels acyclique à propagation avant, dans lequel le motif de connexion entre les neurones est inspiré par le cortex visuel des animaux. Les neurones de cette région du cerveau sont arrangés de sorte à ce qu'ils correspondent à des régions (appelés champs réceptifs) qui se chevauchent lors du pavage du champ visuel. Ils sont de plus organisés de manière hiérarchique, en couches (aire visuelle primaire V1, secondaire V2, puis aires V3, V4, V5 et V6, gyrus temporal inférieur), chacune des couches étant spécialisée dans une tâche, de plus en plus abstraite \cite{antoine2018apprentissage}. En simplifiant à l'extrême, une fois que les signaux lumineux sont reçus par la rétine et convertis en potentiels d'action:
 	\begin{itemize}
-		\item L'aire primaire V1 s'intéresse principalement à la détection de contours, ces contours étant définis comme des zones de fort constrate de signaux visuels re
+		\item L'aire primaire V1 s'intéresse principalement à la détection de contours, ces contours étant définis comme des zones de fort contraste de signaux visuels reçus.
+		\item L'aire V2 reçoit les informations de V1 et extrait des informations telles que la fréquence spatiale, l'orientation, ou encore la couleur.
+		\item L'aire V4, qui reçoit des informations de V2, mais aussi de V1 directement, détecte des caractéristiques plus complexes et abstraites liées par exemple à la forme.
+		\item Le gyrus temporal inférieur est chargé de la partie sémantique (reconnaissance des objets), à partir des informations reçues des aires précédentes et d'une mémoire des informations stockées sur des objets.
 	\end{itemize}
 	
-	???
+	L'architecture et le fonctionnement des réseaux convolutifs sont inspirés par ces processus biologiques. Ces réseaux consistent en un empilage multicouche de perceptrons \cite{tammina2019transfer}, dont le but est de pré-traiter de petites quantités d'informations.\\
+	Un réseau convolutif se compose de deux types de neurones, agencés en couches traitant successivement l'information. Dans le cas du traitement de données de type images \cite{antoine2018apprentissage}, on a ainsi : 
+	
+	\begin{itemize}
+		\item des neurones de traitement, qui traitent une portion limitée de l'image (le champ réceptif) au travers d'une fonction de convolution\cite{tammina2019transfer, antoine2018apprentissage};
+		\item des neurones de mise en commun des sorties dits d'agrégation totale ou partielle (pooling) \cite{tammina2019transfer, antoine2018apprentissage}.
+		
+	\end{itemize}
+	
+	Un traitement correctif non linéaire est appliqué entre chaque couche pour améliorer la perti nence du résultat. L'ensemble des sorties d'une couche de traitement permet de reconstituer une image intermédiaire, dite carte de caractéristiques (feature map), qui sert de base à la couche suivante. Les couches et leurs connexions apprennent des niveaux d'abstraction croissants et extraient des caractéristiques de plus en plus haut niveau des données d'entrée \cite{antoine2018apprentissage, shin2016deep}.
 	
 	L'un des avantages de l'utilisation du réseau de neurones convolutifs est qu'il exploite l'utilisation de la cohérence spatiale locale dans les images d'entrée, ce qui leur permet d'avoir moins de poids car certains paramètres sont partagés \cite{tammina2019transfer}.
 	
-	
-	???
-	\cite{shin2016deep} 
-	
-	\subsubsection{La convolution}
-	
-	La convolution est une opération mathématique simple généralement utilisée pour le traitement et la reconnaissance d’images. Sur une image, son effet s’assimile à un filtrage dont voici le fonctionnement
-	
-	??? 
 	
 	\subsubsection{Les différents couches d'un CNN}
 	???
@@ -901,7 +994,7 @@
 	
 	???
 	
-	Les réseaux VGG (Visual Geometry Group, université d'Oxford) [SZ14] ont été les premiers à utiliser de petits filtres de convolution (3×3) et à les combiner pour décrire des séquences de convolution, l'idée étant d'émuler l'effet de larges champs réceptifs par cette séquence. Cette technique amène malheureusement à un nombre exponentiel de paramètres (le modèle entraîné qui peut être téléchargé a une taille de plus de 500 Mo). VGG a concouru à ILSVRC 2014, a obtenu un taux de bonne classification de 92.3 \% mais n'a pas remporté le concours. Aujourd'hui, VGG est une famille de réseaux profonds (de A à E) qui varient par leur architecture (figure 10.9). Le nombre de paramètres (en millions) pour les réseaux de A à E est 133, 133, 134, 138 et 144. Les réseaux VGG-D et VGG-E sont les plus précis et populaires.???
+	Les réseaux VGG (Visual Geometry Group, université d'Oxford) ont été les premiers à utiliser de petits filtres de convolution (3×3) et à les combiner pour décrire des séquences de convolution, l'idée étant d'émuler l'effet de larges champs réceptifs par cette séquence. Cette technique amène malheureusement à un nombre exponentiel de paramètres (le modèle entraîné qui peut être téléchargé a une taille de plus de 500 Mo). VGG a concouru à ILSVRC 2014, a obtenu un taux de bonne classification de 92.3 \% mais n'a pas remporté le concours \cite{krizhevsky2012imagenet}. Aujourd'hui, VGG est une famille de réseaux profonds (de A à E) qui varient par leur architecture (figure 10.9). Le nombre de paramètres (en millions) pour les réseaux de A à E est 133, 133, 134, 138 et 144. Les réseaux VGG-D et VGG-E sont les plus précis et populaires.???
 	
 	
 	
@@ -913,7 +1006,7 @@
 	\begin{list}{--}{Un bref coup d'œil à l'architecture de VGG :}
 		\item \textbf{Entrée} : Le VGGNet prend une taille d'entrée d'image de 224×224. Pour le concours ImageNet, les créateurs du modèle ont recadré le patch central 224 × 224 dans chaque image pour conserver la cohérence de la taille d'entrée de l'image \cite{simonyan2014very}.
 		
-		\item \textbf{Couches convolutives }: Les couches convolutives de VGG tirent parti d'un champ de réception minimal, c'est-à-dire 3 × 3, la plus petite taille possible qui capture toujours haut/bas et gauche/droite. De plus, il existe également des filtres de convolution 1 × 1 agissant comme une transformation linéaire de l'entrée. Vient ensuite une unité ReLU, qui est une énorme innovation d'AlexNet qui réduit le temps de formation. ReLU signifie fonction d'activation d'unité linéaire rectifiée ; c'est une fonction linéaire par morceaux qui produira l'entrée si elle est positive ; sinon, la sortie est nulle. La foulée de convolution est fixée à 1 pixel pour conserver la résolution spatiale préservée après la convolution (la foulée est le nombre de décalages de pixels sur la matrice d'entrée) \cite{krizhevsky2012imagenet,tammina2019transfer}.
+		\item \textbf{Couches convolutives }: Les couches convolutives de VGG tirent parti d'un champ de réception minimal, c'est-à-dire 3 × 3, la plus petite taille possible qui capture toujours haut/bas et gauche/droite. De plus, il existe également des filtres de convolution 1 × 1 agissant comme une transformation linéaire de l'entrée. Vient ensuite une unité ReLU, qui est une énorme innovation d'AlexNet qui réduit le temps de formation. La foulée de convolution est fixée à 1 pixel pour conserver la résolution spatiale préservée après la convolution (la foulée est le nombre de décalages de pixels sur la matrice d'entrée) \cite{krizhevsky2012imagenet,tammina2019transfer}.
 		
 		\item \textbf{Couches cachées} : Toutes les couches cachées du réseau VGG utilisent ReLU. VGG n'utilise généralement pas la normalisation de la réponse locale (LRN) car elle augmente la consommation de mémoire et le temps de formation. De plus, il n'apporte aucune amélioration à la précision globale \cite{tammina2019transfer}.
 		

@@ -4,9 +4,9 @@
 % Version 1.4 (1/1/16)
 %
 % This template has been downloaded from:
-% http://www.LaTeXTemplates.com
+% 
 %
-% Original author:
+% Original author: Hassan Kajila
 % 
 % License:
 % GNU General Public License (v2)
@@ -38,7 +38,7 @@
 		dottedtoc, % Make page numbers in the table of contents flushed right with dots leading to them
 		%BCOR=5mm,
 		paper=a4,
-		fontsize=12pt, % Binding correction, paper type and font size
+		fontsize=11pt, % Binding correction, paper type and font size
 		french,
 		american, % Languages, change this to your language(s)
 		]{scrreprt} 
@@ -54,7 +54,7 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
-\addbibresource{bibliography/myref.bib} % The file housing your bibliography
+\addbibresource{bibliography/ref.bib} % The file housing your bibliography
 %\addbibresource[label=ownpubs]{Self_Publications.bib} % Uncomment for optional self-publications
 
 %\hyphenation{Put special hyphenation here}
@@ -66,16 +66,22 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newtheorem{thm}{Theorem}
+%\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Théorème}[section]
 %\newcommand{\textit}{\italic}
 \newcommand{\italic}[1]{\textit{#1}}
 \newcommand{\n}{\\}
+
+%\newcommand{\cfchapsec}[1][2]{voir le chapitre \ref{#1}, section \ref{#2}}
+
+%\newcommand{\cfref}[1][2][3]{voir le chapitre \ref{#1}, section \ref{#2}, point \ref{#3}}
+
 
 \begin{document}
 
 %\renewcommand{\thesubsubsection}{\alph{subsection}}
 %\renewcommand{\thesubsubsection}{\alph{subsubsection}.}
-\renewcommand\thesubsubsection{\alph{subsubsection}.}
+\renewcommand\thesubsubsection{\alph{subsubsection}}
 \setcounter{chapter}{-1}
 
 
@@ -107,7 +113,8 @@
 %\cleardoublepage\include{FrontBackMatter/Dedication} % Dedication page
 %\cleardoublepage\include{FrontBackMatter/Foreword} % Uncomment and create a Foreword.tex to include a foreword
 
-\cleardoublepage\include{FrontBackMatter/Abstract} % Abstract page
+%\chapter*{Résumé}
+%\cleardoublepage\include{FrontBackMatter/Abstract} % Abstract page
 
 %\cleardoublepage\include{FrontBackMatter/Publications} % Publications from the thesis page
 
@@ -144,7 +151,8 @@
 %\textcolor{teal}{\part{État des connaissances (Background material)}}
 
 %#0000000000000000000000000000000000000000000000000000000000
-\input{contents/background_material.tex}
+%\input{contents/background_material.tex}
+\input{contents/chap1.tex}
 
 
 %#######################################################################################
@@ -156,7 +164,7 @@
 
 %000000000000000000000000000000000000000000000000000000000000
 %\input{contents/methode.tex}
-\cleardoublepage\include{contents/methode.tex}
+%\cleardoublepage \include{contents/methode.tex}
 
 
 
