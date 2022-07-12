@@ -1,17 +1,22 @@
 
 
 \textcolor{cyan}{\chapter{Introduction}}
-	\section{ Aperçu générale}
+	\section{Aperçu générale}
 	
-		L’intelligence désigne communément le potentiel des capacités mentales et cognitives d'un individu, animal ou humain, lui permettant de résoudre un problème ou de s'adapter à son environnement. L'intelligence nous fait ressentir ce besoin d’apprendre pour arriver à nos fins, extresinquement l'intelligence c’est l'apprentissage. Pour que nous puissions dire qu’une machine est intelligente, premièrement elle doit passer par une phase d'apprentissage.  Apprendre à résoudre des problèmes ou à réaliser des tâches par lui-même d’une façon autonome. Dans le IA nous parlons de l’apprentissage automatique (en anglais: machine Learning, ML), nous utilisons plusieurs paradigmes d’apprentissage automatique:  apprentissage supervisé, apprentissage non supervisé, apprentissage par renforcement, apprentissage en profondeur.
+		%L’intelligence désigne communément le potentiel des capacités mentales et cognitives d'un individu, animal ou humain, lui permettant de résoudre un problème ou de s'adapter à son environnement. L'intelligence nous fait ressentir ce besoin d’apprendre pour arriver à nos fins, extresinquement l'intelligence c’est l'apprentissage. Pour que nous puissions dire qu’une machine est intelligente, premièrement elle doit passer par une phase d'apprentissage.  Apprendre à résoudre des problèmes ou à réaliser des tâches par lui-même d’une façon autonome. Dans le IA nous parlons de l’apprentissage automatique (en anglais: machine Learning, ML), nous utilisons plusieurs paradigmes d’apprentissage automatique:  apprentissage supervisé, apprentissage non supervisé, apprentissage par renforcement, apprentissage en profondeur.
 		
-		L'apprentissage supervisé représente une grande partie de l'activité de recherche en apprentissage automatique et de nombreuses techniques de ce paradigme ont trouvé une application dans le traitement de contenu multimédia \cite{cunningham2008supervised}. La caractéristique qui définit ce type d’apprentissage est la disponibilité de données d'apprentissage annotées.\\ Les algorithmes d'apprentissage supervisé font l'expérience d'un ensemble de données contenant des caractéristiques, et chaque exemple est également associé à une étiquette ou à une cible \cite{goodfellow2016deep}. 
+		%L'apprentissage supervisé représente une grande partie de l'activité de recherche en apprentissage automatique et de nombreuses techniques de ce paradigme ont trouvé une application dans le traitement de contenu multimédia \cite{cunningham2008supervised}. La caractéristique qui définit ce type d’apprentissage est la disponibilité de données d'apprentissage annotées.\\ Les algorithmes d'apprentissage supervisé font l'expérience d'un ensemble de données contenant des caractéristiques, et chaque exemple est également associé à une étiquette ou à une cible \cite{goodfellow2016deep}. 
 		
-		L’application de cette étude dans l’apprentissage supervisé est orientée vers la reconnaissance automatique des plaques d’immatriculation (en anglais: \t{automatic number plate recognition, ANPR}) dans les images. Une des applications intéressantes parmi tant d'autres dans l'intelligence artificielle. Nous présentons une étude approfondie sur les algorithmes de minimisation de la fonction coût (en anglais : loss function) d’un modèle d’apprentissage appliqué à l'ANPR. 
+		L’application de cette étude dans l’apprentissage supervisé est orientée vers la reconnaissance automatique des plaques d’immatriculation (en anglais: \t{automatic license plate recognition, ALPR}) dans les images. Une des applications intéressantes parmi tant d'autres dans l'intelligence artificielle. Nous présentons une étude approfondie sur les algorithmes de minimisation de la fonction coût (en anglais : loss function) d’un modèle d’apprentissage pour l'ALPR. 
 		
-		Lorsque nous voulons faire une application dans le traitement de reconnaissance des formes dans des vidéos, les ensembles de données d'entraînement pour les  problèmes de détection d'objets sont généralement très volumineux et les capacités des méthodes d'apprentissage automatique statistique sont limitées par le temps de calcul plutôt que par la taille de l'échantillon \cite{bottou2010large}.
+		Lorsque nous voulons faire une application dans le traitement de reconnaissance des formes dans des images, les ensembles de données d'entraînement pour les  problèmes de détection d'objets sont généralement très volumineux et les capacités des méthodes d'apprentissage automatique statistique sont limitées par le temps de calcul plutôt que par la taille de l'échantillon \cite{bottou2010large}.
 		Par exemple, pour entraîner une machine à reconnaître des plaques d'immatriculation de voiture, elle doit recevoir de grandes quantités d'images de plaques d'immatriculation et d'éléments liés aux plaques pour apprendre les différences et reconnaître une plaque, en particulier la voiture qui porte une plaque sans défaut. Plus nous avons des données, plus nous gagnons en précision et plus la complexité en temps augmente.\\
-		Des contraintes d'exploitation découlent des observations citées ci-dessus, parmi lesquelles nous citerons celles qui sont liées à la reconnaissance des objets dans les vidéos et images. Par exemple, de nos jours, un très grand nombre de caméras est déployé exclusivement pour la surveillance vidéo \cite{ahadjitse2013reconnaissance} . Souvent, le contenu de ces vidéos est interprété par des opérateurs humains qui engendrent des coûts exorbitants pour le suivi et l'analyse du contenu, sans mentionner les erreurs qui peuvent être induites par la fatigue et l'inattention humaine. 
+		Des contraintes d'exploitation découlent des observations citées ci-dessus, parmi lesquelles nous citerons celles qui sont liées à la reconnaissance des objets dans les vidéos et images. Par exemple, de nos jours, un très grand nombre de caméras est déployé exclusivement pour la surveillance vidéo. \cite{ahadjitse2013reconnaissance}. Souvent, le contenu de ces vidéos est interprété par des opérateurs humains qui engendrent des coûts exorbitants pour le suivi et l'analyse du contenu, sans mentionner les erreurs qui peuvent être induites par la fatigue et l'inattention humaine. 
+		
+		
+	\section{Choix et intérêt du sujet}
+	
+	\section{État de l’art}
 		
 	
 	\section{Problématique}
@@ -50,16 +55,19 @@
 	%\section{État de l'art}
 	%\section{Méthode et technique utilisée}
 	
-	\section{Objectifs et division du travail}
+	\section{Objectifs}
 		
 		Nous nous proposons dans ce mémoire d'aborder sur l'utilisation des algorithmes d'optimisation numérique, précisément de minimisation. Ils seront appliqués à l'apprentissage automatique qui permettra aux ordinateurs et aux systèmes informatiques de dériver des informations significatives à partir d'images numériques, avec un coût plus bas que possible.
 		
 		En fait, nous faisons la reconnaissance des plaques d’immatriculation des véhicules à l'aide d’un classificateur et optimiseurs de la famille de descente de gradient stochastique implémentés dans un réseau de neurones convolutifs (CNN). On s’en servira pour mesurer l'efficacité des optimiseurs par rapport à notre contrainte d’invariance à la transformations géométriques.\\
-		Pour minimiser la fonction de coût du classificateur, les optimiseurs SGD adoptent un modèle d'optimisation convexe \cite{deepa2021ai}. De plus, pour augmenter la vitesse de convergence du classificateur, la descente de gradient stochastique, à chaque étape, tire un échantillon aléatoire de l'ensemble des paramètres de la fonction objectif [??].
+		Pour minimiser la fonction de coût du classificateur, les optimiseurs SGD adoptent un modèle d'optimisation convexe \cite{deepa2021ai}. De plus, pour augmenter la vitesse de convergence du classificateur, la descente de gradient stochastique, à chaque étape, tire un échantillon aléatoire de l'ensemble des paramètres de la fonction objectif \cite{bottou2018optimization}.
 		
 		Pour chaque algorithme, nous examinons l'efficacité de l’invariance à la transformation géométrique et comparons le score (accuracy, loss) pour différents cas.
 		
-		\begin{list}{}{En dehors de cette introduction, la partie conclusive et l'annexe, ce mémoire est organisé en quatre chapitres comme suit.}
+	\section{Limitation}
+	\section{Division du travail}
+		
+		\begin{list}{}{En dehors de cette introduction, la partie conclusive et l'annexe, ce mémoire est organisé en trois chapitres comme suit.}
 			\item \textbf{\textsl{\texttt{Chapitre 1}}} est consacré à quelques rappels des matières sur lesquels je me base pour constituer l'ensemble de ce travail.  Nous traitons des considérations de méthodes numériques et mathématiques impliquées dans la résolution de problèmes de minimisation des erreurs d’apprentissage. Certaines discussions sur les modèles de régression linéaire convexe et de classification dans d’apprentissage supervisé. Nous discutons également du réseau neuronal convolutif le plus adapté pour analyser l'imagerie visuelle.
 			
 			\item \textbf{\textsl{\texttt{Chapitre 2}}}  explore une méthodologie parmi tant d’autres, pour entraîner les modèles d’apprentissage automatique de façon optimale, qui nous permettra par la suite de faire une prédiction d’images pour reconnaissance automatique de plaque d'immatriculation. \\ Pour la minimisation de la fonction coût nous utilisons des algorithmes comme ASGD, ADAM, ADADELTA, NAG. Puis faire une étude comparative de leurs performances.

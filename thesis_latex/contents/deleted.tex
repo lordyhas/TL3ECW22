@@ -71,6 +71,41 @@ return np.where(self.net_input(X) >= 0.0, 1, -1)
 % CHAP 1
 %########################################################################
 
+La recherche des extrema est liée au calcul différentiel, grâce notamment au théorème suivant.
+\begin{theorem}
+	
+	Soit $I$  un intervalle ouvert et $f:  I\rightarrow \mathbb{R} $ dérivable. Si $f$ admet un extremum local en $a$ alors $f'(a) = 0$.
+\end{theorem}
+La réciproque de ce théorème est fausse comme le montre l'exemple de la fonction cube, dont la dérivée s'annule en $0$, mais qui ne possède pas d'extremum en ce point. En général, on étudie la fonction, et notamment le signe de $f'$ pour déterminer si $a$ est effectivement un extremum, et si c'est un maximum ou un minimum.
+%reciproque
+
+Pour les fonctions de plusieurs variables, on remplace la dérivée par la différentielle et on affine l'étude avec les dérivées partielles secondes. On a ainsi le résultat suivant.
+
+\begin{theorem}
+	
+	Soit $f: \mathbb{R}^2\rightarrow \mathbb{R} $  et $a \in \mathbb{R}^2 $.
+	\begin{itemize}
+		\item Si $f$ est différentiable, et si $f$ admet extremum local en $a$, alors 
+		$$
+		\frac{\partial f}{\partial x}(a)=0 \quad et \quad \frac{\partial f}{\partial y}(a)=0.
+		$$
+		On dit alors que $a$ est un \textbf{point stationnaire} ou \textbf{point critique} de $a$.
+		\item Si $f \in I^2$ et, si  $a$ est point stationnaire de $f$, on pose
+		$$ 
+		r = \frac{\partial^2 f}{\partial x^2 }(a), \quad
+		s = \frac{\partial^2 f}{\partial x \partial y }(a), \quad
+		t = \frac{\partial^2 f}{\partial y^2 }(a).
+		$$
+		On distingue les cas suivants
+		\begin{enumerate}
+			\item Si $rt-s^2 > 0$ et $r > 0,\ f$ admet un minimum relatif en $a$.
+			\item Si $rt-s^2 > 0$ et $r < 0,\ f$ admet un maximum relatif en $a$.
+			\item Si $rt-s^2 < 0,\ f$ n'admet pas maximum en $a$ on parle de \textbf{point col}, ou de \textbf{point selle}.
+			\item Si $rt-s^2 = 0$, on ne peut pas conclure.	
+		\end{enumerate} 
+	\end{itemize}
+\end{theorem}
+
 
 \subsubsection{\textbf{Développement limité}}\label{sec:dev_lim}
 En physique et en mathématiques, un développement limité (noté DL) d'une fonction en un point est une \textit{approximation polynomiale} de cette fonction au voisinage de ce point, c'est-à-dire l'écriture de cette fonction sous la forme de la somme d'une fonction polynomiale et d'un reste négligeable au voisinage du point considéré \cite{coulombeau2013math, benner2015numerical}.
@@ -493,6 +528,62 @@ return np.dot(X, self.w_[1:]) + self.w_[0]
 def predict(self, X):
 return np.where(self.net_input(X) >= 0.0, 1, -1)
 \end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CNN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsubsection*{\qquad \textbullet \ \ Couche non linéaire}
+
+Pour augmenter le pouvoir d'expression des réseaux profonds, on utilise couches non linéaires\cite{antoine2018apprentissage}.
+Étant donné que la convolution est une opération linéaire et que les images sont loin d'être linéaires, les couches de non-linéarité sont souvent placées directement après la couche de convolution pour introduire la non-linéarité dans la carte d'activation \cite{goodfellow2016deep}.
+
+Trois grandes classes de fonctions d'activation $f$ sont généralement utilisées : les fonctions de seuils (comme dans le perceptron linéaire à seuil), les fonctions linéaires par morceaux (ReLU : voir le la section \ref{sec:activation_weight}, point \ref{subsec:relu} ) et les fonctions de type sigmoïde \cite{goodfellow2016deep}. Dans les deux premiers cas, de nombreux problèmes se présentent, notamment en raison de la non différentiabilité de ces fonctions (qui est nécessaire dans les algorithmes d'apprentissage du type descente de gradient), ou encore en raison de la faiblesse de leur pouvoir d'expression. Ainsi, il est préférable d'utiliser des fonctions de type sigmoïde \cite{antoine2018apprentissage}.
+
+
+\subsubsection*{\qquad \textbullet \ \ Couche de regroupement (Pooling)}
+Ce type de couche est souvent placé entre deux couches de convolution : elle reçoit en entrée plusieurs feature maps, et applique à chacune d'entre elles l'opération de pooling\footnote{L'opération de pooling consiste à réduire la taille des images, tout en préservant leurs caractéristiques importantes.}. La couche de regroupement remplace la sortie du réseau à certains emplacements en dérivant une statistique récapitulative des sorties à proximité. Cela aide à réduire la taille spatiale de la représentation, ce qui diminue la quantité requise de calculs et de pondérations. L'opération de regroupement est traitée sur chaque tranche de la représentation individuellement \cite{goodfellow2016deep}. 
+
+Tout comme dans les couches conventionnelles, chaque neurone d'une couche de regroupement est connecté aux sorties d'un nombre limité de neurones de la couche précédente, situés dans un petit champ récepteur rectangulaire. Vous devez définir sa taille, la foulée et le type de rembourrage, comme avant. Cependant, un neurone de regroupement n'a pas de poids; tout ce qu'il fait est d'agréger les entrées à l'aide d'une fonction d'agrégation telle que le max ou la moyenne \cite{geron2017hands}.
+
+\begin{figure}[H]%bth
+	\centering
+	\includegraphics[width=\textwidth]{images/cnn_complet}
+	\caption{Illustration de l'architecture d'un CNN.}
+	\label{fig:cnn_complet}
+\end{figure}
+
+Il existe plusieurs fonctions de regroupement telles que la moyenne du voisinage rectangulaire, la norme L2 du voisinage rectangulaire et une moyenne pondérée basée sur la distance par rapport au pixel central. Cependant, le processus le plus populaire est la mise en commun maximale, qui signale la sortie maximale du voisinage \cite{goodfellow2016deep}.
+
+Le regroupement (pooling) des cartes obtenues par les couches précédentes a pour objectif d'assurer une robustesse au bruit et aux distorsions.\\
+La sortie d'une couche d'agrégation est composée de $n^{(l)} = n^{(l - 1)}$ cartes de taille réduite. En général, le pooling est effectuée en déplaçant dans les cartes d'entrée une fenêtre de taille $2p * 2p$ toutes les $q$ positions, il y a recouvrement si $q < p$ et non recouvrement sinon, et en calculant, pour chaque position de la fenêtre, une seule valeur, affectée à la position centrale dans la carte de sortie \cite{antoine2018apprentissage}. On distingue généralement deux types de pooling:
+
+\begin{list}{--}{}
+	\item La moyenne : on utilise un filtre $K_{B}$ de taille $(2h_{1} + 1)(2h_{2} + 1)$.
+	\item Le maximum : la valeur maximum dans la fenêtre est retenue. Le maximum est souvent utilisé pour assurer une convergence rapide durant la phase d'entraînement. Le pooling avec recouvrement, il, semble assurer une réduction du phénomène de surapprentissage \cite{antoine2018apprentissage}.  
+\end{list}
+
+
+
+
+\subsubsection*{\qquad \textbullet \ \ Couche entièrement connectée (fully-connected)}
+
+La couche entièrement connectée constitue toujours la dernière couche d'un réseau de neurones, convolutif ou non, elle n'est donc pas caractéristique d'un CNN. 
+
+Les neurones de cette couche ont une connectivité complète avec tous les neurones de la couche précédente et suivante, comme on peut le voir dans un FCNN (Fully Convolutional Neural Network) normal. C'est pourquoi il peut être calculé comme d'habitude par une multiplication matricielle suivie d'un effet de biais. La couche fully-connected aide à mapper la représentation entre l'entrée et la sortie \cite{goodfellow2016deep}.
+
+Ce type de couche reçoit un vecteur en entrée et produit un nouveau vecteur en sortie. Pour cela, elle applique une combinaison linéaire puis éventuellement une fonction d'activation aux valeurs reçues en entrée.
+
+La couche entièrement connectée détermine le lien entre la position des features dans l'image et une classe. En effet, le tableau en entrée étant le résultat de la couche précédente, il correspond à une carte d'activation pour une feature donnée : les valeurs élevées indiquent la localisation (plus ou moins précise selon le pooling) de cette feature dans l'image. Si la localisation d'une feature à un certain endroit de l'image est caractéristique d'une certaine classe, alors on accorde un poids important à la valeur correspondante dans le tableau \cite{shin2016deep}.
+
+\begin{figure}[H]%bth
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/cnn_image1}
+	\caption{Illustration d'un CNN montrant les différentes couches.}
+	\label{fig:cnn_}
+\end{figure}
+
 
 
 

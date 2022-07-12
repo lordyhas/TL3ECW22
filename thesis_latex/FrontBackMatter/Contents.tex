@@ -32,7 +32,7 @@
 
 
 %#
-\listoffigures
+%\listoffigures
 
 
 \vspace{8ex}
@@ -63,16 +63,23 @@
 
 %\vspace{8ex}
 %\newpage
-       
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHAP A1 List of figure & list of accronymes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 %----------------------------------------------------------------------------------------
 %	Acronyms
 %----------------------------------------------------------------------------------------
 
 \refstepcounter{dummy}
 %\addcontentsline{toc}{chapter}{Acronyms} % Uncomment if you would like the acronyms to appear in the table of contents
-\pdfbookmark[1]{Acronyms}{acronyms} % Bookmark name visible in a PDF viewer
+\pdfbookmark[1]{Acronymes}{acronymes} % Bookmark name visible in a PDF viewer
 
-\markboth{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Acronyms}}
+\markboth{\spacedlowsmallcaps{Acronymes}}{\spacedlowsmallcaps{Acronymes}}
 
 \chapter*{Liste des acronymes}
 
@@ -80,7 +87,6 @@
 	\acro{IA}{Intelligence Artificielle}
 	\acro{AI}{Artificial Intelligence}
 	\acro{SA}{Supervised Learning}
-	\acro{AI}{Artificial Intelligence}
 	
 	\acro{ML}{Machine Learning}
 	\acro{CV}{Computer Vision}
@@ -92,7 +98,7 @@
 	
 	\acro{GD}{Gradient Descent}
 	\acro{SGD}{Stochastic Gradient Descent}
-	\acro{ADALINE}{ADAptative LInear NEuron }
+	%\acro{ADALINE}{ADAptative LInear NEuron }
 	
 	\acro{CNN}{Convolutional Neural Network}
 	\acro{ANN}{Artificial Neural Network}
@@ -100,25 +106,26 @@
 	\acro{ILSVRC}{ImageNet Large Scale Visual Recognition Challenge}
 	
 	\acro{NAG}{Nesterov Accelerated Gradient}
-	
+	\acro{Adam}{Adaptive Moment Estimation}	
+	\acro{Nadam}{Nesterov-accelerated Adaptive Moment Estimation}
 	\acro{ReLu}{Rectified Linear Unit}
 	\acro{MSE}{Mean Squared Error}
 	\acro{MLP}{MultiLayer perceptron}
 	
 	\acro{SLNN}{Single-Layer Neural Network}
 	
-	\acro{DL}{Développment Limité}
+	%\acro{DL}{Développment Limité}
 	
 	%\acro{NAG}{}
 	%\acro{NAG}{}
 	
 	
-	\acro{API}{Application Programming Interface}
+	%\acro{API}{Application Programming Interface}
 	
 	
-	\acro{UML}{Unified Modeling Language}
+	%\acro{UML}{Unified Modeling Language}
 \end{acronym} 
-                   
+
 \endgroup
 
 
@@ -127,11 +134,11 @@
 %----------------------------------------------------------------------------------------
 \refstepcounter{dummy}
 %\addcontentsline{toc}{chapter}{Acronyms} % Uncomment if you would like the acronyms to appear in the table of contents
-\pdfbookmark[1]{Notions}{notions} % Bookmark name visible in a PDF viewer
+\pdfbookmark[1]{Notations}{Notations} % Bookmark name visible in a PDF viewer
 
-\markboth{\spacedlowsmallcaps{Notions}}{\spacedlowsmallcaps{Notions}}
+\markboth{\spacedlowsmallcaps{Notations}}{\spacedlowsmallcaps{Notations}}
 
-\chapter*{Notions}
+\chapter*{Notations}
 %\resizebox{\textwidth}{!}
 
 
@@ -146,14 +153,14 @@
 	
 	
 	$x = \begin{pmatrix}
-		x_1 \\ \vdots \\ x_n 
+	x_1 \\ \vdots \\ x_n 
 	\end{pmatrix} $ & Un vecteur\\ 
 	$x =  (x_1, \vdots,  x_n)^T$ & Un vecteur \\ 
 	$x^T =  (x_1, \vdots,  x_n)^T$ & Un vecteur transposé \\ 
 	$ \langle xy\rangle = x^Ty$  & Le produit vectoriel \\ 
 	$\parallel x \parallel $ & La norme du vecteur\\
 	
-	 
+	
 	$M^{-1}$ & La matrice inverse d'une matrice $M$\\
 	$M^{T}$ & La matrice transposée \\
 	
@@ -163,7 +170,7 @@
 	
 	$ $ & \\
 	
-	 $ $ & \textbf{  \ \ \ \ \ \ \ \ \textsc{Les éléments en apprentissage}} \\
+	$ $ & \textbf{  \ \ \ \ \ \ \ \ \textsc{Les éléments en apprentissage}} \\
 	
 	$ \mathcal{S} $ & L'échantillon d'apprentissage (un ensemble ou une suite d'exemple)  \\ 
 	$ \hat{y}$ & La valeurs prédite après l'entrainement d'un modèle d'apprentissage automatique \\ 

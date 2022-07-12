@@ -113,7 +113,8 @@
 %\cleardoublepage\include{FrontBackMatter/Dedication} % Dedication page
 %\cleardoublepage\include{FrontBackMatter/Foreword} % Uncomment and create a Foreword.tex to include a foreword
 
-%\chapter*{Résumé}
+\cleardoublepage
+\chapter*{Résumé}
 %\cleardoublepage\include{FrontBackMatter/Abstract} % Abstract page
 
 %\cleardoublepage\include{FrontBackMatter/Publications} % Publications from the thesis page
@@ -123,12 +124,12 @@
 %\cleardoublepage\include{FrontBackMatter/Acknowledgments} % Acknowledgements page
 
 \pagestyle{scrheadings} % Show chapter titles as headings
-
+%#
 \cleardoublepage\include{FrontBackMatter/Contents} % Contents, list of figures/tables/listings and acronyms
+%\tableofcontents 
+%\cleardoublepage
 
-\cleardoublepage
 
-\pagenumbering{arabic} % Arabic page numbering for thesis content (1, 2, 3, etc)
 %\setcounter{page}{90} % Uncomment to manually start the page counter at an arbitrary value (for example if you wish to count the pre-content pages in the page count)
 
 %\cleardoublepage % Avoids problems with pdfbookmark
@@ -136,10 +137,10 @@
 %#######################################################################################
 %	CHAPTER - INTRO
 %#######################################################################################
+\pagenumbering{arabic} % Arabic page numbering for thesis content (1, 2, 3, etc)
+\cleardoublepage \input{contents/intro.tex}
 
-\input{contents/intro.tex}
-
-\cleardoublepage % Empty page before the start of the next part
+ % Empty page before the start of the next part
 
 %------------------------------------------------
 
@@ -152,7 +153,7 @@
 
 %#0000000000000000000000000000000000000000000000000000000000
 %\input{contents/background_material.tex}
-\input{contents/chap1.tex}
+\cleardoublepage\input{contents/chap1.tex}
 
 
 %#######################################################################################
@@ -181,7 +182,7 @@
 %\textcolor{teal}{\part{Expérimentation }}
 
 %%000000000000000000000000000000000000000000000000000000000000000000
-%\input{contents/implementation.tex}
+\input{contents/implementation.tex}
 
 
 %=======================================================================================
@@ -194,13 +195,13 @@
 %	THESIS CONTENT - APPENDICES 
 %
 %#######################################################################################
-
+ 
 
 \appendix
 
 %\ctparttext{Quelques programmes }
 
-\part*{Annexes et Bibliographies} % New part of the thesis for the appendix
+%\part*{Annexes et Bibliographies} % New part of the thesis for the appendix
 
 %\input{contents/appendix_bib.tex}
 
