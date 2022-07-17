@@ -54,7 +54,7 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
-\addbibresource{bibliography/ref.bib} % The file housing your bibliography
+\addbibresource{bibliography/myref.bib} % The file housing your bibliography
 %\addbibresource[label=ownpubs]{Self_Publications.bib} % Uncomment for optional self-publications
 
 %\hyphenation{Put special hyphenation here}
@@ -107,7 +107,7 @@
 %\includepdf[pages={1}]{gfx/garde.pdf}
 
 %#
-%\include{FrontBackMatter/Titleback} % Back of the title page
+\include{FrontBackMatter/Titleback} % Back of the title page
 
 
 %\cleardoublepage\include{FrontBackMatter/Dedication} % Dedication page
@@ -138,7 +138,7 @@
 %	CHAPTER - INTRO
 %#######################################################################################
 \pagenumbering{arabic} % Arabic page numbering for thesis content (1, 2, 3, etc)
-\cleardoublepage \input{contents/intro.tex}
+\cleardoublepage\input{contents/intro.tex}
 
  % Empty page before the start of the next part
 
@@ -150,7 +150,7 @@
 
 %\ctparttext{\centering État des connaissances, c’est sont les éléments sur lequel je me base pour constituer ce travail, nous parlons des base mathématique essentiel pour le Machine Learning: les éléments différentiel, statistique, l'optimisation numérique de modèle linéaire convexe, etc.} 
 %\textcolor{teal}{\part{État des connaissances (Background material)}}
-
+%\part*{Chapitre I}
 %#0000000000000000000000000000000000000000000000000000000000
 %\input{contents/background_material.tex}
 \cleardoublepage\input{contents/chap1.tex}
@@ -162,10 +162,10 @@
 
 %\ctparttext{\centering La méthodologie utilisée parmi tant d’autres, pour entraîner les modèles d’apprentissage automatique (Machine learning Model) de façon optimale. Pour la minimisation de la fonction coût nous utilisons des algorithmes comme SGD, ADAM, ADAGRAD, ADADELTA, ASGD, NAG. Puis faire une étude comparative de leurs performances.} 
 %\textcolor{teal}{\part{Méthodologie}}
-
+%\part*{Chapitre II}
 %000000000000000000000000000000000000000000000000000000000000
 %\input{contents/methode.tex}
-%\cleardoublepage \include{contents/methode.tex}
+\cleardoublepage \include{contents/methode.tex}
 
 
 
@@ -180,6 +180,7 @@
 %\textcolor{teal}{\part{Implémentation \& Expérimentation }}
 
 %\textcolor{teal}{\part{Expérimentation }}
+%\part*{Chapitre III}
 
 %%000000000000000000000000000000000000000000000000000000000000000000
 \input{contents/implementation.tex}
@@ -187,7 +188,7 @@
 
 %=======================================================================================
 %#
-%\input{contents/conclusion.tex}
+ \input{contents/conclusion.tex}
 
 
 %#######################################################################################
@@ -201,7 +202,7 @@
 
 %\ctparttext{Quelques programmes }
 
-%\part*{Annexes et Bibliographies} % New part of the thesis for the appendix
+\part*{Annexes et Bibliographies} % New part of the thesis for the appendix
 
 %\input{contents/appendix_bib.tex}
 

@@ -14,9 +14,16 @@
 \textcolor{cyan}{\chapter{Critique de techniques d'optimisation }\label{chap:methode}}	
 
 	\section{Introduction}
-		Pour rappel, dans \cite{antoine2018apprentissage} on souligne que la machine apprend quand elle trouve quels sont les paramètres du modèle qui minimisent la fonction coût, c’est-à-dire les paramètres qui nous donnent le meilleur modèle. Il existe plusieurs méthodes de minimisation \cite{jtshiman:2021}, par exemple : méthode des moindres carrés, méthode de Newton, Gradient Descent, Simplex, etc.
+	
+		Les règles d'apprentissage sont des algorithmes de mise à jour des pondérations du réseau pour atteindre un objectif particulier. Un objectif général particulier est de minimiser les fonctions d'erreur liées au réseau. Ceci est également connu sous le nom de fonction objectif ou fonction coût \cite{ernst2014stochastic}. 
 		
-		Pour le problème simple qui implique un modèle de régression linéaire, on utilise le plus souvent la méthode des moindres carrés \cite{darlington2016regression, matloff2017statistical}. L’algorithme de descente de gradiant, pour les régressions plus avancée, quand la fonction coût est une fonction scalaire à variables vectorielles (\cf $ \ $ chapitre \ref{chap:concept}, point \ref{sec:gradient}). La descente de gradiant, que nous allons décortiquer en détail dans les prochaines sections, permet de converger progressivement vers le minimum de n’importe quelle fonction convexe.
+		
+		Dans \cite{antoine2018apprentissage} on souligne que la machine apprend quand elle trouve quels sont les paramètres du modèle qui minimisent la fonction coût, c’est-à-dire les paramètres qui nous donnent le meilleur modèle. Il existe plusieurs méthodes de minimisation \cite{jtshiman:2021}, par exemple : méthode des moindres carrés, méthode de Newton, Simplex, Gradient Descent, etc. 
+		
+		Pour le problème simple qui implique un modèle de régression linéaire, on utilise le plus souvent la méthode des moindres carrés \cite{darlington2016regression, matloff2017statistical}. L’algorithme de descente de gradient est adapté pour les régressions plus avancée, quand la fonction coût est une fonction scalaire à variables vectorielles (\cf $ \ $ chapitre \ref{chap:concept}, point \ref{sec:gradient}). La descente de gradient, que nous allons décortiquer en détail dans les prochaines sections, permet de converger progressivement vers le minimum de n’importe quelle fonction convexe.
+		
+		Il y’a toujours cette tendance à largement sous-estimer l’étape de la minimisation et à vouloir se concentrer uniquement sur la phase excitante de l'essai de méthodes d'apprentissage sur des données supposées bonnes à la consommation.
+		
 	
 	 
 	\section{Erreur et fonction coût}
@@ -37,7 +44,7 @@
 		
 		%L'\textbf{entropie} est le nombre de bits requis pour transmettre un événement sélectionné au hasard à partir d'une distribution de probabilité. Une distribution asymétrique a une entropie faible, alors qu'une distribution où les événements ont une probabilité égale a une entropie plus grande \cite{goodfellow2016deep}.
 		
-		L'\textbf{entropie croisée} est une classe de fonction de perte la plus utilisée dans l'apprentissage automatique car cela conduit à de meilleurs modèles de généralisation et à une formation plus rapide\cite{geron2017hands}.
+		L'\textbf{entropie croisée} est une classe de fonction de perte la plus utilisée dans l'apprentissage automatique car cela conduit à de meilleurs modèles de généralisation et à une formation plus rapide \cite{geron2017hands}.
 		Elle peut être utilisée avec des problèmes de classification binaire et multiclasse \cite{goodfellow2016deep}. %(plusieurs classes avec une étiquette, différentes de nombreuses classes avec multi-étiquette appelée classification multi-étiquette).
 		
 		\begin{list}{--}{Types d'entropie croisée :}
@@ -58,37 +65,23 @@
 		\end{equation*}
 		avec  $ z = \mathbf {w} \cdot \mathbf {x_n} $ et le vecteur des poids ${\mathbf {w} }$ est optimisé par un algorithme approprié tel que la descente de gradient.
 			
-		\subsubsection{\textbf{Log-Loss}}
-		Log-loss est la métrique de classification la plus importante basée sur les probabilités.
-		La perte logarithmique (Log-Loss) indique à quel point la probabilité de prédiction est proche de la valeur réelle/vraie correspondante (0 ou 1 en cas de classification binaire). Plus la probabilité prédite s'écarte de la valeur réelle, plus la valeur de perte logarithmique est élevée \cite{geron2017hands}.\\
-		Il est difficile d'interpréter les valeurs brutes de  log-loss, mais la perte de log reste une bonne mesure pour comparer les modèles. Pour tout problème donné, une valeur de perte de journal inférieure signifie de meilleures prédictions \cite{bosman2020visualising}.
+		%\subsubsection{\textbf{Log-Loss}}
+		%Log-loss est la métrique de classification la plus importante basée sur les probabilités.La perte logarithmique (Log-Loss) indique à quel point la probabilité de prédiction est proche de la valeur réelle/vraie correspondante (0 ou 1 en cas de classification binaire). Plus la probabilité prédite s'écarte de la valeur réelle, plus la valeur de perte logarithmique est élevée \cite{geron2017hands}.\\Il est difficile d'interpréter les valeurs brutes de  log-loss, mais la perte de log reste une bonne mesure pour comparer les modèles. Pour tout problème donné, une valeur de perte de journal inférieure signifie de meilleures prédictions \cite{bosman2020visualising}.
 		
-		La Log-Loss est l'entropie croisée binaire jusqu'à un facteur ${1}/{log(2)}$. Cette fonction de perte est convexe et croît linéairement pour les valeurs négatives (moins sensible aux valeurs anormales). L'algorithme commun qui utilise le Log-loss est la régression logistique (voir le chapitre \ref{chap:concept}, section \ref{sec:classificarion_problem}, point \ref{subsec:reg_logistique}).
+		%La Log-Loss est l'entropie croisée binaire jusqu'à un facteur ${1}/{log(2)}$. Cette fonction de perte est convexe et croît linéairement pour les valeurs négatives (moins sensible aux valeurs anormales). L'algorithme commun qui utilise le Log-loss est la régression logistique (voir le chapitre \ref{chap:concept}, section \ref{sec:classificarion_problem}, point \ref{subsec:reg_logistique}).
 		
 		
-		\begin{figure}[H]%bth
-			\centering
-			\includegraphics[width=9cm]{images/minimum_log_curve.png}
-			\caption[Graphique d'une courbe de régression logistique ajustée aux données $(x_n , y_n)$.]{
-				Graphique d'une courbe de régression logistique ajustée aux données $(x_n , y_n)$. 
-				\cite{ml2008python}
-			}
-			\label{fig:minimum_log_curve}
-		\end{figure}
+		
 	
-		Pour les problèmes de classification, « log loss », « cross-entropy » et « negative log-likelihood » sont utilisés indifféremment.\\
-		Plus généralement, les termes « entropie croisée » et « log-vraisemblance négative » sont utilisés de manière interchangeable dans le contexte des fonctions de perte pour les modèles de classification \cite{bishop2006pattern, goodfellow2016deep}.
+		Pour les problèmes de classification, « log loss », « cross-entropy » et « negative log-likelihood » sont utilisés indifféremment. Plus généralement, les termes « entropie croisée » et « log-vraisemblance négative » sont utilisés de manière interchangeable dans le contexte des fonctions de perte pour les modèles de classification \cite{bishop2006pattern, goodfellow2016deep}.
 		
 		En partant de la formule de la log-vraisemblance (formule \ref{eq:log-likelyhood}) la fonction coût $\ell$ sera:
-		
 		\begin{equation}\label{eq:log-loss}
 			\ell(y,\hat{y}) = \mathcal{L} = -\frac{1}{m}\sum_{i=1}^{m} {y_i}\log( {a_i}) +{(1-y_i)}\log(1-a_i) 
 			\qquad avec \ \ a_i = \hat{y_i}
 		\end{equation}
-
-		
 		Log Loss est une légère torsion sur quelque chose appelé la fonction de probabilité. En fait, Log Loss est $ -1 $ fois le log de la fonction de vraisemblance. Nous allons donc commencer par comprendre la fonction de la  vraisemblance.
-		La fonction de vraisemblance répond à la question "Quelle est la probabilité que le modèle pense que l'ensemble de résultats réellement observé était."
+		%La fonction de vraisemblance répond à la question "Quelle est la probabilité que le modèle pense que l'ensemble de résultats réelement observé était."
 		
 	
 		
@@ -121,7 +114,7 @@
 	\cite{netrapalli2019stochastic},
 	\cite{wijnhoven2010fast}.}
 	
-	Pour les problèmes d'apprentissage supervisé, Nous prenons une échantillon  dans l'ensemble  d'apprentissage $z = (x, y) \in \mathcal{S}$, tirés de la distribution de probabilité $P(x, y)$. La probabilité conditionnelle $P(y|x)$ représente la relation entre le vecteur d'entrée $x$ et l'étiquette de sortie $y$ que nous essayons d'estimer \cite{wijnhoven2010fast}. La différence entre l'étiquette estimée $\hat{y}$ et l'étiquette réelle $y$ est représentée par une fonction de perte $l(\hat{y}, y)$ \cite{bottou2012stochastic}.
+	Pour les problèmes d'apprentissage supervisé, Nous prenons une échantillon  dans notre ensemble  d'apprentissage $z = (x, y) \in \mathcal{S}$, tirés de la distribution de probabilité $P(x, y)$. La probabilité conditionnelle $P(y|x)$ représente la relation entre le vecteur d'entrée $x$ et l'étiquette de sortie $y$ que nous essayons d'estimer \cite{wijnhoven2010fast}. La différence entre l'étiquette estimée $\hat{y}$ et l'étiquette réelle $y$ est représentée par une fonction de perte $l(\hat{y}, y)$ \cite{bottou2012stochastic}.
 	
 	Et nous choisissons une famille $\mathcal{F}$ de fonctions $f_w(x)$ paramétrées par un vecteur de poids $w$. Nous cherchons la fonction $ f \in \mathcal{F}$ qui minimise la perte $l(f_w(x), y)$ moyennée sur les exemples  \cite{wijnhoven2010fast}. Bien qu’on voudrait faire la moyenne  sur la distribution inconnue $dP(z)$ qui incarne les lois de la nature \cite{bottou2012stochastic}, nous devons souvent nous contenter de calculer la moyenne sur un échantillon $z_1,z_2,dots,z_n$.
 	
@@ -207,7 +200,9 @@
 	
 	%??? (Doc)
 	
-	Un autre défi clé de la minimisation des fonctions d'erreur hautement non convexes courantes pour les réseaux de neurones est d'éviter de se faire piéger dans leurs nombreux minima locaux sous-optimaux. Les travaux \cite{ruder2016overview, bottou2018optimization, bottou2012stochastic}, soutiennent que la difficulté ne vient en fait pas des minima locaux mais des points de selle, c'est-à-dire des points où une dimension monte et une autre descend. Ces points de selle sont généralement entourés d'un plateau de la même erreur, ce qui rend notoirement difficile pour SGD de s'échapper, car le gradient est proche de zéro dans toutes les dimensions.	
+	Un autre défi clé de la minimisation des fonctions d'erreur hautement non convexes courantes pour les réseaux de neurones est d'éviter de se faire piéger dans leurs nombreux minima locaux sous-optimaux. Les travaux \cite{ruder2016overview, bottou2018optimization, bottou2012stochastic}, soutiennent que la difficulté ne vient en fait pas des minima locaux mais des points de selle, c'est-à-dire des points où une dimension monte et une autre descend. Ces points de selle sont généralement entourés d'un plateau de la même erreur, ce qui rend notoirement difficile pour SGD de s'échapper, car le gradient est proche de zéro dans toutes les dimensions.
+	
+	une fonction non-convexe est une fonction qui présente plusieurs minimums locaux et l’algorithme de descente de gradient ne doit pas être utilisé sur ces fonctions, au risque de se bloquer au premier minima rencontré.	
 	
 	
 	%Nous avons cette effet si la fonction cout n'est pas convexe (voir le chapitre \ref{chap:concept}, section \ref{sec:diffierential}, point \ref{subsec:convex}) 
@@ -264,15 +259,25 @@
 	\cite{burges2006learning} 
 	\cite{ruder2016overview}
 	\cite{lydia2019adagrad}
-	\cite{}
+	%\cite{}
 	
 	\lipsum[1]
-	\subsubsection{SGD Optimizer}
-	\lipsum[5]
-	\subsubsection{Adadelta}
-	\lipsum[2]
+	%\subsubsection{SGD Optimizer}
+	%\lipsum[5]
+	\subsubsection{Adagrad}
+	Adagrad \cite{lydia2019adagrad} (Adaptive Gradient Algorithm) est un algorithme d'optimisation basé sur le gradien qui fait exactement cela : il adapte le taux d'apprentissage aux paramètres, effectuant des mises à jour plus importantes pour les paramètres peu fréquents et plus petites pour les paramètres fréquents. Pour cette raison, il est bien adapté pour traiter des données rares. Adagrad améliore grandement la robustesse de SGD et l'utilise pour former des réseaux de neurones à grande échelle de Google, qui - entre autres - a appris à reconnaître les chats dans les vidéos Youtube \cite{ruder2016overview}. 
+	
+	Dans sa règle de mise à jour, Adagrad modifie le taux d'apprentissage général, est adapté composante par composante aux paramètres en incorporant la connaissance des observations passées, à chaque pas de temps t (itération) pour chaque paramètre $w_i$ en fonction des gradients passés qui ont été calculés pour $w_i$ :
+	
+	\begin{equation*}
+		w_{i+1} = w_i - \frac{\eta}{G_{i,i} + \epsilon}\nabla_{w_i} Q(w_i)
+	\end{equation*}
+	
+ 	$G \in \mathbb{R}^{d \times d} $ est ici une matrice diagonale où chaque élément diagonal $i,i$ est la somme des carrés des gradient.
 	
 	
+	\subsubsection{RMSprop}
+	\lipsum[1]
 	
 	\subsubsection{Adam}
 	
@@ -282,8 +287,7 @@
 	\lipsum[2]
 	\subsubsection{NAG}
 	\lipsum[4]
-	\subsubsection{RMSprop}
-	\lipsum[1]
+	
 	%\subsubsection{Neurone linéaire adaptatif (ADALINE)}
 	%\lipsum[1]
 	

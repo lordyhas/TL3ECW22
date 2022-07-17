@@ -453,6 +453,36 @@ où $p(y|x)$ est la probabilité de la sortie étant donnée l'entrée et $p(x)$
 %%%\subsubsection*{La régression non linéaire ou multiple}
 
 
+En définissant les vecteurs  et matrice ci dessous, ${\boldsymbol X}$, ${\boldsymbol w}$ et ${\boldsymbol y}$ (avec ${S_y = y}$) \cite{antoine2018apprentissage}; le critère de la somme des carrées des erreurs s'écrit alors:
+\begin{equation}\label{eq:sce_2}
+SCE(w|\mathit{S}) = \frac{1}{2} ({\boldsymbol S_y }- \mathbf{X}\boldsymbol w)^{\mathsf{T}}({ \boldsymbol S_y }- \mathbf{X} \boldsymbol w)
+\end{equation}  
+Il suffit de prendre la dérivée de la somme des carrés des erreurs (équation \ref{eq:sce_1}) par rapport à $w$, qui est maintenant remplacer par $w$, pour obtenir les équations: 
+$$
+\frac{\partial SCE}{\partial w} = -{\boldsymbol X}^T({\boldsymbol S_y }- \mathbf{X} \boldsymbol w)
+$$
+
+$$
+\frac{\partial^2 SCE}{\partial^2 w \partial^2 w^T} = -{\boldsymbol X}^T{\boldsymbol X}
+$$
+
+En supposant que la matrice $X$ est non singulière, et donc que $X^TX$ est positive définie, et en posant que la dérivée première est nulle, on obtient :
+\begin{equation}
+{X^{T} Xw =  X^{T} S_y}
+\end{equation}
+à partir de quoi on peut calculer l'unique solution par: 
+\begin{equation}
+\hat{w} = {(X^{T} X)^{-1} X^{T} S_y}
+\end{equation}
+La valeur $\hat{y}$ prédite pour une entrée $x_n$ est donc : 
+$$
+\hat{y} = \hat{w}\cdot x_n = {(X^{T} X)^{-1} X^{T} S_y}x_n 
+$$ 
+
+
+%Un modèle de régression linéaire ajusté peut être utilisé pour identifier la relation entre une seule variable prédictive $x_j$ et la variable de réponse $y$ lorsque toutes les autres variables prédictives du modèle sont "maintenues fixes". Plus précisément, l'interprétation de $\beta_j$ est la variation attendue de $y$ pour une variation d'une unité de $x_j$ lorsque les autres covariables sont maintenues fixes, c'est-à-dire la valeur attendue de la dérivée partielle de $y$ par rapport à $x_j$. Ceci est parfois appelé l'effet unique de $x_j$ sur $y$. En revanche, l'effet marginal de $x_j$ sur $y$ peut être évalué à l'aide d'un coefficient de corrélation ou d'un simple modèle de régression linéaire reliant uniquement $x_j$ à $y$; cet effet est la dérivée totale de $y$ par rapport à $x_j$.
+
+
 
 	\subsubsection{Calcul avec l'algorithme du perceptron}
 
@@ -532,6 +562,70 @@ return np.where(self.net_input(X) >= 0.0, 1, -1)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CNN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\subsubsection{\qquad \textbullet \ \ Couche de convolution}
+
+La couche de convolution est la pierre angulaire du CNN. Il porte la majeure partie de la charge de calcul du réseau.
+
+Cette couche effectue un produit scalaire entre deux matrices, où une matrice est l'ensemble de paramètres apprenables autrement connu sous le nom de noyau (en anglais kernel) $K$ ou encore filtre de convolution, et l'autre matrice est la partie restreinte du champ récepteur $I$. Le noyau est spatialement plus petit qu'une image mais il est plus en profondeur. Cela signifie que, si l'image est composée de trois canaux (RVB), la hauteur et la largeur du noyau seront spatialement petites, mais la profondeur s'étend jusqu'aux trois canaux \cite{goodfellow2016deep}.
+
+\paragraph*{Définition:}
+
+\textit{Soient $h_1, \ h_2 \in \mathbb{N}, {K} \in \mathbb{R}^{(2h_1+1)\times(2h_2+1)}$. 
+	La convolution de $I$ par $K$ est donnée par :} 
+\begin{equation} \label{eq:kernel}
+(I\ast K)_{r,s} = \sum_{u=-h_1}^{h_1} \sum_{v=-h_2}^{h_2} K_{u,v}I_{r+u,s+v}
+\end{equation} 
+où $K$ est donnés par : 
+
+$$ 
+K = \begin{bmatrix}
+{K_{-h_1,-h_2}}&\cdots &{K_{-h_1,h_2}}\\
+\vdots &{K_{0,0}} &\vdots \\
+{K_{h_1,-h_2}}&\cdots &{K_{h_1,h_2}}
+\end{bmatrix}
+$$
+
+La taille du filtre $(2h_1+1)\times(2h_2+1)$ précises le champ visuel capturé et traité par $K$.
+Lorsque $K$ parcourt $I$, le déplacement du filtre est réglé par deux paramètres de \textit{stride} (horizontal et vertical). Un stride de 1 horizontal (respectivement vertical) signifie que $K$ se déplace d'une position horizontale (resp. verticale) à chaque application de la formule \ref{eq:kernel}. Les valeurs de stride peuvent également être supérieures et ainsi sous-échantillonner $I$ \cite{goodfellow2016deep, antoine2018apprentissage}.\\
+Le comportement du filtre sur les bords de $I$ doit également être précisé, par l'intermédiaire d'un paramètre de \textit{padding}. Si l'image convoluée $(I\ast K)$ doit posséder la même taille que $I$, alors $2h_{1}$ lignes de 0 ($h_1$ à gauche et $2h_{1}$ à droite) et $2h_{2}$ colonnes de $0$ ($h_2$ en haut et $h_2$ en bas) doivent être ajoutées. Dans le cas où la convolution est réalisée sans padding, l'image convoluée est de taille $n_{1} - 2h_{1} \times n_{2} - 2h_{2}$ \cite{antoine2018apprentissage}.
+
+%\begin{figure}[H]%bth
+%\centering
+%\includegraphics[width=0.4\textwidth]{images/cnn_kernel}
+%\caption[Illustration des calculs effectués dans une opération de convolution.]{Illustration de l'opération de convolution.}
+%	\label{fig:cnn_kernel}
+%\end{figure}
+
+
+
+%\begin{figure}[H]%bth
+%\centering
+%\includegraphics[width=\textwidth]{images/image_pixel}
+%\caption[Représentation de l'image sous forme de grille de pixels.]{Représentation de l'image sous forme de grille de pixels. Il contient une série de pixels disposés en forme de grille qui contient des valeurs de pixel pour indiquer la luminosité et la couleur de chaque pixel.}
+%\label{fig:image_pixel}
+%\end{figure}
+
+\begin{figure}[H]%bth
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/cnn_kernel_filter}
+	\caption[Illustration des calculs effectués dans une opération de convolution.]{Illustration des calculs effectués dans une opération de convolution \cite{antoine2018apprentissage}.}
+	\label{fig:cnn_kernel_filter}
+\end{figure}
+%Soit $l$ une couche de convolution. L'entrée de la couche $l$ est composée de $n ^ {(l - 1)}$ cartes provenant de la couche précédente, de taille $n_{1} ^ {(l - 1)} * n_{2} ^ {(l - 1)}$. Dans le cas de la rétine $(l = 1)$ l'entrée est l'image $I$. La sortie de la couche $l$ est formée de $n ^ {(l)}$ cartes de taille $n_1 ^ {(l)} \times n_2 ^ {(l)}$. La $i^e$ cartes de la couche $l$ notée $Y_{i} ^ {(l)}$ se calcule comme:
+
+%\begin{equation}
+%	\qquad	Y_i ^ {(l)} =B_i ^ {(l)} + \sum_{j=1}^{n^{(l-1)}} K_{i,j}^{(l)} \ast Y_j^{(l-1)}
+%\end{equation}
+
+%où $B^{()}$ est une matrice de biais et $K_{i,j}^{(l)}$ est le filtre de taille $(2h_1^{(l)}+1)\times(2h_2^{(l)}+1)$ connectant la $j^e$ carte de la couche $(l-1)$ à la $i^e$ carte de la couche $l$.
+
+%$n_{1} ^ {(l)} $ et $ n_{2} ^ {(l)}$ doivent prendre en compte les effets de bords: lors du calcul de la convolution, seuls les pixels dont la somme est définie avec des indices positifs doivent être traités. Dans le cas où le padding n'est pas utilisé, les cartes de sortie ont donc une taille de $n_{1} ^ {(l)} = n_{1} ^ {(l-1)} - 2h_1 ^ {(l)} $ et $ n_{2} ^ {(l)} = n_{2} ^ {(l-1)} - 2h_2 ^ {(l)}$.
+
+Par conséquent, la couche de convolution prend plusieurs images en entrée  et utilise chaque filtre pour calculer la convolution de  chaque image. Le filtre correspond exactement à la caractéristique que nous voulons trouver dans l'image \cite{shin2016deep}. 
+Pour chaque paire (image, filtre), obtenez une carte d'activation ou une carte d'entités montrant où se trouvent les entités dans l'image. Plus la valeur est élevée, plus les points correspondants dans l'image sont similaires à l'entité \cite{goodfellow2016deep}.
+
+%Souvent, les filtres utilisés pour calculer $Y_i ^ {(l)}$ sont les mêmes. De plus, la somme dans l'équation (10.3) peut être conduite sur un sous ensemble des cartes d'entrée.
 
 
 \subsubsection*{\qquad \textbullet \ \ Couche non linéaire}

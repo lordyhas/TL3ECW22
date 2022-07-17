@@ -7,32 +7,32 @@
 
 \textcolor{cyan}{\chapter{Résultats et discussion}}
 
-
-\section{Expérimentation}
-
+\section{Introduction}
+	Résoudre un problème d'apprentissage demande une compréhension de celui-ci. Cela permet d’identifier quelles sont les "entrées", les  "sorties" ou résultats désirés, les connaissances disponibles, les particularités des données, par exemple: valeurs manquantes, taux d’erreur dans les mesures des attributs de description, proportions des classes, stationnarité ou pas de l'environnement.  
 	
+	C'est aussi réaliser un gros travail de {préparation des données}: nettoyage, réorganisation, enrichissement, intégration avec d'autres sources de données, etc. Ces étapes de compréhension du problème, de préparation des données, de mise au point du protocole d'apprentissage et des mesures d'évaluation des résultats, prennent, et de loin, la plus grande partie du temps pour résoudre un problème d'apprentissage \cite{antoine2018apprentissage}.
+	
+\section{Expérimentation}
 
 
 	\subsection{Outils, Choix des technologies}
-	\subsubsection{Language \& technologie}
+	\subsubsection{Langage \& technologie}
 	%
 	%
-	\begin{list}{}{Le langage de programmation et technologie utilisée }
+	\begin{list}{}{Le langage de programmation et les technologies utilisées.}
 		\item \textbf{Python} : est le language majeur utilisé dans ce projet, c'est un langage de programmation interprété de haut niveau. Sa philosophie de conception met l'accent sur la lisibilité du code avec l'utilisation d'une indentation significative. Python est typé dynamiquement et ramassé.
 		\item \textbf{TensorFlow} : c’est une bibliothèque de logiciels gratuite et open source pour l'apprentissage automatique et l'intelligence artificielle. TensorFlow fournit un ensemble de workflows pour développer et former des modèles à l'aide de Python ou JavaScript. Il peut être utilisé dans une gamme de tâches, mais se concentre particulièrement sur la formation et l'inférence des réseaux de neurones profonds.
 		\item \textbf{OpenCV} : est une bibliothèque de fonctions de programmation principalement destinées à la vision par ordinateur en temps réel. OpenCV fournit une bibliothèque, des outils et du matériel de vision par ordinateur optimisés en temps réel. Il prend également en charge l'exécution de modèles pour Machine Learning.
 		
-		\item \textbf{LabelImg} : est un outil gratuit et open source pour l'étiquetage graphique, un outil graphique d'annotation d'images.\\
-		Il est écrit en Python et utilise Qt pour son interface graphique. Les annotations sont enregistrées sous forme de fichiers XML au format PASCAL VOC, le format utilisé par ImageNet.
+		\item \textbf{LabelImg} : est un outil gratuit et open source pour l'étiquetage graphique, un outil graphique d'annotation d'images. Les annotations sont enregistrées sous forme de fichiers XML (voir la figure \ref{fig:xml_annotation}) au format PASCAL VOC, le format utilisé par ImageNet.\\
 		Il est écrit en Python et utilise QT pour son interface graphique. C'est un moyen facile et gratuit d'étiqueter quelques centaines d'images pour notre projet de détection d'objets. En outre, il prend également en charge les formats YOLO et CreateML.
 		
 	\end{list}
 	
 	\subsubsection{choix du modèle de CNN}
-	Le VGGNet (Visual Geometry Group), Le modèle VGG16 du VGGNet atteint près de 92,7 \% de précision dans le top 5 des tests dans ImageNet. le VGGNet-16 prend en charge 16 couches (tout comme le VGG19 prend en charge 19 couches.) et peut classer les images en 1000 catégories d'objets,de plusieure catégorie de plus, le modèle a une taille d'entrée d'image de 224 par 224 (\cf$ \ $ le chapitre \ref{chap:concept}, section \ref{sec:cnn}, point \ref{subsec:vggnet}).
+	Le VGGNet (Visual Geometry Group), Le modèle VGG16 du VGGNet atteint près de 92,7 \% de précision dans le top 5 des tests dans ImageNet. le VGGNet-16 prend en charge 16 couches (tout comme le VGG19 prend en charge 19 couches.) et peut classer les images en 1000 catégories d'objets, de plusieure catégorie de plus, le modèle a une taille d'entrée d'image de 224 par 224 (\cf$ \ $ le chapitre \ref{chap:concept}, section \ref{sec:cnn}, point \ref{subsec:vggnet}).
 	
-	VGG16 surpasse largement les versions précédentes des modèles des compétitions ILSVRC-2012 et ILSVRC-2013. De plus, le résultat VGG16 est en compétition pour le vainqueur de la tâche de classification (GoogLeNet avec une erreur de 6,7\%) et surpasse considérablement la soumission gagnante ILSVRC-2013 Clarifai. Il a obtenu 11,2\% avec des données de formation externes et environ 11,7\% sans elles. En termes de performances à réseau unique, le modèle VGGNet-16 obtient le meilleur résultat avec environ 7,0\% d'erreur de test, dépassant ainsi un seul GoogLeNet d'environ 0,9\% \cite{simonyan2014very}
-	
+	VGG16 surpasse largement les versions précédentes des modèles des compétitions ILSVRC-2012 et ILSVRC-2013. De plus, le résultat VGG16 est en compétition pour le vainqueur de la tâche de classification (GoogLeNet avec une erreur de 6,7\%) et surpasse considérablement la soumission gagnante ILSVRC-2013 Clarifai. Il a obtenu 11,2\% avec des données de formation externes et environ 11,7\% sans elles. En termes de performances à réseau unique, le modèle VGGNet-16 obtient le meilleur résultat avec environ 7,0\% d'erreurs de test, dépassant ainsi un seul GoogLeNet d'environ 0,9\% \cite{simonyan2014very}.
 	
 
 	\begin{table}[H]
@@ -78,31 +78,41 @@
 	Peut importe le nombre de couches, 19 ou 16, le deux modèle génère le même nombre de paramètres entrainable (donc minimisable) du coup il y a rien d'intéressant à prendre le VGG-19 vu que sa précision de validation est faible comparé au modèle VGG-16 et qu’il n’y a pas un grand écart entre leurs précision et d'entraînement.
 	
 	\subsection{Élaboration du dataset}
-	C'est une tâche, fastidieuse dans le l'apprentissage automatique, qui consiste à montrer à la machine où se trouve la plaque d'immatriculation (la zone précise) sur l'image. Ce processus aussi nommé étiquetage est très important dans l'étape de l'apprentissage supervisé. Et il faut faire ça pour toute 430 images qui constituent notre Dataset.
+	C'est une des tâches fastidieuses dans le l'apprentissage supervisé, dans notre contexte elle consiste à montrer à la machine où se trouve la plaque d'immatriculation (la zone précise) sur l'image. Ce processus aussi nommé étiquetage est important dans l'étape de l'apprentissage de l’ALPR et il faut faire ça pour toutes nos 430 images qui constituent notre Dataset.
 	
 	Dataset est construit avec l’outil \textbf{LabelImg} est un outil graphique d'annotation d'images.
-	\begin{list}{--}{Le Dataset est un répertoire composé des sous répertoire qui contient :}
-		\item Les annotations sont des fichiers xml, qui contient les coordonnées des régions intérêt sur les images (les étiquettes).
-		\item Les differentes images des plaques d'immatriculations. 
+	
+	\begin{list}{--}{Ici, le dataset est un répertoire composé des deux sous répertoires qui contiennent :}
+		\item Les annotations sont des fichiers xml (figure \ref{fig:xml_annotation}), qui contiennent les coordonnées des régions d'intérêt (résultat la figure \ref{fig:xml_annotation}) sur les images (les étiquettes).
+		\item Les différentes images des plaques d'immatriculations (figure \ref{fig:image_without_annotations}). 
 	\end{list}
 	
-	Nous avons 433 images des plaques d’immatriculations pour 433 fichiers xml d’annotations.
-	Le dataset est  fractionné en trois sous ensemble proportionnellement: 70\% pour l’entrainement, 10\% pour la validation, 20\% pour le teste.
-
+	Nous avons 430 images des plaques d’immatriculations pour 430 fichiers xml d’annotations.
+	Le dataset est fractionné en trois sous ensemble proportionnellement: 70\% pour l'entraînement, 10\% pour la validation, 20\% pour le test.
+	
 	
 	\begin{figure}[H]%bth
 		\centering
-		\includegraphics[width=\textwidth]{images/image_plate}
-		\caption{Exemple des quelques images de notre dataset sans annotations }
+		\includegraphics[width=\textwidth]{images/dataset_img6}
+		\caption{Exemple des quelques images de notre dataset sans annotations, qui sont les entrées pour l’apprentissage de la machine.}
 		\label{fig:image_without_annotations}
 	\end{figure}
 	
 	\begin{figure}[H]%bth
 		\centering
-		\includegraphics[width=\textwidth]{images/image_annotation}
-		\caption{Exemple des images (figure \ref{fig:image_without_annotations}) de notre dataset sans annotations }
-		\label{fig:image_with_annotations}
+		\includegraphics[width=\textwidth]{images/dataset_annated}
+		\caption{Exemple des quelques images annotés de notre dataset (figure \ref{fig:image_without_annotations}), c’est la réponse que la machine doit apprendre par rapport aux entrées.}
+		\label{fig:image_annotations}
 	\end{figure}
+
+	\begin{figure}[H]%bth
+		\centering
+		\includegraphics[width=\textwidth]{images/xml_annotation}
+		\caption{Le contenu d'un fichier xml d'annotations, généré par LabelImg, pour une image. }
+		\label{fig:xml_annotation}
+	\end{figure}
+
+
 
 	\subsection{Entraînement  du CNN (VGG)}
 	
@@ -141,9 +151,10 @@ model.summary()
 	\end{table}
 	
 	
-	Ci-dessus se trouve le code pour construire un modèle pré-entraîné VGG-16. Nous devons inclure { $weights = "imagenet"$} pour récupérer le modèle VGG-16 qui est formé sur l'ensemble de données imagenet. Il est important de définir $include\_top = False$ pour éviter de télécharger les couches entièrement connectées du modèle pré-entraîné \cite{tammina2019transfer}. Nous devons ajouter notre propre classificateur car le classificateur de modèle pré-entraîné a plus de 1 classe alors que notre objectif est de classer l'image en 1 classe (image de plaques). Une fois que les couches convolutionnelles du modèle pré-entraîné ont extrait les caractéristiques d'image de bas niveau telles que les bords, les lignes et les blobs, la couche entièrement connectée les classe ensuite en 1 catégories.
+	Ci-dessus se trouve le code pour construire un modèle pré-entraîné VGG-16. Nous devons inclure { $weights = "imagenet"$} pour récupérer le modèle VGG-16 qui est formé sur l'ensemble de données imagenet. Il est important de définir $include\_top = False$ pour éviter de télécharger les couches entièrement connectées du modèle pré-entraîné \cite{tammina2019transfer}. Nous devons ajouter notre propre classificateur car le classificateur de modèle pré-entraîné à plus de 1 classe alors que notre objectif est de classer l'image en 1 classe (image de plaques). Une fois que les couches convolutionnelles du modèle pré-entraîné ont extrait les caractéristiques d'image de bas niveau telles que les bords, les lignes et les blobs, la couche entièrement connectée les classe ensuite en 1 catégorie.
 	
-	Nous avons crée un modèle \textbf{"Séquentiel"} et ajoutons \textbf{VGG16} comme première couche. Le modèle prendra en entrée des tableaux de taille $( 200 \times 200 \times 3)$ qui correspondent à la taille d’une image du dataset. La sortie du VGG16 passe dans \textbf{Flatten} une couche qui a aplatis le tableau $( 200 \times 200 \times 3)$ en un tableau de taille $(18432 \times 1)$. Enfin nous ajoutons 4 couches \textbf{Dense} qui feront office d’un réseau complètement connecté avec comme sortie un tableau de taille $(4 \times 1)$ qui correspond au 4 points qui nous permettront d’obtenir ue rectangle contenant la plaque d'immatriculation sur l’image. 
+	Nous avons créé un modèle \textbf{"Séquentiel"} et ajoutons \textbf{VGG16} comme première couche. Le modèle prendra en entrée des tableaux de taille $( 200 \times 200 \times 3)$ qui correspondent à la taille d’une image du dataset. La sortie du VGG16 passe dans \textbf{Flatten} une couche qui a aplatis le tableau $( 200 \times 200 \times 3)$ en un tableau de taille $(18432 \times 1)$. Enfin nous ajoutons 4 couches \textbf{Dense} qui feront office d’un réseau complètement connecté avec comme sortie un tableau de taille $(4 \times 1)$ qui correspond au 4 points qui nous permettront d’obtenir un rectangle contenant la plaque d'immatriculation sur l’image. 
+	
 	
 	Ci-dessous le message de sortie, les informations sur notre reseaux de neurones construit.
 	\begin{table}[H]
@@ -197,7 +208,7 @@ model.summary()
 		
 		\caption[]{Graphe de précision (accuracy) et perte (loss) du modèle VGG}\label{fig:adam_curve}
 	\end{figure}
-	Le script ci-dessous est une partie du programme que nous avons élaboré pour l'entraînement du CNN. Ici nous entraînons avec l'optimiseur SGD et un taux d'apprentissage de $1e-4 = 1.10^{-4}$. Dans la section \ref{sec:result_optimizer} nous montrons les résultats avec différents optimiseurs.
+	Le script ci-dessous est une partie du code élaboré pour l'entraînement du CNN. Ici nous entraînons le modèle avec l'optimiseur SGD et un taux d'apprentissage de $1e-4 = 1.10^{-4}$. Dans la section \ref{sec:result_optimizer} il y a une discussion des résultats des différents optimiseurs utilisés.
 	
 \begin{table}[H]
 \begin{tabular}{|p{\textwidth}|}
@@ -321,9 +332,9 @@ model.fit(X_train, y_train,
 			\begin{figure}[H]
 				\myfloatalign
 				\subfloat[loss : perte]
-				{\includegraphics[width=.45\linewidth]{images/adadelta_accuracy_curve}} \quad
+				{\includegraphics[width=.45\linewidth]{images/adadelta_loss_curve}} \quad
 				\subfloat[accuracy : précision]
-				{\includegraphics[width=.45\linewidth]{images/adadelta_loss_curve}} 
+				{\includegraphics[width=.45\linewidth]{images/adadelta_accuracy_curve}} 
 				
 				\caption[]{Graphe de précision (accuracy) et perte (loss)  pour Adadelta}
 			\end{figure}
@@ -363,8 +374,8 @@ model.fit(X_train, y_train,
 				\textbf{Training} & \textbf{Validation} & \textbf{Test} \\
 				%& & \\
 				\hline
-				\texttt{loss: 3.0496e-04} & \texttt{val loss: 0.0111} & \texttt{test loss : 0.004073061} \\
-				\texttt{accuracy: 0.9536} & \texttt{val accuracy: 0.7955 }& \texttt{test accuracy : 0.87356}\\
+				\texttt{loss: 4.6549e-04} & \texttt{val loss: 0.0111} & \texttt{test loss : 0.004073061} \\
+				\texttt{accuracy: 0.9536} & \texttt{val accuracy: 0.7955 }& \texttt{test accuracy : 0.90804}\\
 				
 				\hline 
 				
@@ -374,9 +385,9 @@ model.fit(X_train, y_train,
 		\begin{figure}[H]
 			\myfloatalign
 			\subfloat[loss : perte]
-			{\includegraphics[width=.45\linewidth]{images/nadam_accuracy_curve}} \quad
+			{\includegraphics[width=.45\linewidth]{images/nadam_loss_curve}} \quad
 			\subfloat[accuracy : précision]
-			{\includegraphics[width=.45\linewidth]{images/nadam_loss_curve}} 
+			{\includegraphics[width=.45\linewidth]{images/nadam_accuracy_curve}} 
 			
 			\caption[]{Graphe de précision (accuracy) et perte (loss)  pour Nadam}
 		\end{figure}
@@ -384,7 +395,7 @@ model.fit(X_train, y_train,
 	
 	%Efficacité du modèle par rapport au critère de l'invariance des transformation géométrique\
 	
-	Nous remarquons RMSprop minimise le mieux les erreurs par rapport aux autres optimiseurs mais il n’est pas précis par rapport à Nadam ou Adam. Ci-dessous une liste des optimiseurs qui minimise le mieux dans le cas de notre problème reconnaissance de plaque d’immatriculation.
+	 Il est visible que RMSprop minimise le mieux les erreurs par rapport aux autres optimiseurs mais il n’est pas précis par rapport à Nadam ou Adam. Ci-dessous une liste des optimiseurs qui minimise le mieux dans le cas de notre problème reconnaissance de plaque d’immatriculation.
 	
 	\begin{table}[H]
 		\centering
@@ -398,7 +409,7 @@ model.fit(X_train, y_train,
 			\texttt{0.005158} \\
 			\hline
 			\textbf{2. Nadam} &
-			\texttt{3.0496e-04} &
+			\texttt{4.6549e-04} &
 			\texttt{0.0111} &
 			\texttt{0.004073} \\
 			\hline
@@ -419,8 +430,26 @@ model.fit(X_train, y_train,
 			\hline
 		\end{tabular}
 	\end{table}
+
+	\subsubsection*{Testes}
 	
 	
+	\begin{figure}[H]%bth
+		\centering
+		\includegraphics[width=\textwidth]{images/dataset_image}
+		\caption{Les images plaque d'immatriculations, que la machine va traiter et dire encadrer la zone correcte.}
+		\label{fig:dataset_image}
+	\end{figure}
+
+	\begin{figure}[H]%bth
+		\centering
+		\includegraphics[width=\textwidth]{images/predicted_image}
+		\caption{Les résultats d'images où la machine a prédit la région des plaques d'immatriculation. }
+		\label{fig:predicted_image}
+	\end{figure}
+
+
+
 	
 	\subsection{Invariance des transformation géométrique}
 	%\cite{deepa2021ai,ahadjitse2013reconnaissance}\cite{amari1993backpropagation}. 
@@ -438,7 +467,7 @@ model.fit(X_train, y_train,
 	%\lipsum[1] 
 	%\subsubsection{Problèmes posés}
 	
-	Nous avons dit en amont que le modèle entraîné doit reconnaître les objet même après transformation géométrique dans l’image. Nous allons examiner l'efficacité par rapport au 3 meilleur optimiseurs c.a.d les 3 modèle qui ont on eu un bon score d'entraînement, de validation et de test.
+	Il est dit en amont (voir le point ??) que le modèle entraîné doit reconnaître les objets même après transformation géométrique dans l’image. Nous allons examiner l'efficacité par rapport au 3 meilleurs optimiseurs c'est-à-dire les 3 modèles qui ont eu un bon score d'entraînement, de validation et de test.
 	
 	
 	\begin{table}[H]
@@ -451,7 +480,7 @@ model.fit(X_train, y_train,
 			\textbf{Nadam} &
 			\texttt{95.36\%} &
 			\texttt{79.55\%} &
-			\texttt{87.35\%} \\
+			\texttt{90.80\%} \\
 			\hline
 			\textbf{Adam} &
 			\texttt{96.36\%} &
@@ -467,7 +496,23 @@ model.fit(X_train, y_train,
 		\end{tabular}
 	\end{table}
 	
-	??? (Suite)	
+	
+	
+	
+	%\begin{figure}[H]%bth
+	%	\centering
+	%	\includegraphics[width=\textwidth]{images/dataset_trans_image}
+	%	\caption{Les imges test }
+	%	\label{fig:dataset_trans_image}
+	%\end{figure}
+
+
+	\begin{figure}[H]%bth
+		\centering
+		\includegraphics[width=\textwidth]{images/predicted_trans_image}
+		\caption{}
+		\label{fig:predicted_trans_image}
+	\end{figure}
 	
 	%\section{Défis \& problèmes rencontrés}
 	
@@ -480,6 +525,8 @@ model.fit(X_train, y_train,
 	%???
 	
 	\section{Sommaire du chapitre}
-	C’est là toute la force des réseaux de neurones convolutifs : ceux-ci sont capables de déterminer tout seul les éléments discriminants d'une image, en s'adaptant au problème posé. Par exemple, si la question est de distinguer les chats des chiens, les features automatiquement définies peuvent décrire la forme des oreilles ou des pattes. 
+	Dans ce chapitre, il est question d'explorer et d’évaluer d'abord une architecture des réseaux de neurones convolutifs, le Visual Geometry Group. Le modèle étudié, VGG-16, contient 19,474,948 paramètres, moins des paramètres par rapport à VGG-19   et environ 4.7 millions de paramètres sont exploitable. C’est là toute la force des CNN, ceux-ci sont capables de déterminer tout seul les éléments discriminants d'une image, en s'adaptant au problème posé \cite{shin2016deep}. Si la question est de distinguer un objet sur image, les features automatiquement définies peuvent décrire la forme de l'objet.\\
+	Les paramètres exploitables sont minimisés avec différents algorithmes de minimisation, appelé optimiseur, dans le but de réduire les erreurs et ainsi augmenter la précision du classificateur. Pour chaque optimiseur les scores (accuracy, loss) est mesuré et comparé par rapport au autres. Les  3 meilleurs optimiseurs ont permis la reconnaissance de plaques d’immatriculation et sous une transformations géométrique.
+	
 	
 

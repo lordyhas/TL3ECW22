@@ -11,18 +11,18 @@
 		
 		Lorsque nous voulons faire une application dans le traitement de reconnaissance des formes dans des images, les ensembles de données d'entraînement pour les  problèmes de détection d'objets sont généralement très volumineux et les capacités des méthodes d'apprentissage automatique statistique sont limitées par le temps de calcul plutôt que par la taille de l'échantillon \cite{bottou2010large}.
 		Par exemple, pour entraîner une machine à reconnaître des plaques d'immatriculation de voiture, elle doit recevoir de grandes quantités d'images de plaques d'immatriculation et d'éléments liés aux plaques pour apprendre les différences et reconnaître une plaque, en particulier la voiture qui porte une plaque sans défaut. Plus nous avons des données, plus nous gagnons en précision et plus la complexité en temps augmente.\\
-		Des contraintes d'exploitation découlent des observations citées ci-dessus, parmi lesquelles nous citerons celles qui sont liées à la reconnaissance des objets dans les vidéos et images. Par exemple, de nos jours, un très grand nombre de caméras est déployé exclusivement pour la surveillance vidéo. \cite{ahadjitse2013reconnaissance}. Souvent, le contenu de ces vidéos est interprété par des opérateurs humains qui engendrent des coûts exorbitants pour le suivi et l'analyse du contenu, sans mentionner les erreurs qui peuvent être induites par la fatigue et l'inattention humaine. 
+		Des contraintes d'exploitation découlent des observations citées ci-dessus, parmi lesquelles nous citerons celles qui sont liées à la reconnaissance des objets dans les vidéos et images. Par exemple, de nos jours, un très grand nombre de caméras est déployé exclusivement pour la surveillance vidéo \cite{ahadjitse2013reconnaissance}. Souvent, le contenu de ces vidéos est interprété par des opérateurs humains qui engendrent des coûts exorbitants pour le suivi et l'analyse du contenu, sans mentionner les erreurs qui peuvent être induites par la fatigue et l'inattention humaine. 
 		
+		
+		
+	\section{État de l’art}
+	
+	
+	
+	
+	
 		
 	\section{Choix et intérêt du sujet}
-	
-	\section{État de l’art}
-		
-	
-	\section{Problématique}
-		La complexité de calcul de l'algorithme d'apprentissage devient le facteur limitant critique lorsque l'on envisage un grand ensemble de données, un ensemble d’image par exemple. C'est à ce point critique qu'entre en jeu cette étude, la minimisation des erreurs sans alourdir \textbf{la complexité en temps et espace} de l’algorithme d’apprentissage.   
-		Les ensembles de données d'entraînement pour les problèmes de détection d'objets dans des images sont généralement très volumineux. Minimiser les erreurs dans ces modèles d’apprentissage est une tâche très importante pour renforcer la fiabilité de notre \textbf{modèle entraîné} \cite{ibm2018ml}. 
-		
 		\begin{list}{--}{Les modèles entraînés doivent être invariants sous des transformations géométriques et qualités des objets observés.}
 			\item Invariance à la rotation : l'objet dans une image doit être reconnue même après une rotation, sous  différent angle.
 			\item Invariance à l'échelle : le même objet dans une image doit être reconnue même sous une échelle différente.
@@ -30,7 +30,18 @@
 		
 		Établir un algorithme d’apprentissage qui s'adapte au mieux à notre modèle, pour en reproduire un modèle entraîné et invariant à la transformation géométrique de l’objet dans l'image. Selon la nature du problème métier traité, il existe différentes approches qui varient selon le type de modèle à entraîné et la quantité des paramètres du modèle en question.
 		
-		L'un des piliers de l'apprentissage automatique est l'optimisation mathématique \cite{bottou2018optimization} qui, dans ce contexte, implique le calcul numérique de minimisation des paramètres d'un système conçu pour prendre des décisions en fonction des données disponibles. Ces paramètres sont choisis pour être optimaux par rapport à notre problème d'apprentissage.
+	
+	\section{Problématique}
+		La complexité de calcul de l'algorithme d'apprentissage devient le facteur limitant critique lorsque l'on envisage un grand ensemble de données, un ensemble d’image par exemple. C'est à ce point critique qu'entre en jeu cette étude, la minimisation des erreurs de l’algorithme d’apprentissage. 
+		
+		Nous étudions le problème de minimisation d’erreur dans l'apprentissage supervisé avec les algorithmes d’optimisation basé sur le descente de gradient stochastique qui sont les plus adaptés pour un réseau de neurones. Et nous nous intéresserons à un cas particulier qui est l’Invariance des transformations géométriques et des qualités des objets dans la  reconnaissance des plaques d'immatriculation.
+		
+		  
+		%Les ensembles de données d'entraînement pour les problèmes de détection d'objets dans des images sont généralement très volumineux. Minimiser les erreurs dans ces modèles d’apprentissage est une tâche très importante pour renforcer la fiabilité de notre \textbf{modèle entraîné} \cite{ibm2018ml}. 
+		
+		
+		
+		%L'un des piliers de l'apprentissage automatique est l'optimisation mathématique \cite{bottou2018optimization} qui, dans ce contexte, implique le calcul numérique de minimisation des paramètres d'un système conçu pour prendre des décisions en fonction des données disponibles. Ces paramètres sont choisis pour être optimaux par rapport à notre problème d'apprentissage.
 		
 		Dans l'ensemble, ce document tente d'apporter des réponses aux questions suivantes.
 		\begin{enumerate}
@@ -42,10 +53,7 @@
 		\end{enumerate}
 	
 	\section{Hypothèse}
-		Le cas des problèmes d'apprentissage à grande ou à petite échelle implique la complexité de calcul de l'algorithme d'optimisation sous-jacent de manière non triviale.\\
-		En effet, dans ce travail, nous analysons les algorithmes de descente de gradient stochastique parce qu’ils montrent des performances  d'optimisation incroyables pour les problèmes à grande échelle. \cite{bottou2010large}.
-		
-		Le travail de Léon Bottou et al (\eg, dans \cite{bottou2010large} \cite{wijnhoven2010fast} \cite{bottou2012stochastic} ), présente \textit{la descente de gradient stochastique comme un algorithme d'apprentissage fondamental}.\\
+		%Le travail de Léon Bottou et al (\eg, dans \cite{bottou2010large} \cite{wijnhoven2010fast} \cite{bottou2012stochastic} ), présente \textit{la descente de gradient stochastique comme un algorithme d'apprentissage fondamental}.\\
 		Une analyse plus précise révèle des compromis qualitativement différents pour le cas des problèmes d'apprentissage à grande échelle \cite{bottou2018optimization}. Des algorithmes d'optimisation improbables, tels que la SDG, montrent des performances étonnantes pour les problèmes à grande échelle, lorsque l'ensemble d'apprentissage est volumineux. En particulier, le gradient stochastique du second ordre et le gradient stochastique moyennée sont asymptotiquement efficaces après un seul passage sur l' ensemble d'entraînement \cite{bottou2010large}. 
 		
 		Les optimiseurs axés sur la SGD n'utilisent qu'un seul nouvel échantillon d'apprentissage à chaque itération. De plus, ces optimiseurs sont utilisés pour faire une rétropropagation dans un réseau des neurones pour alléger les poids et biais de celui-ci.
@@ -57,7 +65,7 @@
 	
 	\section{Objectifs}
 		
-		Nous nous proposons dans ce mémoire d'aborder sur l'utilisation des algorithmes d'optimisation numérique, précisément de minimisation. Ils seront appliqués à l'apprentissage automatique qui permettra aux ordinateurs et aux systèmes informatiques de dériver des informations significatives à partir d'images numériques, avec un coût plus bas que possible.
+		Nous proposons dans ce mémoire d'aborder l'utilisation des algorithmes d'optimisation numérique, précisément de minimisation. Ils seront appliqués à l'apprentissage automatique qui permettra aux ordinateurs et aux systèmes informatiques de dériver des informations significatives à partir d'images numériques, avec un coût plus bas que possible.
 		
 		En fait, nous faisons la reconnaissance des plaques d’immatriculation des véhicules à l'aide d’un classificateur et optimiseurs de la famille de descente de gradient stochastique implémentés dans un réseau de neurones convolutifs (CNN). On s’en servira pour mesurer l'efficacité des optimiseurs par rapport à notre contrainte d’invariance à la transformations géométriques.\\
 		Pour minimiser la fonction de coût du classificateur, les optimiseurs SGD adoptent un modèle d'optimisation convexe \cite{deepa2021ai}. De plus, pour augmenter la vitesse de convergence du classificateur, la descente de gradient stochastique, à chaque étape, tire un échantillon aléatoire de l'ensemble des paramètres de la fonction objectif \cite{bottou2018optimization}.
@@ -65,12 +73,16 @@
 		Pour chaque algorithme, nous examinons l'efficacité de l’invariance à la transformation géométrique et comparons le score (accuracy, loss) pour différents cas.
 		
 	\section{Limitation}
+		Ce travail se base sur l’analyse de l’intervention des méthodes d’optimisation dans reconnaissance automatique des plaques d’immatriculation (ALPR). 
+		Cette étude se concentre sur la détection de plaques d’immatriculation dans une image. La reconnaissance de caractère (OCR), la prise d’image et l'utilisation des informations récupérées dépassent le cadre de ce projet.
+		Le résultat de cette étude, qui est sous forme d’une bibliothèque, est implémentable dans un système de reconnaissance de plaques habile pour un parking ou une entrée d’un centre commercial.
+	
 	\section{Division du travail}
 		
 		\begin{list}{}{En dehors de cette introduction, la partie conclusive et l'annexe, ce mémoire est organisé en trois chapitres comme suit.}
-			\item \textbf{\textsl{\texttt{Chapitre 1}}} est consacré à quelques rappels des matières sur lesquels je me base pour constituer l'ensemble de ce travail.  Nous traitons des considérations de méthodes numériques et mathématiques impliquées dans la résolution de problèmes de minimisation des erreurs d’apprentissage. Certaines discussions sur les modèles de régression linéaire convexe et de classification dans d’apprentissage supervisé. Nous discutons également du réseau neuronal convolutif le plus adapté pour analyser l'imagerie visuelle.
+			\item \textbf{\textsl{\texttt{Chapitre 1}}} est consacré à quelques matières sur lesquels nous nous basons pour constituer l'ensemble de ce travail.  Nous traitons des considérations de méthodes numériques et mathématiques impliquées dans la résolution de problèmes de minimisation des erreurs d’apprentissage. Certaines discussions sur les modèles de régression linéaire convexe et de classification dans d’apprentissage supervisé. Nous discutons également du réseau neuronal convolutif le plus adapté pour analyser l'imagerie visuelle.
 			
-			\item \textbf{\textsl{\texttt{Chapitre 2}}}  explore une méthodologie parmi tant d’autres, pour entraîner les modèles d’apprentissage automatique de façon optimale, qui nous permettra par la suite de faire une prédiction d’images pour reconnaissance automatique de plaque d'immatriculation. \\ Pour la minimisation de la fonction coût nous utilisons des algorithmes comme ASGD, ADAM, ADADELTA, NAG. Puis faire une étude comparative de leurs performances.
+			\item \textbf{\textsl{\texttt{Chapitre 2}}}  explore une méthodologie pour entraîner les modèles d’apprentissage automatique de façon optimale, qui nous permettra par la suite de faire une prédiction d’images pour reconnaissance automatique de plaque d'immatriculation. Pour la minimisation de la fonction coût nous exploiterons des algorithmes comme ASGD, ADAM, ADADELTA, NAG. Puis faire une étude comparative de leurs performances.
 			
 			\item \textbf{\textsl{\texttt{Chapitre 3}}}, Ici nous construirons des modèles à partir d’une base de données annotée pour l'apprentissage et pour les tests de reconnaissance  de plaque d'immatriculation sur l’image. Les résultats concluants de cette étude pourront conduire à un déploiement de notre système dans les domaines comme  celui de la surveillance vidéo de voitures dans une entrée de parking. Des métriques connues pour mesurer les erreurs et en déduire le score du classificateur seront utilisées pour évaluer la qualité de la reconnaissance automatique des plaques d’immatriculation (ALPR) par notre approche.
 			
